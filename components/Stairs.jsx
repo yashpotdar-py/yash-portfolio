@@ -20,7 +20,7 @@ const reverseIndex = (index) => {
 const Stairs = () => {
   return (
     <>
-      {/* Rendering Stairs using 6 divs, each representing a single step */}
+      {/* Rendering Stairs using 8 divs, each representing a single step */}
       {[...Array(8)].map((_, index) => {
         return (
           <motion.div
