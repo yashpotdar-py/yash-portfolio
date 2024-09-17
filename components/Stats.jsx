@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 
 const stats = [
   {
-    num: "16",
+    num: "22",
     text: "Open-Source Projects & Repositories",
   },
   {
