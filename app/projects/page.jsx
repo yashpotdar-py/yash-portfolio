@@ -3,10 +3,10 @@
 import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
 
-const services = [
+const projects = [
   {
     num: "01",
-    title: "Service 1",
+    title: "Project 1",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -14,7 +14,7 @@ const services = [
   },
   {
     num: "02",
-    title: "Service 2",
+    title: "Project 2",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -22,7 +22,7 @@ const services = [
   },
   {
     num: "03",
-    title: "Service 3",
+    title: "Project 3",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -30,7 +30,7 @@ const services = [
   },
   {
     num: "04",
-    title: "Service 4",
+    title: "Project 4",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -40,7 +40,7 @@ const services = [
 
 import { motion } from "framer-motion";
 
-const Services = () => {
+const Projects = () => {
   return (
     <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0">
       <div className="container mx-auto">
@@ -52,7 +52,7 @@ const Services = () => {
           }}
           className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
         >
-          {services.map((service, index) => {
+          {projects.map((project, index) => {
             return (
               <div
                 key={index}
@@ -64,10 +64,10 @@ const Services = () => {
                     className="text-5xl font-extrabold text-outline text-transparent 
                               group-hover:text-outline-hover transition-all duration-500"
                   >
-                    {service.num}
+                    {project.num}
                   </div>
                   <Link
-                    href={service.href}
+                    href={project.href}
                     className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent 
                               transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                   >
@@ -76,10 +76,10 @@ const Services = () => {
                 </div>
                 {/* heading */}
                 <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">
-                  {service.title}
+                  {project.title}
                 </h2>
                 {/* description */}
-                <p className="tex-white/60 ">{service.description}</p>
+                <p className="tex-white/60 ">{project.description}</p>
                 {/* border */}
                 <div className="border-b border-white/20 w-full "></div>
               </div>
@@ -91,4 +91,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Projects;
