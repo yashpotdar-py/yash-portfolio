@@ -16,7 +16,7 @@ const stats = [
     text: "Code Commits Across Various Projects",
   },
   {
-    num: "2",
+    num: "4",
     text: "Machine Learning & Deep Learning Projects Deployed",
   },
 ];
