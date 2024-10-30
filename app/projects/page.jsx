@@ -35,7 +35,7 @@ const projects = [
   {
     num: "02",
     category: "machine learning",
-    title: "Project 1",
+    title: "Project 2",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A tempore mollitia, iure qui repellendus nulla.",
     stack: [
@@ -48,7 +48,7 @@ const projects = [
   {
     num: "03",
     category: "machine learning",
-    title: "Project 1",
+    title: "Project 3",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A tempore mollitia, iure qui repellendus nulla.",
     stack: [
@@ -61,7 +61,7 @@ const projects = [
   {
     num: "04",
     category: "machine learning",
-    title: "Project 1",
+    title: "Project 4",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A tempore mollitia, iure qui repellendus nulla.",
     stack: [

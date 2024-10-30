@@ -17,6 +17,9 @@ import {
   SiLinux,
 } from "react-icons/si";
 import { RiRobot3Line } from "react-icons/ri";
+import { AiOutlineCamera } from "react-icons/ai";
+import { GiArtificialIntelligence } from "react-icons/gi";
+import { FaLanguage } from "react-icons/fa6";
 import {
   Tooltip,
   TooltipContent,
@@ -96,15 +99,16 @@ const exprienceData = {
   ],
 };
 
-// education & certifications data
-const educationCertData = {
+// education data
+const educationData = {
   icon: "/assets/resume/cap.svg",
-  title: "Eduation & Certifications",
+  title: "Education",
   description:
-    "I hold a solid educational foundation, complemented by industry-recognized certifications that underscore my \
-    commitment to professional development. From AI&DS to specialized courses in cybersecurity and web technology, \
-    my academic journey has equipped me with a robust skill set. These qualifications not only validate my knowledge but \
-    also reflect my drive to stay updated with the latest advancements in my field.",
+    "My educational journey reflects a strong foundation in technology and engineering. Currently pursuing a {<span classname='text-accent'>B.Tech</span>} \
+    in ({<span classname='text=accent'Artificial Intelligence & Data Science</span>}), I've maintained academic excellence while actively engaging in \
+    technical pursuits. My schooling years were marked by a focus on sciences, laying the groundwork for my \
+    current specialization in AI and machine learning. This academic path has equipped me with both theoretical \
+    knowledge and practical skills essential for innovation in technology.",
   items: [
     {
       institution: "AISSMS Institute of Information Technology, Pune",
@@ -112,6 +116,31 @@ const educationCertData = {
       degreeType: "Bachelor of Technology",
       duration: "2022 - Present",
     },
+    {
+      institution: "Sri Chaitanya College of Education, Pune",
+      degree: "HSC 12th Grade",
+      degreeType: "Science",
+      duration: "2020 - 2022",
+    },
+    {
+      institution: "Sri Sri Ravishankar Vidya Mandir, Pune",
+      degree: "HSC 12th Grade",
+      degreeType: "Science",
+      duration: "2020 - 2022",
+    },
+  ],
+};
+
+// licenses & certifications data
+const licenseCertData = {
+  icon: "/assets/resume/cap.svg",
+  title: "Licenses & Certifications",
+  description:
+    "My technical journey is enriched with a diverse array of certifications and licenses that demonstrate my \
+    dedication to continuous learning. From specialized courses in machine learning and cybersecurity to comprehensive \
+    web development programs, I've consistently pursued opportunities to expand my expertise. These credentials not only \
+    validate my technical proficiency but also showcase my commitment to staying at the forefront of technological advancement.",  
+    items: [
     {
       institution: "AI Adventures, Pune",
       degree: "ML, Data Science, Python Training",
@@ -142,12 +171,6 @@ const educationCertData = {
       degreeType: "Programming Course",
       duration: "2022",
     },
-    {
-      institution: "Sri Chaitanya College of Education",
-      degree: "HSC 12th Grade",
-      degreeType: "Science",
-      duration: "2020 - 2022",
-    },
   ],
 };
 
@@ -168,6 +191,21 @@ const skillsData = {
     {
       icon: <RiRobot3Line />,
       name: "AI/ML",
+      level: "Intermediate",
+    },
+    {
+      icon: <GiArtificialIntelligence />,
+      name: "GenAI and Langchain",
+      level: "Intermediate",
+    },
+    {
+      icon: <AiOutlineCamera />,
+      name: "OpenCV and Image Processing",
+      level: "Intermediate",
+    },
+    {
+      icon: <FaLanguage />,
+      name: "Natural Language Processing",
       level: "Intermediate",
     },
     {
@@ -255,8 +293,9 @@ const Resume = () => {
         >
           <TabsList className="flex flex-col gap-6 w-full max-w-[380px] mx-auto xl:mx-0 rounded">
             <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="education-cert">
-              Education & Certifications
+            <TabsTrigger value="education">Education</TabsTrigger>
+            <TabsTrigger value="license-cert">
+              Licenses & Certifications
             </TabsTrigger>
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="about-me">About Me</TabsTrigger>
@@ -285,8 +324,8 @@ const Resume = () => {
                             <Tooltip className="">
                               <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
                                 <div className="text-6xl group-hover:text-accent transition-all duration-300 items-center flex flex-col justify-between">
-                                  <span>{skill.icon}</span>
-                                  <p className="text-sm mt-8 capitalize">
+                                  <span className="mt-4">{skill.icon}</span>
+                                  <p className="text-sm mt-4 capitalize">
                                     {skill.name}
                                   </p>
                                 </div>
@@ -307,18 +346,18 @@ const Resume = () => {
               </div>
             </TabsContent>
 
-            {/* education-cert */}
-            <TabsContent value="education-cert" className="w-full">
+            {/*education */}
+            <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">
-                  {educationCertData.title}
+                  {educationData.title}
                 </h3>
                 <p className="max-w-[920px] text-white/60 mx-auto xl:mx-0">
-                  {educationCertData.description}
+                  {educationData.description}
                 </p>
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                    {educationCertData.items.map((item, index) => {
+                    {educationData.items.map((item, index) => {
                       return (
                         <li
                           key={index}
@@ -341,6 +380,42 @@ const Resume = () => {
                 </ScrollArea>
               </div>
             </TabsContent>
+            
+            {/* license-cert */}
+            <TabsContent value="license-cert" className="w-full">
+              <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                <h3 className="text-4xl font-bold">
+                  {licenseCertData.title}
+                </h3>
+                <p className="max-w-[920px] text-white/60 mx-auto xl:mx-0">
+                  {licenseCertData.description}
+                </p>
+                <ScrollArea className="h-[400px]">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                    {licenseCertData.items.map((item, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className="bg-[#232329] h-[232px] py-6 px-10 rounded-xl flex flex-col
+                        justify-center items-center lg:items-start gap-1"
+                        >
+                          <span className="text-white/70">{item.duration}</span>
+                          <h3 className="text-xl min-h-[60px] text-center lg:text-left">
+                            {item.degree}
+                          </h3>
+                          <p className="text-accent">{item.degreeType}</p>
+                          <div className="flex items-center gap-3">
+                            <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                            <p className="text-white">{item.institution}</p>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </ScrollArea>
+              </div>
+            </TabsContent>
+
 
             {/* exprience */}
             <TabsContent value="experience" className="w-full">
