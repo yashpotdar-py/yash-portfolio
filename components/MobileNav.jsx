@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
 import Nav from "./Nav";
+import { Button } from "./ui/button";
 
 const links = [
   {
@@ -57,6 +58,14 @@ const MobileNav = () => {
               </Link>
             );
           })}
+          <Link
+            href={
+              "https://www.upwork.com/freelancers/~01277c4d278595bf41?mp_source=share"
+            }
+            target="_blank"
+          >
+            <Button className="w-full">Hire Me</Button>
+          </Link>
         </nav>
       </SheetContent>
     </Sheet>

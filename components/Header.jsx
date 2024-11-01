@@ -18,17 +18,20 @@ const Header = () => {
 
         {/* Nav */}
         <div className="hidden xl:flex items-center gap-8">
-        {/* Desktop/Large Screen Nav */}
+          {/* Desktop/Large Screen Nav */}
           <Nav />
-          <Link href={"/contact"}>
-            <Button className="">
-              Hire Me
-            </Button>
+          <Link
+            href={
+              "https://www.upwork.com/freelancers/~01277c4d278595bf41?mp_source=share"
+            }
+            target="_blank"
+          >
+            <Button className="">Hire Me</Button>
           </Link>
         </div>
         <div className="xl:hidden">
-        {/* Mobile Nav */}
-        <MobileNav />
+          {/* Mobile Nav */}
+          <MobileNav />
         </div>
       </div>
     </header>
