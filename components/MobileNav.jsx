@@ -6,6 +6,7 @@ import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
 import Nav from "./Nav";
 import { Button } from "./ui/button";
+import { useState } from "react";
 
 const links = [
   {
@@ -27,16 +28,17 @@ const links = [
 ];
 
 const MobileNav = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   return (
-    <Sheet>
-      <SheetTrigger className="flex justify-center items-center">
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger className="flex justify-center items-center" onClick={() => setIsOpen(true)}>
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         {/* Logo */}
         <div className="mt-32 mb-40 text-center text-2xl ">
-          <Link href={"/"}>
+          <Link href={"/"} onClick={() => setIsOpen(false)}>
             <h1 className="text-4xl font-semibold">
               Yash<span className="text-accent">.</span>
             </h1>
@@ -53,6 +55,7 @@ const MobileNav = () => {
                   link.path === pathname &&
                   "text-accent border-b-2 border-accent"
                 } capitalize font-medium hover:text-accent transition-all `}
+                onClick={() => setIsOpen(false)}
               >
                 {link.name}
               </Link>
@@ -63,6 +66,7 @@ const MobileNav = () => {
               "https://www.upwork.com/freelancers/~01277c4d278595bf41?mp_source=share"
             }
             target="_blank"
+            onClick={() => setIsOpen(false)}
           >
             <Button className="w-full">Hire Me</Button>
           </Link>
