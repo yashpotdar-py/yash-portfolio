@@ -45,7 +45,7 @@ const MobileNav = () => {
           </Link>
         </div>
         {/* Navigation */}
-        <nav className="flex flex-col gap-8 p-4">
+        <Nav className="flex flex-col gap-8 p-4">
           {links.map((link, index) => {
             return (
               <Link
@@ -70,7 +70,7 @@ const MobileNav = () => {
           >
             <Button className="w-full">Hire Me</Button>
           </Link>
-        </nav>
+        </Nav>
       </SheetContent>
     </Sheet>
   );
