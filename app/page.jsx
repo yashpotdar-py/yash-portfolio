@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Components
 import Socials from "@/components/Socials";
@@ -52,7 +51,6 @@ const Home = () => {
         </div>
       </div>
       <Stats />
-      <SpeedInsights />
     </section>
   );
 };
