@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaUpwork } from "react-icons/fa6";
 
 const socials = [
   {
@@ -10,6 +11,10 @@ const socials = [
   {
     icon: <FaLinkedinIn />,
     path: "https://www.linkedin.com/in/yashyogeshpotdar/",
+  },
+  {
+    icon: <FaUpwork />,
+    path: "https://www.upwork.com/freelancers/~01277c4d278595bf41"
   },
 ];
 
