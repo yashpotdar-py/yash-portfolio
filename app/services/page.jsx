@@ -6,37 +6,41 @@ import Link from "next/link";
 const services = [
   {
     num: "01",
-    title: "service 1",
+    title: "AI-Powered Solutions",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Develop cutting-edge AI and machine learning models for real-world applications, leveraging expertise in neural networks, deep learning, and natural language processing to deliver innovative solutions.",
     href: "",
   },
   {
     num: "02",
-    title: "service 2",
+    title: "Data Science & Visualization",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "Analyze complex datasets and create insightful visualizations using tools like Power BI and Tableau, enabling data-driven decision-making.",
     href: "",
   },
   {
     num: "03",
-    title: "service 3",
+    title: "AI/ML Training & Workshops",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "Conduct workshops and training sessions on AI/ML, Python programming, and related technologies, fostering skill development and innovation.",
     href: "",
   },
   {
-    num: "04",
-    title: "service 4",
+  num: "04",
+    title: "Cybersecurity Consulting",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Identify vulnerabilities and secure applications through ethical hacking practices, ensuring robust protection against threats like SQL Injection, XSS, and CSRF.",
+    href: "",
+  },
+  {
+    num: "05",
+    title: "Web Development",
+    description:
+      "Build responsive and user-friendly web applications using modern frameworks like React.js, Next.js, and Node.js, ensuring seamless user experiences and efficient backend systems.",
     href: "",
   },
 ];
+
 
 import { motion } from "framer-motion";
 
