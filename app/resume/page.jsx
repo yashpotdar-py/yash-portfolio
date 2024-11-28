@@ -29,6 +29,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // about data
 const aboutData = {
@@ -139,37 +141,56 @@ const licenseCertData = {
     "My technical journey is enriched with a diverse array of certifications and licenses that demonstrate my \
     dedication to continuous learning. From specialized courses in machine learning and cybersecurity to comprehensive \
     web development programs, I've consistently pursued opportunities to expand my expertise. These credentials not only \
-    validate my technical proficiency but also showcase my commitment to staying at the forefront of technological advancement.",  
-    items: [
+    validate my technical proficiency but also showcase my commitment to staying at the forefront of technological advancement.",
+  items: [
+    {
+      institution: "BCG, Forage",
+      course: "BCGX - GenAI Job Simulation",
+      courseType: "Job Simulation",
+      duration: "2024",
+      link: "https://bit.ly/genai-job-simulation",
+    },
+    {
+      institution: "Goldman Sachs, Forage",
+      course: "Goldman Sachs - Software Engineer Job Simulation",
+      courseType: "Job Simulation",
+      duration: "2024",
+      link: "https://bit.ly/goldman-sachs-job-simulation",
+    },
     {
       institution: "AI Adventures, Pune",
-      degree: "ML, Data Science, Python Training",
-      degreeType: "Programming Course",
+      course: "ML, Data Science, Python Training",
+      courseType: "Offline Training",
       duration: "2024",
+      link: "",
     },
     {
       institution: "Internshaala Trainings",
-      degree: "Ethical Hacking",
-      degreeType: "Programming Course",
+      course: "Ethical Hacking",
+      courseType: "Online Course",
       duration: "2024",
+      link: "https://bit.ly/ethical-hacking-yash",
     },
     {
       institution: "Udemy",
-      degree: "The Complete 2023 Web Development Bootcamp",
-      degreeType: "Programming Course",
+      course: "The Complete 2023 Web Development Bootcamp",
+      courseType: "Online Course",
       duration: "2023",
+      link: "https://bit.ly/web-development-yash",
     },
     {
       institution: "IIT Bombay",
-      degree: "Linux Training",
-      degreeType: "Programming Course",
+      course: "Linux Training",
+      courseType: "Offline Training",
       duration: "2023",
+      link: "https://bit.ly/linux-training-yash",
     },
     {
       institution: "Google (Coursera)",
-      degree: "Google IT Automation with Python Specialization",
-      degreeType: "Programming Course",
+      course: "Google IT Automation with Python Specialization",
+      courseType: "Online Course",
       duration: "2022",
+      link: "https://bit.ly/google-it-automation-yash",
     },
   ],
 };
@@ -277,6 +298,17 @@ const skillsData = {
 };
 
 const Resume = () => {
+  const handleCertificateClick = (link) => {
+    if (link) {
+      window.open(link, "_blank");
+    } else {
+      toast.warn("This certification does not have an associated link!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -287,6 +319,21 @@ const Resume = () => {
       className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
     >
       <div className="container mx-auto">
+        {/* Toast Container */}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          closeOnClick
+          pauseOnHover
+          draggable
+          className="container"
+          toastClassName={() =>
+            "relative bg-primary text-accent text-sm shadow-lg rounded-xl p-3 flex border-2 border-accent overflow-hidden"
+          }
+          bodyClassName="text-accent"
+          progressClassName="bg-white text-accent"
+        />
+
         <Tabs
           defaultValue="skills"
           className="flex flex-col xl:flex-row gap-[60px]"
@@ -349,11 +396,24 @@ const Resume = () => {
             {/*education */}
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">
-                  {educationData.title}
-                </h3>
+                <h3 className="text-4xl font-bold">{educationData.title}</h3>
                 <p className="max-w-[920px] text-white/60 mx-auto xl:mx-0">
-                  {educationData.description}
+                  My educational journey reflects a strong foundation in
+                  technology and engineering. Currently pursuing a{" "}
+                  <span className="text-accent">B.Tech</span> in{" "}
+                  <span className="text-accent">
+                    Artificial Intelligence & Data Science
+                  </span>
+                  , I've maintained academic excellence while actively engaging
+                  in technical pursuits. My schooling years were marked by a
+                  focus on sciences, laying the groundwork for my current
+                  <span className="text-accent">
+                    {" "}
+                    specialization in AI and machine learning
+                  </span>
+                  . This academic path has equipped me with both theoretical
+                  knowledge and practical skills essential for innovation in
+                  technology.
                 </p>
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
@@ -380,13 +440,11 @@ const Resume = () => {
                 </ScrollArea>
               </div>
             </TabsContent>
-            
+
             {/* license-cert */}
             <TabsContent value="license-cert" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">
-                  {licenseCertData.title}
-                </h3>
+                <h3 className="text-4xl font-bold">{licenseCertData.title}</h3>
                 <p className="max-w-[920px] text-white/60 mx-auto xl:mx-0">
                   {licenseCertData.description}
                 </p>
@@ -397,13 +455,16 @@ const Resume = () => {
                         <li
                           key={index}
                           className="bg-[#232329] h-[232px] py-6 px-10 rounded-xl flex flex-col
-                        justify-center items-center lg:items-start gap-1"
+                        justify-center items-center lg:items-start gap-1 cursor-pointer hover:bg-[#2a2a31] transition-colors"
+                          onClick={() => {
+                            handleCertificateClick(item.link);
+                          }}
                         >
                           <span className="text-white/70">{item.duration}</span>
                           <h3 className="text-xl min-h-[60px] text-center lg:text-left">
-                            {item.degree}
+                            {item.course}
                           </h3>
-                          <p className="text-accent">{item.degreeType}</p>
+                          <p className="text-accent">{item.courseType}</p>
                           <div className="flex items-center gap-3">
                             <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
                             <p className="text-white">{item.institution}</p>
@@ -415,7 +476,6 @@ const Resume = () => {
                 </ScrollArea>
               </div>
             </TabsContent>
-
 
             {/* exprience */}
             <TabsContent value="experience" className="w-full">
