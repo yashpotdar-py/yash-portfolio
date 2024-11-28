@@ -15,11 +15,18 @@ import {
   SiHackaday,
   SiGithub,
   SiLinux,
+  SiMongodb,
+  SiJavascript,
+  SiTypescript,
+  SiPhp,
+  SiCss3,
+  SiHtml5,
+  SiCloud66,
 } from "react-icons/si";
 import { RiRobot3Line } from "react-icons/ri";
 import { AiOutlineCamera } from "react-icons/ai";
 import { GiArtificialIntelligence } from "react-icons/gi";
-import { FaLanguage } from "react-icons/fa6";
+import { FaCloud, FaLanguage } from "react-icons/fa6";
 import {
   Tooltip,
   TooltipContent,
@@ -210,6 +217,11 @@ const skillsData = {
       level: "Advanced",
     },
     {
+      icon: <SiLinux />,
+      name: "Linux",
+      level: "Advanced",
+    },
+    {
       icon: <RiRobot3Line />,
       name: "AI/ML",
       level: "Intermediate",
@@ -220,28 +232,13 @@ const skillsData = {
       level: "Intermediate",
     },
     {
-      icon: <AiOutlineCamera />,
-      name: "OpenCV and Image Processing",
-      level: "Intermediate",
-    },
-    {
-      icon: <FaLanguage />,
-      name: "Natural Language Processing",
-      level: "Intermediate",
-    },
-    {
-      icon: <SiLinux />,
-      name: "Linux",
-      level: "Intermediate",
-    },
-    {
-      icon: <SiJupyter />,
-      name: "Data Science",
-      level: "Intermediate",
-    },
-    {
       icon: <SiTensorflow />,
-      name: "Tensorflow",
+      name: "TensorFlow",
+      level: "Intermediate",
+    },
+    {
+      icon: <SiPytorch />,
+      name: "PyTorch",
       level: "Intermediate",
     },
     {
@@ -250,18 +247,43 @@ const skillsData = {
       level: "Intermediate",
     },
     {
+      icon: <FaCloud />,
+      name: "Cloud Computing",
+      level: "Beginner",
+    },
+    {
+      icon: <SiMongodb />,
+      name: "MongoDB",
+      level: "Intermediate",
+    },
+    {
       icon: <SiScikitlearn />,
       name: "Scikit-Learn",
       level: "Intermediate",
     },
     {
-      icon: <SiPytorch />,
-      name: "Pytorch",
+      icon: <SiJupyter />,
+      name: "Data Science",
       level: "Intermediate",
     },
     {
-      icon: <SiGithub />,
-      name: "GitHub",
+      icon: <SiJavascript />,
+      name: "JavaScript",
+      level: "Intermediate",
+    },
+    {
+      icon: <SiReact />,
+      name: "React",
+      level: "Intermediate",
+    },
+    {
+      icon: <SiTypescript />,
+      name: "TypeScript",
+      level: "Beginner",
+    },
+    {
+      icon: <SiPhp />,
+      name: "PHP",
       level: "Intermediate",
     },
     {
@@ -280,19 +302,34 @@ const skillsData = {
       level: "Beginner",
     },
     {
-      icon: <SiReact />,
-      name: "React",
-      level: "Intermidiate",
-    },
-    {
       icon: <SiNextdotjs />,
-      name: "Next.JS",
+      name: "Next.js",
       level: "Beginner",
     },
     {
       icon: <SiTailwindcss />,
       name: "Tailwind CSS",
       level: "Beginner",
+    },
+    {
+      icon: <SiCss3 />,
+      name: "CSS",
+      level: "Intermediate",
+    },
+    {
+      icon: <SiHtml5 />,
+      name: "HTML",
+      level: "Intermediate",
+    },
+    {
+      icon: <AiOutlineCamera />,
+      name: "OpenCV and Image Processing",
+      level: "Intermediate",
+    },
+    {
+      icon: <FaLanguage />,
+      name: "Natural Language Processing",
+      level: "Intermediate",
     },
   ],
 };
