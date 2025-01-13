@@ -23,6 +23,29 @@ const projects = [
   {
     num: "01",
     category: "gen ai",
+    title: "Autonomous AI Twitter Bot",
+    description:
+      "Developed an AI-powered Twitter bot that autonomously generates and posts unique, personality-driven tweets using Python, \
+      Google AI, and the Twitter API. Integrated advanced SBERT-based similarity checks to ensure content originality and \
+      implemented OAuth authentication for secure operations. Designed a fully customizable personality profile and robust \
+      JSON-based storage system for persistent data and seamless usability.",
+    stack: [
+      { name: "python" },
+      { name: "BERT language model" },
+      { name: "generative-ai" },
+      { name: "OAuth" },
+      { name: "twitter-api" },
+      { name: "google-gemini" },
+      { name: "SBERT" },
+      { name: "logging" },
+    ],
+    image: "/assets/work/thumb5.png",
+    github: "https://github.com/yashpotdar-py/twitter-bot",
+    live: "https://x.com/PixelPancake69",
+  },
+  {
+    num: "02",
+    category: "gen ai",
     title: "Medicine Reminder App",
     description:
       "A medicine management app using Google Gemini API and LangChain for AI-driven medication scheduling and reminders. \
@@ -42,7 +65,7 @@ const projects = [
     live: "https://github.com/yashpotdar-py/medicine-reminder",
   },
   {
-    num: "02",
+    num: "03",
     category: "machine learning",
     title: "Credit Card Fraud Detection",
     description:
@@ -62,7 +85,7 @@ const projects = [
     live: "https://github.com/syntech-97/Fraud-Detection-Project",
   },
   {
-    num: "03",
+    num: "04",
     category: "deep learning",
     title: "Redactify",
     description:
@@ -83,7 +106,7 @@ const projects = [
     live: "https://github.com/yashpotdar-py/redact-sih",
   },
   {
-    num: "04",
+    num: "05",
     category: "reinforcemet learning",
     title: "Flappy Bird AI",
     description:
@@ -133,7 +156,9 @@ const Projects = () => {
                   {project.num}
                 </div>
                 {/* project category */}
-                <p className="text-accent italic text-4xl">- {project.category} project</p>
+                <p className="text-accent italic text-4xl">
+                  - {project.category} project
+                </p>
               </div>
               {/* project title */}
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
