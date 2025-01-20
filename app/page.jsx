@@ -30,7 +30,7 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="uppercase flex items-center gap-2"
-                onClick={() => window.open('/assets/resume/Yash_Potdar.pdf', '_blank')}
+                onClick={() => window.open('/assets/resume/Yash_Potdar_Resume.pdf', '_blank')}
               >
                 <span>Download CV</span>
                 <FiDownload className="text-xl   " />
