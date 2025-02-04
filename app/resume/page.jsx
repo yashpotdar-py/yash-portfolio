@@ -22,6 +22,7 @@ import {
   SiCss3,
   SiHtml5,
   SiCloud66,
+  SiNvidia,
 } from "react-icons/si";
 import { RiRobot3Line } from "react-icons/ri";
 import { AiOutlineCamera } from "react-icons/ai";
@@ -215,6 +216,11 @@ const skillsData = {
       icon: <SiPython />,
       name: "Python",
       level: "Advanced",
+    },
+    {
+      icon: <SiNvidia />,
+      name: "CUDA/cuDNN",
+      level: "Intermediate",
     },
     {
       icon: <SiLinux />,
