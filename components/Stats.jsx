@@ -4,20 +4,20 @@ import CountUp from "react-countup";
 
 const stats = [
   {
-    num: "24",
+    num: "30",
     text: "Open-Source Projects & Repositories",
   },
   {
-    num: "16",
+    num: "20",
     text: "Technologies & Frameworks Mastered",
   },
   {
-    num: "300",
+    num: "500",
     text: "Code Commits Across Various Projects",
   },
   {
-    num: "5",
-    text: "Machine Learning & Deep Learning Projects Deployed",
+    num: "15",
+    text: "Projects Deployed and Delivered",
   },
 ];
 
