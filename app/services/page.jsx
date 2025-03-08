@@ -10,30 +10,16 @@ const services = [
     description:
       "Develop cutting-edge AI and machine learning models for real-world applications, leveraging expertise in neural networks, deep learning, and natural language processing to deliver innovative solutions.",
     href: "",
-  },
+  }
   {
-    num: "02",
-    title: "Data Science & Visualization",
-    description:
-    "Analyze complex datasets and create insightful visualizations using tools like Power BI and Tableau, enabling data-driven decision-making.",
-    href: "",
-  },
-  {
-    num: "03",
-    title: "AI/ML Training & Workshops",
-    description:
-    "Conduct workshops and training sessions on AI/ML, Python programming, and related technologies, fostering skill development and innovation.",
-    href: "",
-  },
-  {
-  num: "04",
+  num: "02",
     title: "Cybersecurity Consulting",
     description:
       "Identify vulnerabilities and secure applications through ethical hacking practices, ensuring robust protection against threats like SQL Injection, XSS, and CSRF.",
     href: "",
   },
   {
-    num: "05",
+    num: "03",
     title: "Web Development",
     description:
       "Build responsive and user-friendly web applications using modern frameworks like React.js, Next.js, and Node.js, ensuring seamless user experiences and efficient backend systems.",
