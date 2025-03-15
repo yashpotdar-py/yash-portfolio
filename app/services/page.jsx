@@ -10,7 +10,7 @@ const services = [
     description:
       "Develop cutting-edge AI and machine learning models for real-world applications, leveraging expertise in neural networks, deep learning, and natural language processing to deliver innovative solutions.",
     href: "",
-  }
+  },
   {
   num: "02",
     title: "Cybersecurity Consulting",
