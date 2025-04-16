@@ -4,15 +4,15 @@ import CountUp from "react-countup";
 
 const stats = [
   {
-    num: "30",
+    num: "35",
     text: "Open-Source Projects & Repositories",
   },
   {
-    num: "20",
+    num: "25",
     text: "Technologies & Frameworks Mastered",
   },
   {
-    num: "500",
+    num: "800",
     text: "Code Commits Across Various Projects",
   },
   {
