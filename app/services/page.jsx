@@ -20,9 +20,9 @@ const services = [
   },
   {
     num: "03",
-    title: "Web Development",
+    title: "Full Stack Web Development",
     description:
-      "Build responsive and user-friendly web applications using modern frameworks like React.js, Next.js, and Node.js, ensuring seamless user experiences and efficient backend systems.",
+      "Build responsive and user-friendly web applications using modern frameworks like Flask, React.js, Next.js, and Node.js, ensuring seamless user experiences and efficient backend systems.",
     href: "",
   },
 ];
