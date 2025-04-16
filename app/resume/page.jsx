@@ -89,7 +89,7 @@ const exprienceData = {
   items: [
     {
       company: "BnB Developers",
-      position: "Intern",
+      position: "Software Intern",
       duration: "March 2025 - Present",
     },
     {
