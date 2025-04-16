@@ -23,6 +23,7 @@ import {
   SiHtml5,
   SiCloud66,
   SiNvidia,
+  SiFlask,
 } from "react-icons/si";
 import { RiRobot3Line } from "react-icons/ri";
 import { AiOutlineCamera } from "react-icons/ai";
@@ -87,14 +88,19 @@ const exprienceData = {
     understanding of professional responsibilities and expectations.",
   items: [
     {
+      company: "BnB Developers",
+      position: "Intern",
+      duration: "March 2025 - Present",
+    },
+    {
       company: "Google Developers Group",
       position: "AI/ML Head",
-      duration: "Sep 2024 - Present",
+      duration: "Sep 2024 - May 2025",
     },
     {
       company: "AI Student Association",
       position: "Technical Secretary",
-      duration: "Sep 2024 - Present",
+      duration: "Sep 2024 - May 2025",
     },
     {
       company: "AI Adventures",
@@ -225,6 +231,11 @@ const skillsData = {
     {
       icon: <SiLinux />,
       name: "Linux",
+      level: "Advanced",
+    },
+    {
+      icon: <SiFlask />,
+      name: "Flask",
       level: "Advanced",
     },
     {
