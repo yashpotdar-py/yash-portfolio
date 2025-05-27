@@ -38,17 +38,17 @@ const projects = [
   },
   {
     category: "cybersecurity",
-    title: "Vulnerability Assessment Tool",
+    title: "RL-Based Intrusion Detection System",
     description:
-      "A comprehensive cybersecurity tool for vulnerability assessment and penetration testing. Built with Python and integrated with various security frameworks for automated scanning and reporting of security vulnerabilities in web applications.",
+      "Developed intelligent IDS using Deep Q-Network achieving 96% threat detection accuracy. Created scalable Python framework with adaptive learning algorithms improving detection rates by 25% over traditional methods.",
     stack: [
       { name: "python" },
       { name: "cybersecurity" },
       { name: "penetration-testing" },
-      { name: "vulnerability-assessment" },
+      { name: "reinforcement-learning" },
       { name: "ethical-hacking" },
-      { name: "security-frameworks" },
-      { name: "automated-scanning" },
+      { name: "intrusion-detection" },
+      { name: "deep-q-network" },
     ],
     github: "https://github.com/yashpotdar-py/rl-ids",
     live: "https://github.com/yashpotdar-py/rl-ids",
