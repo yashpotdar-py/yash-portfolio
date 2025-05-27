@@ -14,7 +14,7 @@ const socials = [
   },
   {
     icon: <FaUpwork />,
-    path: "https://www.upwork.com/freelancers/~01277c4d278595bf41"
+    path: "https://www.upwork.com/freelancers/~01277c4d278595bf41",
   },
 ];
 
@@ -23,7 +23,12 @@ const Socials = ({ containerStyles, iconStyles }) => {
     <div className={containerStyles}>
       {socials.map((item, index) => {
         return (
-          <Link key={index} href={item.path} className={iconStyles} target="_blank">
+          <Link
+            key={index}
+            href={item.path}
+            className={iconStyles}
+            target="_blank"
+          >
             {item.icon}
           </Link>
         );

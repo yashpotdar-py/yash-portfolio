@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
@@ -15,14 +15,18 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/* Text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">AI&ML Engineer | Cybersecurity Enthusiast</span>
-            <h1 className="h1 mb-6 ">
-              Hello I,m <br /> <span className="text-accent ">Yash Potdar</span>
+            <span className="text-xl">
+              AI/ML Engineer & Full Stack Developer
+            </span>
+            <h1 className="h1 mb-6">
+              Hello I'm <br /> <span className="text-accent">Yash Potdar</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white/80  ">
-              I specialize in crafting powerful ML applications with expertise
-              across a wide range of programming languages and cutting-edge
-              technologies.
+            <p className="max-w-[500px] mb-9 text-white/80">
+              A passionate B.Tech student specializing in Artificial
+              Intelligence & Data Science, with expertise in machine learning,
+              cybersecurity, and full-stack development. I create innovative
+              solutions that bridge the gap between cutting-edge technology and
+              real-world applications.
             </p>
             {/* Buttons and Social Links */}
             <div className="flex flex-col xl:flex-row items-center gap-8 ">
@@ -30,7 +34,9 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="uppercase flex items-center gap-2"
-                onClick={() => window.open('/assets/resume/Yash_Potdar_Resume.pdf', '_blank')}
+                onClick={() =>
+                  window.open("/assets/resume/Yash_Potdar_Resume.pdf", "_blank")
+                }
               >
                 <span>Download CV</span>
                 <FiDownload className="text-xl   " />

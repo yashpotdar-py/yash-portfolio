@@ -54,12 +54,12 @@ const aboutData = {
       fieldValue: "Yash Potdar",
     },
     {
-      fieldName: "Ph.No.",
+      fieldName: "Phone",
       fieldValue: "(+91) 7028-712-645",
     },
     {
       fieldName: "Experience",
-      fieldValue: "Student",
+      fieldValue: "2+ Years",
     },
     {
       fieldName: "Location",
@@ -73,6 +73,14 @@ const aboutData = {
       fieldName: "Email",
       fieldValue: "yashyogeshpotdar7@outlook.com",
     },
+    {
+      fieldName: "Degree",
+      fieldValue: "B.Tech AI & Data Science",
+    },
+    {
+      fieldName: "Languages",
+      fieldValue: "English, Hindi, Marathi, Japanese",
+    },
   ],
 };
 
@@ -82,33 +90,33 @@ const exprienceData = {
   title: "Experience",
   description:
     "My experience encompasses a diverse range of roles that have shaped my skills in real-world applications. \
-    From internships to part for student clubs like {<span classname='text-accent'>Google Developer's Group</span>}, \
+    From internships to leadership roles in student clubs like Google Developer's Group, \
     I have worked in dynamic environments, applying my technical expertise in machine learning and beyond. These \
     experiences have refined my problem-solving capabilities, strengthened my teamwork, and given me a deep \
     understanding of professional responsibilities and expectations.",
   items: [
     {
       company: "BnB Developers",
-      position: "Software Intern",
+      position: "Software Development Intern",
       duration: "March 2025 - Present",
     },
     {
-      company: "Google Developers Group",
-      position: "AI/ML Head",
+      company: "Google Developers Group, AISSMS IOIT",
+      position: "AI/ML Lead",
       duration: "Sep 2024 - May 2025",
     },
     {
-      company: "AI Student Association",
+      company: "AI Student Association, AISSMS IOIT",
       position: "Technical Secretary",
       duration: "Sep 2024 - May 2025",
     },
     {
       company: "AI Adventures",
-      position: "ML Intern",
-      duration: "Jul, 2024 - Aug, 2024",
+      position: "Machine Learning Intern",
+      duration: "Jul 2024 - Aug 2024",
     },
     {
-      company: "AI Student Association",
+      company: "AI Student Association, AISSMS IOIT",
       position: "Technical Executive",
       duration: "Sep 2023 - Sep 2024",
     },
@@ -135,14 +143,14 @@ const educationData = {
     {
       institution: "Sri Chaitanya College of Education, Pune",
       degree: "HSC 12th Grade",
-      degreeType: "Science",
+      degreeType: "Science (PCM)",
       duration: "2020 - 2022",
     },
     {
       institution: "Sri Sri Ravishankar Vidya Mandir, Pune",
-      degree: "HSC 12th Grade",
-      degreeType: "Science",
-      duration: "2020 - 2022",
+      degree: "CBSE 10th Grade",
+      degreeType: "School",
+      duration: "2008 - 2020",
     },
   ],
 };
@@ -158,53 +166,53 @@ const licenseCertData = {
     validate my technical proficiency but also showcase my commitment to staying at the forefront of technological advancement.",
   items: [
     {
-      institution: "BCG, Forage",
-      course: "BCGX - GenAI Job Simulation",
-      courseType: "Job Simulation",
-      duration: "2024",
-      link: "https://bit.ly/genai-job-simulation",
+      institution: "BCG (Forage)",
+      course: "GenAI Job Simulation",
+      courseType: "Virtual Experience",
+      duration: "Nov 2024",
+      // link: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/BCG%20/Tcz8ggHMbXqqBsKc5_BCG_8YLsuEKt2yoQNEAoQ_1731254138273_completion_certificate.pdf",
     },
     {
-      institution: "Goldman Sachs, Forage",
-      course: "Goldman Sachs - Software Engineer Job Simulation",
-      courseType: "Job Simulation",
-      duration: "2024",
-      link: "https://bit.ly/goldman-sachs-job-simulation",
+      institution: "Goldman Sachs (Forage)",
+      course: "Software Engineering Virtual Experience",
+      courseType: "Virtual Experience",
+      duration: "Nov 2024",
+      // link: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Goldman%20Sachs/NPdeQ43o8P9HJmJzg_Goldman%20Sachs_8YLsuEKt2yoQNEAoQ_1731253962393_completion_certificate.pdf",
     },
     {
       institution: "AI Adventures, Pune",
-      course: "ML, Data Science, Python Training",
+      course: "Machine Learning & Data Science with Python",
       courseType: "Offline Training",
-      duration: "2024",
+      duration: "Jul - Aug 2024",
       link: "",
     },
     {
-      institution: "Internshaala Trainings",
-      course: "Ethical Hacking",
+      institution: "Internshala Trainings",
+      course: "Ethical Hacking Training",
       courseType: "Online Course",
-      duration: "2024",
-      link: "https://bit.ly/ethical-hacking-yash",
+      duration: "May 2024",
+      // link: "https://trainings.internshala.com/verify-certificate/?certificate_number=4a56cc7f-6c7b-45da-86af-a2db6bf14ac5",
     },
     {
       institution: "Udemy",
       course: "The Complete 2023 Web Development Bootcamp",
       courseType: "Online Course",
-      duration: "2023",
-      link: "https://bit.ly/web-development-yash",
+      duration: "Aug 2023",
+      // link: "https://www.udemy.com/certificate/UC-0b1a2e1c-4b4b-4f71-8a0e-7e8a0f1a0b7d/",
     },
     {
       institution: "IIT Bombay",
-      course: "Linux Training",
+      course: "Linux System Administration",
       courseType: "Offline Training",
-      duration: "2023",
-      link: "https://bit.ly/linux-training-yash",
+      duration: "Jun 2023",
+      // link: "https://drive.google.com/file/d/1234567890abcdef/view",
     },
     {
       institution: "Google (Coursera)",
-      course: "Google IT Automation with Python Specialization",
-      courseType: "Online Course",
-      duration: "2022",
-      link: "https://bit.ly/google-it-automation-yash",
+      course: "Google IT Automation with Python Professional Certificate",
+      courseType: "Professional Certificate",
+      duration: "Dec 2022",
+      // link: "https://www.coursera.org/account/accomplishments/professional-cert/ABCD1234",
     },
   ],
 };
@@ -224,28 +232,13 @@ const skillsData = {
       level: "Advanced",
     },
     {
-      icon: <SiNvidia />,
-      name: "CUDA/cuDNN",
-      level: "Intermediate",
-    },
-    {
-      icon: <SiLinux />,
-      name: "Linux",
-      level: "Advanced",
-    },
-    {
-      icon: <SiFlask />,
-      name: "Flask",
-      level: "Advanced",
-    },
-    {
       icon: <RiRobot3Line />,
       name: "AI/ML",
-      level: "Intermediate",
+      level: "Advanced",
     },
     {
       icon: <GiArtificialIntelligence />,
-      name: "GenAI and Langchain",
+      name: "GenAI and LangChain",
       level: "Intermediate",
     },
     {
@@ -264,16 +257,6 @@ const skillsData = {
       level: "Intermediate",
     },
     {
-      icon: <FaCloud />,
-      name: "Cloud Computing",
-      level: "Beginner",
-    },
-    {
-      icon: <SiMongodb />,
-      name: "MongoDB",
-      level: "Intermediate",
-    },
-    {
       icon: <SiScikitlearn />,
       name: "Scikit-Learn",
       level: "Intermediate",
@@ -284,9 +267,19 @@ const skillsData = {
       level: "Intermediate",
     },
     {
-      icon: <SiJavascript />,
-      name: "JavaScript",
+      icon: <FaLanguage />,
+      name: "Natural Language Processing",
       level: "Intermediate",
+    },
+    {
+      icon: <AiOutlineCamera />,
+      name: "Computer Vision",
+      level: "Intermediate",
+    },
+    {
+      icon: <SiFlask />,
+      name: "Flask",
+      level: "Advanced",
     },
     {
       icon: <SiReact />,
@@ -294,14 +287,34 @@ const skillsData = {
       level: "Intermediate",
     },
     {
-      icon: <SiTypescript />,
-      name: "TypeScript",
-      level: "Beginner",
+      icon: <SiNextdotjs />,
+      name: "Next.js",
+      level: "Intermediate",
     },
     {
-      icon: <SiPhp />,
-      name: "PHP",
+      icon: <SiJavascript />,
+      name: "JavaScript",
       level: "Intermediate",
+    },
+    {
+      icon: <SiHtml5 />,
+      name: "HTML",
+      level: "Advanced",
+    },
+    {
+      icon: <SiCss3 />,
+      name: "CSS",
+      level: "Advanced",
+    },
+    {
+      icon: <SiTailwindcss />,
+      name: "Tailwind CSS",
+      level: "Intermediate",
+    },
+    {
+      icon: <SiLinux />,
+      name: "Linux",
+      level: "Advanced",
     },
     {
       icon: <SiKalilinux />,
@@ -314,38 +327,23 @@ const skillsData = {
       level: "Intermediate",
     },
     {
-      icon: <SiArduino />,
-      name: "Arduino",
-      level: "Beginner",
-    },
-    {
-      icon: <SiNextdotjs />,
-      name: "Next.js",
-      level: "Beginner",
-    },
-    {
-      icon: <SiTailwindcss />,
-      name: "Tailwind CSS",
-      level: "Beginner",
-    },
-    {
-      icon: <SiCss3 />,
-      name: "CSS",
+      icon: <SiMongodb />,
+      name: "MongoDB",
       level: "Intermediate",
     },
     {
-      icon: <SiHtml5 />,
-      name: "HTML",
-      level: "Intermediate",
+      icon: <SiGithub />,
+      name: "Git/GitHub",
+      level: "Advanced",
     },
     {
-      icon: <AiOutlineCamera />,
-      name: "OpenCV and Image Processing",
-      level: "Intermediate",
+      icon: <FaCloud />,
+      name: "Cloud Computing",
+      level: "Beginner",
     },
     {
-      icon: <FaLanguage />,
-      name: "Natural Language Processing",
+      icon: <SiNvidia />,
+      name: "CUDA/cuDNN",
       level: "Intermediate",
     },
   ],
@@ -393,12 +391,12 @@ const Resume = () => {
           className="flex flex-col xl:flex-row gap-[60px]"
         >
           <TabsList className="flex flex-col gap-6 w-full max-w-[380px] mx-auto xl:mx-0 rounded">
+            <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="license-cert">
               Licenses & Certifications
             </TabsTrigger>
-            <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="about-me">About Me</TabsTrigger>
           </TabsList>
 
@@ -538,7 +536,7 @@ const Resume = () => {
                 <p className="max-w-[920px] text-white/60 mx-auto xl:mx-0">
                   My experience encompasses a diverse range of roles that have
                   shaped my skills in real-world applications. From internships
-                  to part for student clubs like{" "}
+                  to leadership roles in student clubs like{" "}
                   <span className="text-accent">
                     Google Developer&apos;s Group
                   </span>

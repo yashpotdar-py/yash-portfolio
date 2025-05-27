@@ -21,14 +21,45 @@ import ProjectSliderBtns from "@/components/ProjectSliderBtns";
 
 const projects = [
   {
-    num: "01",
+    category: "mlops",
+    title: "Water Potability Detection using MLOps Pipeline",
+    description:
+      "A machine learning project to predict water potability based on quality parameters, featuring an end-to-end MLOps pipeline, a web interface, and scalable deployment with monitoring and CI/CD support.",
+    stack: [
+      { name: "python" },
+      { name: "mlops" },
+      { name: "ci/cd" },
+      { name: "machine-learning" },
+      { name: "docker" },
+      { name: "fast-api" },
+    ],
+    image: "/assets/work/water-potability.jpeg",
+    github: "https://github.com/yashpotdar-py/water-potability-detection",
+    live: "https://yashpotdar-py.github.io/water-potability-detection/",
+  },
+  {
+    category: "cybersecurity",
+    title: "Vulnerability Assessment Tool",
+    description:
+      "A comprehensive cybersecurity tool for vulnerability assessment and penetration testing. Built with Python and integrated with various security frameworks for automated scanning and reporting of security vulnerabilities in web applications.",
+    stack: [
+      { name: "python" },
+      { name: "cybersecurity" },
+      { name: "penetration-testing" },
+      { name: "vulnerability-assessment" },
+      { name: "ethical-hacking" },
+      { name: "security-frameworks" },
+      { name: "automated-scanning" },
+    ],
+    // image: "/assets/work/thumb4.png",
+    github: "https://github.com/yashpotdar-py/rl-ids",
+    live: "https://github.com/yashpotdar-py/rl-ids",
+  },
+  {
     category: "gen ai",
     title: "Autonomous AI Twitter Bot",
     description:
-      "Developed an AI-powered Twitter bot that autonomously generates and posts unique, personality-driven tweets using Python, \
-      Google AI, and the Twitter API. Integrated advanced SBERT-based similarity checks to ensure content originality and \
-      implemented OAuth authentication for secure operations. Designed a fully customizable personality profile and robust \
-      JSON-based storage system for persistent data and seamless usability.",
+      "Developed an AI-powered Twitter bot that autonomously generates and posts unique, personality-driven tweets using Python, Google AI, and the Twitter API. Integrated advanced SBERT-based similarity checks to ensure content originality and implemented OAuth authentication for secure operations. Designed a fully customizable personality profile and robust JSON-based storage system for persistent data and seamless usability.",
     stack: [
       { name: "python" },
       { name: "BERT language model" },
@@ -44,12 +75,10 @@ const projects = [
     live: "https://x.com/PixelPancake69",
   },
   {
-    num: "02",
     category: "gen ai",
     title: "Medicine Reminder App",
     description:
-      "A medicine management app using Google Gemini API and LangChain for AI-driven medication scheduling and reminders. \
-      This project utilizes Langchain and Text-to-Speech technology to provide users with reminders and notifications for their medications.",
+      "A medicine management app using Google Gemini API and LangChain for AI-driven medication scheduling and reminders. This project utilizes Langchain and Text-to-Speech technology to provide users with reminders and notifications for their medications.",
     stack: [
       { name: "python" },
       { name: "machine-learning" },
@@ -65,12 +94,10 @@ const projects = [
     live: "https://github.com/yashpotdar-py/medicine-reminder",
   },
   {
-    num: "03",
     category: "machine learning",
     title: "Credit Card Fraud Detection",
     description:
-      "A machine learning project that uses a dataset of credit card transactions to detect fraudulent transactions. \
-      The project uses Flask to create a RESTful API that can be used to detect fraudulent transactions.",
+      "A machine learning project that uses a dataset of credit card transactions to detect fraudulent transactions. The project uses Flask to create a RESTful API that can be used to detect fraudulent transactions with high accuracy using ensemble methods.",
     stack: [
       { name: "python" },
       { name: "data science" },
@@ -78,23 +105,22 @@ const projects = [
       { name: "data visualisations" },
       { name: "flask-restful-api" },
       { name: "supervised-learning" },
-      { name: "regression" },
+      { name: "ensemble-methods" },
     ],
     image: "/assets/work/thumb2.png",
     github: "https://github.com/syntech-97/Fraud-Detection-Project",
     live: "https://github.com/syntech-97/Fraud-Detection-Project",
   },
   {
-    num: "04",
     category: "deep learning",
-    title: "Redactify",
+    title: "Redactify - PII Detection & Redaction",
     description:
-      "A CNN-based deep learning model to detect and redact PII (Personally Indetifiable Information) from government documents with 96% accuracy. \
-      The project utilizes the YOLOv7 model to detect the images, PII and the Hugging Face model to redact it.",
+      "A CNN-based deep learning model to detect and redact PII (Personally Identifiable Information) from government documents with 96% accuracy. The project utilizes the YOLOv7 model to detect the images, PII and the Hugging Face model to redact it with a user-friendly Gradio interface.",
     stack: [
       { name: "python" },
       { name: "deep learning" },
-      { name: "neural netowrks" },
+      { name: "computer vision" },
+      { name: "yolo-v7" },
       { name: "ocr-recognition" },
       { name: "gradio-ui" },
       { name: "hugging-face" },
@@ -102,41 +128,28 @@ const projects = [
       { name: "natural-language-processing" },
     ],
     image: "/assets/work/thumb3.png",
-    github: "https://github.com/yashpotdar-py/redact-sih",
-    live: "https://github.com/yashpotdar-py/redact-sih",
-  },
-  {
-    num: "05",
-    category: "reinforcemet learning",
-    title: "Flappy Bird AI",
-    description:
-      "A fully functional Flappy Bird game driven by AI, leveraging NEAT and \
-      PyGame within Python; trained the neural network to achieve an impressive 95% \
-      success rate in gameplay simulations.",
-    stack: [
-      { name: "python" },
-      { name: "pygame" },
-      { name: "reinforcement-learning" },
-      { name: "game-simulation" },
-      { name: "neural-networks" },
-      { name: "evolutionary-algorithms" },
-      { name: "neat-algorithms" },
-    ],
-    image: "/assets/work/thumb4.png",
-    github: "https://github.com/yashpotdar-py/Flappy-Bird-AI",
-    live: "https://github.com/yashpotdar-py/Flappy-Bird-AI",
+    github: "https://github.com/yashpotdar-py/redactify",
+    live: "https://github.com/yashpotdar-py/redactify",
   },
 ];
 
 const Projects = () => {
   const [project, setProject] = useState(projects[0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleSlideChange = (swiper) => {
     // get current slide index
     const currentIndex = swiper.activeIndex;
+    setCurrentIndex(currentIndex);
     // update project state based on current current slide index
     setProject(projects[currentIndex]);
   };
+
+  // Function to format number with leading zero
+  const formatProjectNumber = (index) => {
+    return String(index + 1).padStart(2, "0");
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -152,8 +165,8 @@ const Projects = () => {
             <div className="flex flex-col gap-[30px] h-[50%]">
               <div className="flex items-center gap-4">
                 <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
-                  {/* outline num */}
-                  {project.num}
+                  {/* outline num - automatically generated */}
+                  {formatProjectNumber(currentIndex)}
                 </div>
                 {/* project category */}
                 <p className="text-accent italic text-4xl">
@@ -203,7 +216,7 @@ const Projects = () => {
                         <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>GitHub Link</p>
+                        <p>Live Project</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>

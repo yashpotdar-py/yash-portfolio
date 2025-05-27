@@ -32,7 +32,10 @@ const MobileNav = () => {
   const pathname = usePathname();
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="flex justify-center items-center" onClick={() => setIsOpen(true)}>
+      <SheetTrigger
+        className="flex justify-center items-center"
+        onClick={() => setIsOpen(true)}
+      >
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">

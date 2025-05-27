@@ -6,27 +6,33 @@ import Link from "next/link";
 const services = [
   {
     num: "01",
-    title: "AI-Powered Solutions",
+    title: "AI/ML Solutions & Development",
     description:
-      "Develop cutting-edge AI and machine learning models for real-world applications, leveraging expertise in neural networks, deep learning, and natural language processing to deliver innovative solutions.",
+      "Develop cutting-edge AI and machine learning models for real-world applications, leveraging expertise in neural networks, deep learning, computer vision, and natural language processing. Specializing in GenAI, LangChain, and advanced model deployment to deliver innovative, scalable solutions.",
     href: "",
   },
   {
-  num: "02",
-    title: "Cybersecurity Consulting",
+    num: "02",
+    title: "Cybersecurity & Ethical Hacking",
     description:
-      "Identify vulnerabilities and secure applications through ethical hacking practices, ensuring robust protection against threats like SQL Injection, XSS, and CSRF.",
+      "Comprehensive cybersecurity consulting including vulnerability assessments, penetration testing, and ethical hacking services. Identify and remediate security vulnerabilities like SQL Injection, XSS, and CSRF to ensure robust protection against evolving cyber threats.",
     href: "",
   },
   {
     num: "03",
     title: "Full Stack Web Development",
     description:
-      "Build responsive and user-friendly web applications using modern frameworks like Flask, React.js, Next.js, and Node.js, ensuring seamless user experiences and efficient backend systems.",
+      "Build responsive, scalable, and user-friendly web applications using modern frameworks including React.js, Next.js, Flask, and Node.js. Expertise in both frontend and backend development, ensuring seamless user experiences with efficient, secure backend systems.",
+    href: "",
+  },
+  {
+    num: "04",
+    title: "Data Science & Analytics",
+    description:
+      "Transform raw data into actionable insights through advanced data science techniques, statistical analysis, and machine learning algorithms. Expertise in data visualization, predictive modeling, and building data-driven solutions for business intelligence.",
     href: "",
   },
 ];
-
 
 import { motion } from "framer-motion";
 
@@ -58,10 +64,10 @@ const Services = () => {
                   </div>
                   <Link
                     href={service.href}
-                    className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent 
+                    className="w-[70px] h-[70px] rounded-full bg-accent group-hover:bg-accent 
                               transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                   >
-                    <BsArrowDownRight className="text-primary text-3xl " />
+                    <BsArrowDownRight className="text-primary text-3xl" />
                   </Link>
                 </div>
                 {/* heading */}
