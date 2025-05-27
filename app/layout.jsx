@@ -15,8 +15,16 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Yash Potdar Portfolio",
-  description: "Created the yashpotdar-py",
+  title: "Yash Potdar - AI/ML Engineer & Full Stack Developer",
+  description: "Experienced AI/ML Engineer specializing in machine learning, deep learning, and full-stack development. View my portfolio of innovative projects.",
+  keywords: "AI, Machine Learning, Full Stack Developer, React, Python, Data Science",
+  openGraph: {
+    title: "Yash Potdar Portfolio",
+    description: "AI/ML Engineer & Full Stack Developer",
+    url: "https://yashpotdar.vercel.app",
+    siteName: "Yash Potdar Portfolio",
+    images: ["/assets/photo.jpg"],
+  },
 };
 
 export default function RootLayout({ children }) {
