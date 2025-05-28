@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { CiMenuFries } from "react-icons/ci";
 import { Button } from "./ui/button";
 import { useState } from "react";
-import { FiX } from "react-icons/fi";
 
 const links = [
   { name: "home", path: "/" },

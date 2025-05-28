@@ -48,6 +48,11 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import {
+  cardHoverVariants,
+  containerVariants,
+  itemVariants,
+} from "@/lib/animations";
 // about data
 const aboutData = {
   title: "About Me",
@@ -433,42 +438,6 @@ const Resume = () => {
     education: <HiAcademicCap />,
     skills: <HiSparkles />,
     certifications: <FaExternalLinkAlt />,
-  };
-
-  // Natural animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const cardHoverVariants = {
-    hover: {
-      y: -8,
-      scale: 1.02,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
   };
 
   if (isLoading) {

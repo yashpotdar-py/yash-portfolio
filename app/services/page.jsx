@@ -22,11 +22,16 @@ import {
   SiNextdotjs,
   SiPython,
 } from "react-icons/si";
-import { HiSparkles, HiLightningBolt } from "react-icons/hi";
+import { HiLightningBolt } from "react-icons/hi";
 import { RiRobot2Line } from "react-icons/ri";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  cardHoverVariants,
+  containerVariants,
+  itemVariants,
+} from "@/lib/animations";
 
 const services = [
   {
@@ -137,41 +142,6 @@ const services = [
 
 const Services = () => {
   const [hoveredService, setHoveredService] = useState(null);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const cardHoverVariants = {
-    hover: {
-      y: -8,
-      scale: 1.02,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
 
   return (
     <motion.section

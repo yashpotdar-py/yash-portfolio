@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import {
   BsEnvelope,
   BsPhone,
@@ -19,6 +19,11 @@ import { FaWhatsapp } from "react-icons/fa";
 import { SiUpwork } from "react-icons/si";
 import { HiSparkles } from "react-icons/hi";
 import Link from "next/link";
+import {
+  cardHoverVariants,
+  containerVariants,
+  itemVariants,
+} from "@/lib/animations";
 
 const contactInfo = [
   {
@@ -88,9 +93,10 @@ const services = [
 
 // EmailJS configuration - Replace with your actual values
 const EMAILJS_CONFIG = {
-  SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id',
-  TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id',
-  PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key',
+  SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "your_service_id",
+  TEMPLATE_ID:
+    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "your_template_id",
+  PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "your_public_key",
 };
 
 const Contact = () => {
@@ -139,7 +145,7 @@ const Contact = () => {
         timestamp: new Date().toLocaleString(),
       };
 
-      console.log('Sending email with params:', templateParams);
+      console.log("Sending email with params:", templateParams);
 
       // Send email using EmailJS
       const response = await emailjs.send(
@@ -149,7 +155,7 @@ const Contact = () => {
         EMAILJS_CONFIG.PUBLIC_KEY
       );
 
-      console.log('Email sent successfully:', response);
+      console.log("Email sent successfully:", response);
 
       if (response.status === 200) {
         setSubmitStatus("success");
@@ -163,49 +169,14 @@ const Contact = () => {
           message: "",
         });
       } else {
-        throw new Error('Email sending failed');
+        throw new Error("Email sending failed");
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const cardHoverVariants = {
-    hover: {
-      y: -8,
-      scale: 1.02,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
   };
 
   return (

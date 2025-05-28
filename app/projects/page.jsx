@@ -219,7 +219,7 @@ const Projects = () => {
       >
         {/* Gallery Header */}
         <div className="text-center mb-16">
-          {/* <motion.div
+          <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
@@ -227,7 +227,7 @@ const Projects = () => {
           >
             <HiSparkles className="text-accent" />
             <span className="text-accent font-semibold">Featured Work</span>
-          </motion.div> */}
+          </motion.div>
 
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
@@ -307,8 +307,8 @@ const Projects = () => {
             ))}
           </div>
 
-          {/* View Mode Toggle
-          <div className="flex justify-center mt-8 sm:hidden">
+          {/* View Mode Toggle */}
+          <div className="flex justify-center mt-8 hidden">
             <div className="flex bg-white/5 backdrop-blur-xl rounded-2xl p-2 border border-white/10">
               {["grid", "list"].map((mode) => (
                 <button
@@ -324,7 +324,7 @@ const Projects = () => {
                 </button>
               ))}
             </div>
-          </div> */}
+          </div>
         </motion.div>
 
         {/* Projects Grid/List */}
@@ -389,6 +389,7 @@ const Projects = () => {
                           src={proj.image}
                           alt={proj.title}
                           fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         {/* Gradient Overlay */}
@@ -588,6 +589,7 @@ const Projects = () => {
                       src={selectedProject.image}
                       alt={selectedProject.title}
                       fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
