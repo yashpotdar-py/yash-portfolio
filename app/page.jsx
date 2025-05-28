@@ -5,21 +5,13 @@ import { useState, useEffect } from "react";
 import {
   FiDownload,
   FiArrowRight,
-  FiCode,
-  FiZap,
-  FiStar,
-  FiTrendingUp,
   FiEye,
 } from "react-icons/fi";
 import {
   FaRocket,
   FaStar,
   FaBrain,
-  FaCode,
   FaArrowRight,
-  FaPlay,
-  FaCheckCircle,
-  FaEye,
   FaGithub,
   FaLinkedinIn,
   FaWhatsapp,
@@ -29,7 +21,6 @@ import {
 } from "react-icons/fa";
 import { HiSparkles, HiLightningBolt } from "react-icons/hi";
 import {
-  SiTensorflow,
   SiReact,
   SiPython,
   SiNextdotjs,
@@ -39,20 +30,31 @@ import {
 import Link from "next/link";
 
 const technologies = [
-  { icon: <SiPython />, name: "Python", color: "from-yellow-500 to-green-600" },
   {
-    icon: <SiTensorflow />,
-    name: "TensorFlow",
-    color: "from-orange-500 to-red-600",
+    icon: <SiPython />,
+    name: "Python Developer",
+    color: "from-yellow-500 to-green-600",
   },
-  { icon: <SiReact />, name: "React", color: "from-blue-500 to-cyan-600" },
-  { icon: <SiNextdotjs />, name: "Next.js", color: "from-gray-600 to-black" },
+  {
+    icon: <SiReact />,
+    name: "React Developer",
+    color: "from-blue-500 to-cyan-600",
+  },
+  {
+    icon: <SiNextdotjs />,
+    name: "Next.js Developer",
+    color: "from-gray-600 to-black",
+  },
   {
     icon: <SiKalilinux />,
-    name: "Kali Linux",
+    name: "Ethicla Hacker",
     color: "from-blue-700 to-indigo-700",
   },
-  { icon: <FaRobot />, name: "AI/ML", color: "from-purple-500 to-pink-600" },
+  {
+    icon: <FaRobot />,
+    name: "AI/ML Engineer",
+    color: "from-purple-500 to-pink-600",
+  },
 ];
 
 const services = [
@@ -341,7 +343,7 @@ const Home = () => {
                     >
                       {technologies[currentTech].icon}
                     </span>
-                    {technologies[currentTech].name} Developer
+                    {technologies[currentTech].name}
                   </motion.span>
                 </motion.div>
               </div>
