@@ -3,7 +3,6 @@ import "./globals.css";
 
 // components
 import Header from "@/components/Header";
-import PageTransition from "@/components/PageTransition";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import StairTransition from "@/components/StairTransition";
 import { Analytics } from "@vercel/analytics/react";
@@ -16,8 +15,10 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata = {
   title: "Yash Potdar - AI/ML Engineer & Full Stack Developer",
-  description: "Experienced AI/ML Engineer specializing in machine learning, deep learning, and full-stack development. View my portfolio of innovative projects.",
-  keywords: "AI, Machine Learning, Full Stack Developer, React, Python, Data Science",
+  description:
+    "Experienced AI/ML Engineer specializing in machine learning, deep learning, and full-stack development. View my portfolio of innovative projects.",
+  keywords:
+    "AI, Machine Learning, Full Stack Developer, React, Python, Data Science",
   openGraph: {
     title: "Yash Potdar Portfolio",
     description: "AI/ML Engineer & Full Stack Developer",
@@ -30,16 +31,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${jetBrainsMono.variable} ${jetBrainsMono.variable} antialiased`}
-      >
+      <body className={`${jetBrainsMono.variable} antialiased overflow-x-hidden`}>
         <Header />
         <StairTransition />
-        <PageTransition>
-          {children}
+          <main className="pt-20 relative">{children}</main>
           <SpeedInsights />
           <Analytics />
-        </PageTransition>
       </body>
     </html>
   );

@@ -2,19 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import {
-  FiDownload,
-  FiArrowRight,
-  FiEye,
-} from "react-icons/fi";
+import { FiDownload, FiArrowRight, FiEye } from "react-icons/fi";
 import {
   FaRocket,
-  FaStar,
-  FaBrain,
   FaArrowRight,
-  FaGithub,
-  FaLinkedinIn,
-  FaWhatsapp,
   FaRobot,
   FaLock,
   FaChartLine,
@@ -28,6 +19,9 @@ import {
   SiUpwork,
 } from "react-icons/si";
 import Link from "next/link";
+import StatsComponent from "@/components/Stats";
+import PhotoComponent from "@/components/Photo";
+import SocialsComponent from "@/components/Socials";
 
 const technologies = [
   {
@@ -83,125 +77,6 @@ const services = [
     color: "from-green-500 to-emerald-600",
   },
 ];
-
-const achievements = [
-  { number: "35+", label: "Projects Completed", icon: <FaRocket /> },
-  { number: "98%", label: "Client Satisfaction", icon: <FaStar /> },
-  { number: "24/7", label: "Support Available", icon: <HiLightningBolt /> },
-  { number: "800+", label: "Code Commits", icon: <FaBrain /> },
-];
-
-const socialLinks = [
-  {
-    icon: <FaLinkedinIn />,
-    href: "https://www.linkedin.com/in/yashyogeshpotdar/",
-    label: "LinkedIn",
-  },
-  {
-    icon: <FaGithub />,
-    href: "https://github.com/yashpotdar-py",
-    label: "GitHub",
-  },
-  {
-    icon: <SiUpwork />,
-    href: "https://www.upwork.com/freelancers/~01277c4d278595bf41",
-    label: "Upwork",
-  },
-  {
-    icon: <FaWhatsapp />,
-    href: "https://wa.me/917028712645",
-    label: "WhatsApp",
-  },
-];
-
-// Built-in Photo Component
-const PhotoComponent = () => (
-  <div className="relative w-80 h-80 xl:w-96 xl:h-96">
-    {/* Outer glow ring */}
-    <div className="absolute inset-0 bg-gradient-to-r from-accent/30 via-accent-hover/20 to-primary/30 rounded-full blur-2xl animate-pulse" />
-
-    {/* Main container with glassmorphism */}
-    <div className="relative w-full h-full rounded-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-3 shadow-2xl">
-      {/* Inner gradient border */}
-      <div className="w-full h-full rounded-full bg-gradient-to-br from-accent/20 via-transparent to-primary/20 p-1">
-        {/* Image container */}
-        <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-accent/10 to-primary/10">
-          {/* Actual photo */}
-          <img
-            src="/assets/photo-nobg.png"
-            alt="Yash Potdar - AI/ML Developer"
-            className="w-full h-full object-cover object-center rounded-full transform hover:scale-105 transition-transform duration-500"
-          />
-
-          {/* Overlay gradient for modern effect */}
-          <div className="absolute inset-0 bg-gradient-to-t from-accent/20 via-transparent to-transparent rounded-full" />
-
-          {/* Floating accent dots */}
-          <div className="absolute top-4 right-4 w-3 h-3 bg-accent rounded-full animate-ping" />
-          <div className="absolute bottom-6 left-6 w-2 h-2 bg-accent-hover rounded-full animate-pulse delay-1000" />
-        </div>
-      </div>
-    </div>
-
-    {/* Additional decorative elements */}
-    <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-accent to-accent-hover rounded-full animate-bounce delay-500" />
-    <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse delay-700" />
-  </div>
-);
-
-// Built-in Socials Component
-const SocialsComponent = ({ containerStyles, iconStyles }) => (
-  <div className={containerStyles}>
-    {socialLinks.map((social, index) => (
-      <a
-        key={index}
-        href={social.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={iconStyles}
-        aria-label={social.label}
-      >
-        {social.icon}
-      </a>
-    ))}
-  </div>
-);
-
-// Built-in Stats Component
-const StatsComponent = () => (
-  <div className="py-16">
-    <div className="container mx-auto px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12"
-      >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {achievements.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center group"
-            >
-              <div className="text-accent text-3xl mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-3xl lg:text-4xl font-black text-white mb-2 group-hover:text-accent transition-colors">
-                {stat.number}
-              </div>
-              <div className="text-white/70 font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </div>
-  </div>
-);
 
 const Home = () => {
   const [currentTech, setCurrentTech] = useState(0);
@@ -290,7 +165,7 @@ const Home = () => {
 
       <div className="container mx-auto px-6 lg:px-12 xl:px-16 max-w-7xl">
         {/* Hero Section */}
-        <div className="min-h-[80vh] flex items-center justify-center py-16 md:py-24">
+        <div className="min-h-screen flex items-center justify-center py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-20 xl:gap-32 items-center w-full">
             {/* Content */}
             <motion.div
