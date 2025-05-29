@@ -50,8 +50,10 @@ const projects = [
       { name: "intrusion-detection" },
       { name: "deep-q-network" },
     ],
+    // image: "/assets/work/thumb5.png",
     github: "https://github.com/yashpotdar-py/rl-ids",
     live: "https://github.com/yashpotdar-py/rl-ids",
+    featured: true,
     // metrics: { accuracy: "98%", users: "800", stars: "32" }
   },
   {
@@ -308,7 +310,7 @@ const Projects = () => {
           </div>
 
           {/* View Mode Toggle */}
-          <div className="flex justify-center mt-8 hidden">
+          <div className="justify-center mt-8 hidden">
             <div className="flex bg-white/5 backdrop-blur-xl rounded-2xl p-2 border border-white/10">
               {["grid", "list"].map((mode) => (
                 <button
@@ -376,13 +378,7 @@ const Projects = () => {
                   )}
 
                   {/* Project Image */}
-                  <div
-                    className={`relative overflow-hidden ${
-                      viewMode === "grid"
-                        ? "h-2/3"
-                        : "w-64 h-40 flex-shrink-0 rounded-2xl"
-                    }`}
-                  >
+                  <div className="relative overflow-hidden h-2/3">
                     {proj.image ? (
                       <div className="relative w-full h-full">
                         <Image
@@ -391,6 +387,18 @@ const Projects = () => {
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          style={{ objectFit: "cover" }}
+                          priority={index >= 0}
+                          onError={(e) => {
+                            console.error("Image failed to load:", proj.image);
+                            e.target.src = "/assets/work/placeholder.png";
+                          }}
+                          onLoad={() => {
+                            console.log(
+                              "Image loaded successfully:",
+                              proj.image
+                            );
+                          }}
                         />
                         {/* Gradient Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
