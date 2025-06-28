@@ -18,6 +18,27 @@ import Image from "next/image";
 
 const projects = [
   {
+    category: "cybersecurity",
+    title: "RL-IDS: Reinforcement Learning Intrusion Detection System",
+    description:
+      "Built an adaptive IDS using a Deep Q-Network that achieved 93% detection confidence with sub-100 ms latency. Developed a modular Python framework (FastAPI, PyTorch, Scapy) for live packet capture and real-time inference, boosting detection rates by over 25% compared to rule-based systems.",
+    stack: [
+      { name: "python" },
+      { name: "reinforcement-learning" },
+      { name: "deep-q-network" },
+      { name: "cybersecurity" },
+      { name: "intrusion-detection" },
+      { name: "fastapi" },
+      { name: "pytorch" },
+      { name: "scapy" },
+    ],
+    image: "/assets/work/rl-ids.png",
+    github: "https://github.com/yashpotdar-py/rl-ids",
+    live: "https://yashpotdar-py.github.io/rl-ids/",
+    featured: true,
+    // "metrics": { "accuracy": "93%", "latency": "<100 ms", "throughput": "1000+ preds/sec" }
+  },
+  {
     category: "mlops",
     title: "Water Potability Detection using MLOps Pipeline",
     description:
@@ -35,26 +56,6 @@ const projects = [
     live: "https://yashpotdar-py.github.io/water-potability-detection/",
     featured: true,
     // metrics: { accuracy: "94%", users: "1.2k", stars: "45" }
-  },
-  {
-    category: "cybersecurity",
-    title: "RL-Based Intrusion Detection System",
-    description:
-      "Developed intelligent IDS using Deep Q-Network achieving 96% threat detection accuracy. Created scalable Python framework with adaptive learning algorithms improving detection rates by 25% over traditional methods.",
-    stack: [
-      { name: "python" },
-      { name: "cybersecurity" },
-      { name: "penetration-testing" },
-      { name: "reinforcement-learning" },
-      { name: "ethical-hacking" },
-      { name: "intrusion-detection" },
-      { name: "deep-q-network" },
-    ],
-    // image: "/assets/work/thumb5.png",
-    github: "https://github.com/yashpotdar-py/rl-ids",
-    live: "https://github.com/yashpotdar-py/rl-ids",
-    featured: true,
-    // metrics: { accuracy: "98%", users: "800", stars: "32" }
   },
   {
     category: "gen ai",

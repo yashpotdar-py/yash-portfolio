@@ -470,6 +470,12 @@ const Contact = () => {
                         Select budget range
                       </option>
                       <option
+                        value="Under ₹5,000"
+                        className="bg-primary text-white"
+                      >
+                        Under ₹5,000
+                      </option>
+                      <option
                         value="₹5,000 - ₹15,000"
                         className="bg-primary text-white"
                       >
