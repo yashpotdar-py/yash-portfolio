@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 const links = [
   { name: "home", path: "/" },
   { name: "lab", path: "/projects" },
-  { name: "tooling", path: "/services" },
   { name: "resume", path: "/resume" },
   { name: "contact", path: "/contact" },
 ];
