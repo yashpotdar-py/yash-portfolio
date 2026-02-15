@@ -18,7 +18,8 @@ import {
   Server,
 } from "lucide-react";
 
-const projects = [
+// Cybersecurity projects (highlighted)
+const cybersecProjects = [
   {
     id: "sentinel-ssh",
     title: "Sentinel-SSH",
@@ -98,33 +99,10 @@ const projects = [
     docs: "https://github.com/yashpotdar-py/redactify",
     icon: Shield,
   },
-  {
-    id: "homelab-infra",
-    title: "Homelab Infrastructure",
-    category: "Learning Lab",
-    status: "tinkering",
-    description:
-      "Personal lab for learning infrastructure and security. Running on Raspberry Pi hardware with Pi-hole DNS filtering, SSH monitoring, and basic observability. Still learning and breaking things regularly.",
-    tldr: "Budget homelab for hands-on security learning.",
-    stack: ["Raspberry Pi", "Debian", "Pi-hole", "Prometheus", "Grafana", "Docker"],
-    metrics: {
-      hardware: "Raspberry Pi 4B",
-      cost: "<$100",
-      purpose: "Learning",
-      status: "Active experiments",
-    },
-    features: [
-      "Pi-hole for DNS-level ad/tracker blocking",
-      "SSH hardening and monitoring practice",
-      "Prometheus + Grafana for observability learning",
-      "Network topology experiments (sometimes RFC-violating)",
-      "Safe environment to break things",
-    ],
-    threatModel: "Learning lab - experiments with security configurations and monitoring",
-    github: null,
-    docs: null,
-    icon: Server,
-  },
+];
+
+// AI/ML projects (less highlighted)
+const aimlProjects = [
   {
     id: "water-potability",
     title: "Water Potability Detection",
@@ -179,6 +157,37 @@ const projects = [
   },
 ];
 
+// Homelab/learning lab (least highlighted)
+const homelabProjects = [
+  {
+    id: "homelab-infra",
+    title: "Homelab Infrastructure",
+    category: "Learning Lab",
+    status: "tinkering",
+    description:
+      "Personal lab for learning infrastructure and security. Running on Raspberry Pi hardware with Pi-hole DNS filtering, SSH monitoring, and basic observability. Still learning and breaking things regularly.",
+    tldr: "Budget homelab for hands-on security learning.",
+    stack: ["Raspberry Pi", "Debian", "Pi-hole", "Prometheus", "Grafana", "Docker"],
+    metrics: {
+      hardware: "Raspberry Pi 4B",
+      cost: "<$100",
+      purpose: "Learning",
+      status: "Active experiments",
+    },
+    features: [
+      "Pi-hole for DNS-level ad/tracker blocking",
+      "SSH hardening and monitoring practice",
+      "Prometheus + Grafana for observability learning",
+      "Network topology experiments (sometimes RFC-violating)",
+      "Safe environment to break things",
+    ],
+    threatModel: "Learning lab - experiments with security configurations and monitoring",
+    github: null,
+    docs: null,
+    icon: Server,
+  },
+];
+
 const ProjectsPage = () => {
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -216,13 +225,15 @@ const ProjectsPage = () => {
         </motion.section>
 
         {/* Projects Grid */}
+        {/* Cybersecurity Projects - highlighted */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           className="space-y-8"
         >
-          {projects.map((project, index) => {
+          <h2 className="h2 text-terminal-500 mb-4">Cybersecurity Projects</h2>
+          {cybersecProjects.map((project, index) => {
             const Icon = project.icon;
             return (
               <motion.div
@@ -231,9 +242,11 @@ const ProjectsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="card-interactive group"
+                className="card-interactive group border-2 border-terminal-500 shadow-lg bg-base-950"
               >
+                {/* ...existing code for project card... */}
                 <div className="grid lg:grid-cols-3 gap-8">
+                  {/* ...existing code for left and right columns... */}
                   {/* Left: Header & Description */}
                   <div className="lg:col-span-2 space-y-4">
                     <div className="flex items-start justify-between gap-4">
@@ -265,9 +278,7 @@ const ProjectsPage = () => {
                         {project.status}
                       </span>
                     </div>
-
                     <p className="text-muted-200 leading-relaxed">{project.description}</p>
-
                     <div className="terminal-window">
                       <div className="terminal-header">
                         <div className="flex items-center gap-2">
@@ -284,7 +295,6 @@ const ProjectsPage = () => {
                         </div>
                       </div>
                     </div>
-
                     {/* Features */}
                     <div>
                       <h3 className="h5 mb-3 text-terminal-500">Key Features:</h3>
@@ -297,7 +307,6 @@ const ProjectsPage = () => {
                         ))}
                       </ul>
                     </div>
-
                     {/* Actions */}
                     {(project.github || project.docs) && (
                       <div className="flex flex-wrap gap-3 pt-4 border-t border-base-500">
@@ -333,7 +342,6 @@ const ProjectsPage = () => {
                       </div>
                     )}
                   </div>
-
                   {/* Right: Metrics & Stack */}
                   <div className="space-y-4">
                     {/* Metrics */}
@@ -355,7 +363,6 @@ const ProjectsPage = () => {
                         ))}
                       </div>
                     </div>
-
                     {/* Stack */}
                     <div>
                       <h3 className="h5 mb-3 text-terminal-500">Stack:</h3>
@@ -367,7 +374,342 @@ const ProjectsPage = () => {
                         ))}
                       </div>
                     </div>
+                    {/* Threat Model */}
+                    <div className="card bg-base-900">
+                      <div className="flex items-start gap-2">
+                        <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <h4 className="text-sm font-semibold text-amber-500 mb-1">
+                            Threat Model
+                          </h4>
+                          <p className="text-xs text-muted-300">{project.threatModel}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.section>
 
+        {/* AI/ML Projects - less highlighted */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="space-y-8 mt-12"
+        >
+          <h2 className="h2 text-muted-300 mb-4">AI/ML Projects</h2>
+          {aimlProjects.map((project, index) => {
+            const Icon = project.icon;
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="card-interactive group border border-base-700 bg-base-900"
+              >
+                {/* ...existing code for project card... */}
+                <div className="grid lg:grid-cols-3 gap-8">
+                  {/* ...existing code for left and right columns... */}
+                  {/* Left: Header & Description */}
+                  <div className="lg:col-span-2 space-y-4">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <Icon className="w-6 h-6 text-terminal-500 flex-shrink-0" />
+                        <div>
+                          <h2 className="h3 mb-1">{project.title}</h2>
+                          <p className="text-sm text-muted-300 font-mono">{project.category}</p>
+                        </div>
+                      </div>
+                      <span
+                        className={`status-badge ${
+                          project.status === "production"
+                            ? "status-production"
+                            : project.status === "tinkering"
+                            ? "status-tinkering"
+                            : "status-archived"
+                        }`}
+                      >
+                        <span
+                          className={`w-1.5 h-1.5 rounded-full ${
+                            project.status === "production"
+                              ? "bg-terminal-500"
+                              : project.status === "tinkering"
+                              ? "bg-amber-500"
+                              : "bg-muted-500"
+                          }`}
+                        />
+                        {project.status}
+                      </span>
+                    </div>
+                    <p className="text-muted-200 leading-relaxed">{project.description}</p>
+                    <div className="terminal-window">
+                      <div className="terminal-header">
+                        <div className="flex items-center gap-2">
+                          <div className="terminal-dot bg-danger-500" />
+                          <div className="terminal-dot bg-amber-500" />
+                          <div className="terminal-dot bg-terminal-500" />
+                        </div>
+                        <span className="font-mono text-xs text-muted-300">tl;dr</span>
+                      </div>
+                      <div className="terminal-content">
+                        <div className="flex items-start gap-3">
+                          <span className="text-terminal-500">➜</span>
+                          <span className="text-muted-200">{project.tldr}</span>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Features */}
+                    <div>
+                      <h3 className="h5 mb-3 text-terminal-500">Key Features:</h3>
+                      <ul className="space-y-2">
+                        {project.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-sm text-muted-200">
+                            <CheckCircle className="w-4 h-4 text-terminal-500 mt-0.5 flex-shrink-0" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Actions */}
+                    {(project.github || project.docs) && (
+                      <div className="flex flex-wrap gap-3 pt-4 border-t border-base-500">
+                        {project.github && (
+                          <Link
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost"
+                          >
+                            <Github className="w-4 h-4" />
+                            View Repo
+                            <ExternalLink className="w-3 h-3" />
+                          </Link>
+                        )}
+                        {project.docs && (
+                          <Link
+                            href={project.docs}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            Read Docs
+                          </Link>
+                        )}
+                        {!project.github && !project.docs && (
+                          <span className="btn-ghost opacity-50 cursor-not-allowed">
+                            <Clock className="w-4 h-4" />
+                            Coming Soon
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  {/* Right: Metrics & Stack */}
+                  <div className="space-y-4">
+                    {/* Metrics */}
+                    <div className="terminal-window">
+                      <div className="terminal-header">
+                        <div className="flex items-center gap-2">
+                          <div className="terminal-dot bg-danger-500" />
+                          <div className="terminal-dot bg-amber-500" />
+                          <div className="terminal-dot bg-terminal-500" />
+                        </div>
+                        <span className="font-mono text-xs text-muted-300">metrics</span>
+                      </div>
+                      <div className="terminal-content space-y-2">
+                        {Object.entries(project.metrics).map(([key, value]) => (
+                          <div key={key} className="flex items-center justify-between text-sm">
+                            <span className="text-muted-300">{key}</span>
+                            <span className="text-terminal-500 font-mono">{value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Stack */}
+                    <div>
+                      <h3 className="h5 mb-3 text-terminal-500">Stack:</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.stack.map((tech, idx) => (
+                          <span key={idx} className="tag">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Threat Model */}
+                    <div className="card bg-base-900">
+                      <div className="flex items-start gap-2">
+                        <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <h4 className="text-sm font-semibold text-amber-500 mb-1">
+                            Threat Model
+                          </h4>
+                          <p className="text-xs text-muted-300">{project.threatModel}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.section>
+
+        {/* Homelab/Learning Lab - least highlighted */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="space-y-8 mt-12"
+        >
+          <h2 className="h2 text-muted-500 mb-4">Learning Lab</h2>
+          {homelabProjects.map((project, index) => {
+            const Icon = project.icon;
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="card-interactive group border border-base-800 bg-base-950 opacity-80"
+              >
+                {/* ...existing code for project card... */}
+                <div className="grid lg:grid-cols-3 gap-8">
+                  {/* ...existing code for left and right columns... */}
+                  {/* Left: Header & Description */}
+                  <div className="lg:col-span-2 space-y-4">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <Icon className="w-6 h-6 text-terminal-500 flex-shrink-0" />
+                        <div>
+                          <h2 className="h3 mb-1">{project.title}</h2>
+                          <p className="text-sm text-muted-300 font-mono">{project.category}</p>
+                        </div>
+                      </div>
+                      <span
+                        className={`status-badge ${
+                          project.status === "production"
+                            ? "status-production"
+                            : project.status === "tinkering"
+                            ? "status-tinkering"
+                            : "status-archived"
+                        }`}
+                      >
+                        <span
+                          className={`w-1.5 h-1.5 rounded-full ${
+                            project.status === "production"
+                              ? "bg-terminal-500"
+                              : project.status === "tinkering"
+                              ? "bg-amber-500"
+                              : "bg-muted-500"
+                          }`}
+                        />
+                        {project.status}
+                      </span>
+                    </div>
+                    <p className="text-muted-200 leading-relaxed">{project.description}</p>
+                    <div className="terminal-window">
+                      <div className="terminal-header">
+                        <div className="flex items-center gap-2">
+                          <div className="terminal-dot bg-danger-500" />
+                          <div className="terminal-dot bg-amber-500" />
+                          <div className="terminal-dot bg-terminal-500" />
+                        </div>
+                        <span className="font-mono text-xs text-muted-300">tl;dr</span>
+                      </div>
+                      <div className="terminal-content">
+                        <div className="flex items-start gap-3">
+                          <span className="text-terminal-500">➜</span>
+                          <span className="text-muted-200">{project.tldr}</span>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Features */}
+                    <div>
+                      <h3 className="h5 mb-3 text-terminal-500">Key Features:</h3>
+                      <ul className="space-y-2">
+                        {project.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-sm text-muted-200">
+                            <CheckCircle className="w-4 h-4 text-terminal-500 mt-0.5 flex-shrink-0" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Actions */}
+                    {(project.github || project.docs) && (
+                      <div className="flex flex-wrap gap-3 pt-4 border-t border-base-500">
+                        {project.github && (
+                          <Link
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost"
+                          >
+                            <Github className="w-4 h-4" />
+                            View Repo
+                            <ExternalLink className="w-3 h-3" />
+                          </Link>
+                        )}
+                        {project.docs && (
+                          <Link
+                            href={project.docs}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            Read Docs
+                          </Link>
+                        )}
+                        {!project.github && !project.docs && (
+                          <span className="btn-ghost opacity-50 cursor-not-allowed">
+                            <Clock className="w-4 h-4" />
+                            Coming Soon
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  {/* Right: Metrics & Stack */}
+                  <div className="space-y-4">
+                    {/* Metrics */}
+                    <div className="terminal-window">
+                      <div className="terminal-header">
+                        <div className="flex items-center gap-2">
+                          <div className="terminal-dot bg-danger-500" />
+                          <div className="terminal-dot bg-amber-500" />
+                          <div className="terminal-dot bg-terminal-500" />
+                        </div>
+                        <span className="font-mono text-xs text-muted-300">metrics</span>
+                      </div>
+                      <div className="terminal-content space-y-2">
+                        {Object.entries(project.metrics).map(([key, value]) => (
+                          <div key={key} className="flex items-center justify-between text-sm">
+                            <span className="text-muted-300">{key}</span>
+                            <span className="text-terminal-500 font-mono">{value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Stack */}
+                    <div>
+                      <h3 className="h5 mb-3 text-terminal-500">Stack:</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.stack.map((tech, idx) => (
+                          <span key={idx} className="tag">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                     {/* Threat Model */}
                     <div className="card bg-base-900">
                       <div className="flex items-start gap-2">
