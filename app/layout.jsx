@@ -72,6 +72,9 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
