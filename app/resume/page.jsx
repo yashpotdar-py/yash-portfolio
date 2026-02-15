@@ -1,852 +1,550 @@
 "use client";
 
+import { motion } from "framer-motion";
+import Link from "next/link";
 import {
-  SiPython,
-  SiJupyter,
-  SiTensorflow,
-  SiScikitlearn,
-  SiPytorch,
-  SiKeras,
-  SiArduino,
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiKalilinux,
-  SiHackaday,
-  SiGithub,
-  SiLinux,
-  SiMongodb,
-  SiJavascript,
-  SiTypescript,
-  SiPhp,
-  SiCss3,
-  SiHtml5,
-  SiCloud66,
-  SiNvidia,
-  SiFlask,
-} from "react-icons/si";
-import { RiRobot3Line } from "react-icons/ri";
-import { AiOutlineCamera } from "react-icons/ai";
-import { GiArtificialIntelligence } from "react-icons/gi";
-import {
-  FaCloud,
-  FaLanguage,
-  FaDownload,
-  FaExternalLinkAlt,
-} from "react-icons/fa";
-import { HiSparkles, HiAcademicCap } from "react-icons/hi";
-import {
-  BsCalendar,
-  BsGeoAlt,
-  BsPhone,
-  BsEnvelope,
-  BsStar,
-  BsTrophy,
-} from "react-icons/bs";
-import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+  Clock,
+  Terminal,
+  Shield,
+  Server,
+  Activity,
+  Download,
+  ExternalLink,
+  CheckCircle,
+  Code,
+  GitBranch,
+  Database,
+  Network,
+} from "lucide-react";
 
-import {
-  cardHoverVariants,
-  containerVariants,
-  itemVariants,
-} from "@/lib/animations";
-// about data
-const aboutData = {
-  title: "About Me",
-  description:
-    "I am Yash Potdar, a passionate learner with a diverse set of interests and a strong foundation in AI/ML and a strong interest in Cybersecurity. Currently a student, I am committed to gaining hands-on experience through various projects, internships and freelance opportunities. My goal is to continually grow and apply my skills in meaningful ways, while embracing challenges that push me to innovate and excel.",
-  info: [
-    {
-      fieldName: "Name",
-      fieldValue: "Yash Potdar",
-      icon: <BsStar />,
-    },
-    {
-      fieldName: "Phone",
-      fieldValue: "(+91) 7028-712-645",
-      icon: <BsPhone />,
-    },
-    {
-      fieldName: "Experience",
-      fieldValue: "6 Months",
-      icon: <BsTrophy />,
-    },
-    {
-      fieldName: "Location",
-      fieldValue: "Pune, MH, India",
-      icon: <BsGeoAlt />,
-    },
-    {
-      fieldName: "Freelance",
-      fieldValue: "Available",
-      icon: <HiSparkles />,
-    },
-    {
-      fieldName: "Email",
-      fieldValue: "yashyogeshpotdar7@gmail.com",
-      icon: <BsEnvelope />,
-    },
-    {
-      fieldName: "Degree",
-      fieldValue: "B.Tech AI & Data Science",
-      icon: <HiAcademicCap />,
-    },
-    {
-      fieldName: "Languages",
-      fieldValue: "English, Hindi, Marathi, Japanese",
-      icon: <FaLanguage />,
-    },
+const timeline = [
+  {
+    year: "2025",
+    items: [
+      {
+        title: "Sentinel-SSH v1.1.0",
+        type: "project",
+        description:
+          "Production SSH intrusion detection system with log parsing, ban automation, and Prometheus metrics.",
+        tags: ["Python", "systemd", "Prometheus"],
+      },
+      {
+        title: "BnB Developers",
+        type: "work",
+        role: "Software Development Intern",
+        description: "Backend development and API integrations.",
+        duration: "Mar 2025 - Present",
+      },
+    ],
+  },
+  {
+    year: "2024",
+    items: [
+      {
+        title: "Homelab Infrastructure",
+        type: "project",
+        description:
+          "Self-hosted lab: Raspberry Pi cluster, SSH hardening, network monitoring, log aggregation.",
+        tags: ["Docker", "Pi-hole", "SSH", "Prometheus", "Grafana"],
+      },
+      {
+        title: "GDG AISSMS IOIT",
+        type: "work",
+        role: "AI/ML Lead",
+        description: "Organized workshops, led ML projects, managed tech initiatives.",
+        duration: "Sep 2024 - May 2025",
+      },
+      {
+        title: "AI Adventures",
+        type: "work",
+        role: "Machine Learning Intern",
+        description: "Data preprocessing, model training, deployment pipelines.",
+        duration: "Jul 2024 - Aug 2024",
+      },
+      {
+        title: "Ethical Hacking Training",
+        type: "certification",
+        issuer: "Internshala",
+        description: "Network security, vulnerability assessment, penetration testing.",
+      },
+    ],
+  },
+  {
+    year: "2023",
+    items: [
+      {
+        title: "Linux System Administration",
+        type: "certification",
+        issuer: "IIT Bombay",
+        description: "Command-line proficiency, shell scripting, system services.",
+      },
+      {
+        title: "Web Development Bootcamp",
+        type: "certification",
+        issuer: "Udemy",
+        description: "Full-stack development (React, Node.js, databases).",
+      },
+    ],
+  },
+  {
+    year: "2022",
+    items: [
+      {
+        title: "B.Tech AI & Data Science",
+        type: "education",
+        institution: "AISSMS IOIT, Pune",
+        description: "Currently pursuing undergraduate degree in AI & Data Science.",
+        status: "In Progress",
+      },
+      {
+        title: "Google IT Automation with Python",
+        type: "certification",
+        issuer: "Google (Coursera)",
+        description: "Python automation, Git, configuration management.",
+      },
+    ],
+  },
+];
+
+const stack = {
+  os: ["Ubuntu Server 22.04", "Kali Linux", "Raspberry Pi OS"],
+  languages: ["Python 3.11", "Bash", "JavaScript"],
+  infrastructure: [
+    "Docker",
+    "systemd",
+    "SSH",
+    "ufw",
+    "cron",
+    "nginx",
   ],
+  monitoring: ["Prometheus", "Grafana", "journalctl", "dmesg"],
+  security: [
+    "fail2ban",
+    "iptables",
+    "OpenSSH hardening",
+    "Pi-hole DNS filtering",
+  ],
+  development: ["Git", "VS Code", "vim", "tmux"],
 };
 
-// experience data
-const experienceData = {
-  title: "Experience",
-  description:
-    "My experience encompasses a diverse range of roles that have shaped my skills in real-world applications. From internships to leadership roles in student clubs like Google Developer's Group, I have worked in dynamic environments, applying my technical expertise in machine learning and beyond.",
-  items: [
-    {
-      company: "BnB Developers",
-      position: "Software Development Intern",
-      duration: "March 2025 - Present",
-      type: "Internship",
-      status: "Current",
-    },
-    {
-      company: "Google Developers Group, AISSMS IOIT",
-      position: "AI/ML Lead",
-      duration: "Sep 2024 - May 2025",
-      type: "Leadership",
-      status: "Completed",
-    },
-    {
-      company: "AI Student Association, AISSMS IOIT",
-      position: "Technical Secretary",
-      duration: "Sep 2024 - May 2025",
-      type: "Leadership",
-      status: "Completed",
-    },
-    {
-      company: "AI Adventures",
-      position: "Machine Learning Intern",
-      duration: "Jul 2024 - Aug 2024",
-      type: "Internship",
-      status: "Completed",
-    },
-    {
-      company: "AI Student Association, AISSMS IOIT",
-      position: "Technical Executive",
-      duration: "Sep 2023 - Sep 2024",
-      type: "Leadership",
-      status: "Completed",
-    },
-  ],
-};
-
-// education data
-const educationData = {
-  title: "Education",
-  description:
-    "My educational journey reflects a strong foundation in technology and engineering. Currently pursuing a B.Tech in Artificial Intelligence & Data Science, I've maintained academic excellence while actively engaging in technical pursuits.",
-  items: [
-    {
-      institution: "AISSMS Institute of Information Technology, Pune",
-      degree: "Artificial Intelligence & Data Science",
-      degreeType: "Bachelor of Technology",
-      duration: "2022 - Present",
-      status: "Current",
-      level: "Undergraduate",
-    },
-    {
-      institution: "Sri Chaitanya College of Education, Pune",
-      degree: "HSC 12th Grade",
-      degreeType: "Science (PCM)",
-      duration: "2020 - 2022",
-      status: "Completed",
-      level: "Higher Secondary",
-    },
-    {
-      institution: "Sri Sri Ravishankar Vidya Mandir, Pune",
-      degree: "CBSE 10th Grade",
-      degreeType: "School",
-      duration: "2008 - 2020",
-      status: "Completed",
-      level: "Secondary",
-    },
-  ],
-};
-
-// licenses & certifications data
-const licenseCertData = {
-  title: "Licenses & Certifications",
-  description:
-    "My technical journey is enriched with a diverse array of certifications and licenses that demonstrate my dedication to continuous learning. From specialized courses in machine learning and cybersecurity to comprehensive web development programs.",
-  items: [
-    {
-      institution: "BCG (Forage)",
-      course: "GenAI Job Simulation",
-      courseType: "Virtual Experience",
-      duration: "Nov 2024",
-      category: "AI/ML",
-      verified: true,
-    },
-    {
-      institution: "Goldman Sachs (Forage)",
-      course: "Software Engineering Virtual Experience",
-      courseType: "Virtual Experience",
-      duration: "Nov 2024",
-      category: "Software Engineering",
-      verified: true,
-    },
-    {
-      institution: "AI Adventures, Pune",
-      course: "Machine Learning & Data Science with Python",
-      courseType: "Offline Training",
-      duration: "Jul - Aug 2024",
-      category: "AI/ML",
-      verified: true,
-    },
-    {
-      institution: "Internshala Trainings",
-      course: "Ethical Hacking Training",
-      courseType: "Online Course",
-      duration: "May 2024",
-      category: "Cybersecurity",
-      verified: true,
-    },
-    {
-      institution: "Udemy",
-      course: "The Complete 2023 Web Development Bootcamp",
-      courseType: "Online Course",
-      duration: "Aug 2023",
-      category: "Web Development",
-      verified: true,
-    },
-    {
-      institution: "IIT Bombay",
-      course: "Linux System Administration",
-      courseType: "Offline Training",
-      duration: "Jun 2023",
-      category: "System Administration",
-      verified: true,
-    },
-    {
-      institution: "Google (Coursera)",
-      course: "Google IT Automation with Python Professional Certificate",
-      courseType: "Professional Certificate",
-      duration: "Dec 2022",
-      category: "Programming",
-      verified: true,
-    },
-  ],
-};
-
-// skills data
-const skillsData = {
-  title: "Skills",
-  description:
-    "I bring a well-rounded skill set, combining technical expertise with strong analytical thinking. My key skills include AI/ML techniques, problem-solving, and proficiency in various programming languages.",
-  categories: [
-    {
-      name: "AI/ML & Data Science",
-      skills: [
-        {
-          icon: <RiRobot3Line />,
-          name: "AI/ML",
-          level: "Advanced",
-          color: "from-blue-500 to-purple-600",
-        },
-        {
-          icon: <GiArtificialIntelligence />,
-          name: "GenAI and LangChain",
-          level: "Intermediate",
-          color: "from-green-500 to-blue-600",
-        },
-        {
-          icon: <SiTensorflow />,
-          name: "TensorFlow",
-          level: "Intermediate",
-          color: "from-orange-500 to-red-600",
-        },
-        {
-          icon: <SiPytorch />,
-          name: "PyTorch",
-          level: "Intermediate",
-          color: "from-red-500 to-pink-600",
-        },
-        {
-          icon: <SiKeras />,
-          name: "Keras",
-          level: "Intermediate",
-          color: "from-red-600 to-orange-600",
-        },
-        {
-          icon: <SiScikitlearn />,
-          name: "Scikit-Learn",
-          level: "Intermediate",
-          color: "from-blue-600 to-indigo-600",
-        },
-        {
-          icon: <SiJupyter />,
-          name: "Data Science",
-          level: "Intermediate",
-          color: "from-orange-600 to-yellow-600",
-        },
-        {
-          icon: <FaLanguage />,
-          name: "NLP",
-          level: "Intermediate",
-          color: "from-purple-600 to-pink-600",
-        },
-        {
-          icon: <AiOutlineCamera />,
-          name: "Computer Vision",
-          level: "Intermediate",
-          color: "from-indigo-600 to-purple-600",
-        },
-      ],
-    },
-    {
-      name: "Programming & Development",
-      skills: [
-        {
-          icon: <SiPython />,
-          name: "Python",
-          level: "Advanced",
-          color: "from-yellow-500 to-green-600",
-        },
-        {
-          icon: <SiJavascript />,
-          name: "JavaScript",
-          level: "Intermediate",
-          color: "from-yellow-600 to-orange-600",
-        },
-        {
-          icon: <SiReact />,
-          name: "React",
-          level: "Intermediate",
-          color: "from-blue-600 to-cyan-600",
-        },
-        {
-          icon: <SiNextdotjs />,
-          name: "Next.js",
-          level: "Intermediate",
-          color: "from-gray-600 to-black",
-        },
-        {
-          icon: <SiFlask />,
-          name: "Flask",
-          level: "Advanced",
-          color: "from-gray-700 to-gray-900",
-        },
-        {
-          icon: <SiHtml5 />,
-          name: "HTML",
-          level: "Advanced",
-          color: "from-orange-600 to-red-600",
-        },
-        {
-          icon: <SiCss3 />,
-          name: "CSS",
-          level: "Advanced",
-          color: "from-blue-600 to-purple-600",
-        },
-        {
-          icon: <SiTailwindcss />,
-          name: "Tailwind CSS",
-          level: "Intermediate",
-          color: "from-cyan-600 to-blue-600",
-        },
-      ],
-    },
-    {
-      name: "Systems & Security",
-      skills: [
-        {
-          icon: <SiLinux />,
-          name: "Linux",
-          level: "Advanced",
-          color: "from-yellow-600 to-orange-600",
-        },
-        {
-          icon: <SiKalilinux />,
-          name: "Kali Linux",
-          level: "Intermediate",
-          color: "from-blue-700 to-indigo-700",
-        },
-        {
-          icon: <SiHackaday />,
-          name: "Ethical Hacking",
-          level: "Intermediate",
-          color: "from-red-600 to-pink-600",
-        },
-        {
-          icon: <SiGithub />,
-          name: "Git/GitHub",
-          level: "Advanced",
-          color: "from-gray-700 to-black",
-        },
-        {
-          icon: <FaCloud />,
-          name: "Cloud Computing",
-          level: "Beginner",
-          color: "from-blue-500 to-cyan-500",
-        },
-        {
-          icon: <SiNvidia />,
-          name: "CUDA/cuDNN",
-          level: "Intermediate",
-          color: "from-green-600 to-emerald-600",
-        },
-        {
-          icon: <SiMongodb />,
-          name: "MongoDB",
-          level: "Intermediate",
-          color: "from-green-600 to-teal-600",
-        },
-      ],
-    },
-  ],
-};
-
-const Resume = () => {
-  const [activeSection, setActiveSection] = useState("about");
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 800);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleCertificateClick = (link) => {
-    if (link) {
-      window.open(link, "_blank");
-    } else {
-      toast.warn("This certification does not have an associated link!", {
-        position: "top-center",
-        autoClose: 3000,
-      });
-    }
-  };
-
-  const sectionIcons = {
-    about: <BsStar />,
-    experience: <BsTrophy />,
-    education: <HiAcademicCap />,
-    skills: <HiSparkles />,
-    certifications: <FaExternalLinkAlt />,
-  };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-primary">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-12 h-12 border-3 border-accent/20 border-t-accent rounded-full"
-        />
-      </div>
-    );
-  }
-
+const ResumePage = () => {
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="min-h-screen py-20 relative overflow-hidden"
-    >
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/3 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-      </div>
-
-      {/* Toast Container */}
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-
-      <div className="container mx-auto px-6 lg:px-12 xl:px-16 max-w-7xl">
-        {/* Header Section */}
-        <motion.div
-          variants={itemVariants}
-          className="text-center mb-24 space-y-8"
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="container mx-auto space-y-12">
+        {/* Page Header */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-white via-accent to-white bg-clip-text leading-tight"
-          >
-            More About Me
-          </motion.h1>
+          <div className="flex items-center gap-3 mb-6">
+            <Clock className="w-8 h-8 text-terminal-500" />
+            <h1 className="h1">
+              <span className="text-gradient">Systems Timeline</span>
+            </h1>
+          </div>
+          <p className="text-xl text-muted-300 max-w-3xl mb-6">
+            My journey from AI/ML student to infrastructure and security tinkerer. Projects,
+            certifications, and hands-on learning experiences.
+          </p>
 
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-            className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed"
-          >
-            A comprehensive overview of my journey, skills, and achievements in
-            technology and innovation.
-          </motion.p>
-        </motion.div>
+          <div className="flex flex-wrap gap-4">
+            <Link href="#" className="btn-secondary pointer-events-none opacity-50">
+              <Download className="w-5 h-5" />
+              Download PDF (Coming Soon)
+            </Link>
+            <Link
+              href="https://github.com/yashpotdar-py"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+            >
+              View GitHub
+              <ExternalLink className="w-4 h-4" />
+            </Link>
+          </div>
+        </motion.section>
 
-        {/* Navigation */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-4 mb-20"
+        {/* Quick Info */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
         >
-          {["about", "experience", "education", "skills", "certifications"].map(
-            (section) => (
-              <motion.button
-                key={section}
-                onClick={() => setActiveSection(section)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className={`relative px-6 py-3 rounded-xl font-medium transition-all duration-300 capitalize ${
-                  activeSection === section
-                    ? "bg-accent text-primary shadow-lg"
-                    : "bg-white/5 text-white/80 hover:bg-white/10 border border-white/10"
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  {sectionIcons[section]}
-                  {section === "certifications" ? "Certifications" : section}
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="card">
+              <div className="flex items-center gap-3 mb-3">
+                <Server className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Current Focus</h3>
+              </div>
+              <p className="text-muted-200 text-sm">
+                Infrastructure & Security
+                <br />
+                <span className="text-muted-300">
+                  SSH hardening, intrusion detection, log analysis
                 </span>
-              </motion.button>
-            )
-          )}
-        </motion.div>
+              </p>
+            </div>
 
-        {/* Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeSection}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            {/* About Section */}
-            {activeSection === "about" && (
-              <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-                <div className="lg:col-span-2 space-y-8">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    {aboutData.title}
-                  </h2>
-                  <p className="text-white/80 leading-relaxed text-lg">
-                    {aboutData.description}
-                  </p>
-                </div>
-                <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {aboutData.info.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={cardHoverVariants}
-                      whileHover="hover"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-accent/30 transition-colors duration-300"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="p-3 bg-accent/10 rounded-xl text-accent text-xl">
-                          {item.icon}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-accent font-medium text-sm uppercase tracking-wide">
-                            {item.fieldName}
-                          </p>
-                          <p className="text-white mt-1 break-words">
-                            {item.fieldValue}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+            <div className="card">
+              <div className="flex items-center gap-3 mb-3">
+                <Activity className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Experience</h3>
               </div>
-            )}
+              <p className="text-muted-200 text-sm">
+                ~2 years (technical projects)
+                <br />
+                <span className="text-muted-300">Internships + homelab + open-source</span>
+              </p>
+            </div>
 
-            {/* Experience Section */}
-            {activeSection === "experience" && (
-              <div className="space-y-16">
-                <div className="text-center max-w-4xl mx-auto space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    {experienceData.title}
-                  </h2>
-                  <p className="text-white/80 leading-relaxed text-lg">
-                    {experienceData.description}
-                  </p>
-                </div>
-                <div className="grid lg:grid-cols-2 gap-8">
-                  {experienceData.items.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={cardHoverVariants}
-                      whileHover="hover"
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-accent/30 transition-colors duration-300"
-                    >
-                      <div className="space-y-6">
-                        <div className="flex flex-wrap gap-3">
-                          <span
-                            className={`px-3 py-1 rounded-full text-xs font-medium ${
-                              item.status === "Current"
-                                ? "bg-green-500/20 text-green-400"
-                                : "bg-blue-500/20 text-blue-400"
-                            }`}
-                          >
-                            {item.status}
-                          </span>
-                          <span
-                            className={`px-3 py-1 rounded-full text-xs font-medium ${
-                              item.type === "Leadership"
-                                ? "bg-purple-500/20 text-purple-400"
-                                : "bg-orange-500/20 text-orange-400"
-                            }`}
-                          >
-                            {item.type}
-                          </span>
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-white mb-2">
-                            {item.position}
-                          </h3>
-                          <p className="text-accent font-medium mb-3">
-                            {item.company}
-                          </p>
-                          <p className="text-white/60 flex items-center gap-2">
-                            <BsCalendar className="text-sm" />
-                            {item.duration}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+            <div className="card">
+              <div className="flex items-center gap-3 mb-3">
+                <Terminal className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Education</h3>
               </div>
-            )}
+              <p className="text-muted-200 text-sm">
+                B.Tech AI & Data Science
+                <br />
+                <span className="text-muted-300">AISSMS IOIT, Pune (2022-Present)</span>
+              </p>
+            </div>
+          </div>
+        </motion.section>
 
-            {/* Education Section */}
-            {activeSection === "education" && (
-              <div className="space-y-16">
-                <div className="text-center max-w-4xl mx-auto space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    {educationData.title}
-                  </h2>
-                  <p className="text-white/80 leading-relaxed text-lg">
-                    {educationData.description}
-                  </p>
+        {/* Timeline */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <h2 className="section-title">Timeline</h2>
+
+          <div className="space-y-12">
+            {timeline.map((yearBlock, yearIndex) => (
+              <motion.div
+                key={yearBlock.year}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: yearIndex * 0.1, duration: 0.6 }}
+              >
+                {/* Year Header */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="terminal-window inline-block">
+                    <div className="terminal-content px-4 py-2">
+                      <span className="font-mono text-xl font-bold text-terminal-500">
+                        {yearBlock.year}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="h-px flex-1 bg-gradient-to-r from-terminal-500/50 to-transparent" />
                 </div>
-                <div className="space-y-8">
-                  {educationData.items.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={cardHoverVariants}
-                      whileHover="hover"
-                      initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.2, duration: 0.6 }}
-                      className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-accent/30 transition-colors duration-300"
-                    >
-                      <div className="grid lg:grid-cols-4 gap-8 items-center">
-                        <div className="lg:col-span-1 space-y-4">
-                          <div className="flex flex-wrap gap-2">
-                            <span
-                              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                                item.status === "Current"
-                                  ? "bg-green-500/20 text-green-400"
-                                  : "bg-blue-500/20 text-blue-400"
-                              }`}
-                            >
-                              {item.status}
-                            </span>
-                            <span className="px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-400">
-                              {item.level}
-                            </span>
+
+                {/* Items */}
+                <div className="space-y-4 pl-4 md:pl-8 border-l-2 border-base-500">
+                  {yearBlock.items.map((item, itemIndex) => {
+                    // Icon based on type
+                    const getIcon = () => {
+                      switch (item.type) {
+                        case "project":
+                          return <GitBranch className="w-5 h-5" />;
+                        case "work":
+                          return <Server className="w-5 h-5" />;
+                        case "certification":
+                          return <CheckCircle className="w-5 h-5" />;
+                        case "education":
+                          return <Terminal className="w-5 h-5" />;
+                        default:
+                          return <Code className="w-5 h-5" />;
+                      }
+                    };
+
+                    // Status badge
+                    const getStatus = () => {
+                      if (item.status === "In Progress") {
+                        return (
+                          <span className="status-badge badge-tinkering">In Progress</span>
+                        );
+                      }
+                      if (item.duration?.includes("Present")) {
+                        return <span className="status-badge badge-production">Current</span>;
+                      }
+                      return null;
+                    };
+
+                    return (
+                      <motion.div
+                        key={itemIndex}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: itemIndex * 0.05, duration: 0.4 }}
+                        className="card-interactive group -ml-3"
+                      >
+                        <div className="flex items-start gap-4">
+                          {/* Icon */}
+                          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-base-900 border border-terminal-500/30 flex items-center justify-center text-terminal-500 group-hover:border-terminal-500/50 transition-colors">
+                            {getIcon()}
                           </div>
-                          <p className="text-white/60 flex items-center gap-2 text-sm">
-                            <BsCalendar />
-                            {item.duration}
-                          </p>
-                        </div>
-                        <div className="lg:col-span-3 space-y-3">
-                          <h3 className="text-2xl font-bold text-white">
-                            {item.degree}
-                          </h3>
-                          <p className="text-accent font-medium">
-                            {item.degreeType}
-                          </p>
-                          <p className="text-white/80">{item.institution}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
 
-            {/* Skills Section */}
-            {activeSection === "skills" && (
-              <div className="space-y-20">
-                <div className="text-center max-w-4xl mx-auto space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    {skillsData.title}
-                  </h2>
-                  <p className="text-white/80 leading-relaxed text-lg">
-                    {skillsData.description}
-                  </p>
-                </div>
-
-                {skillsData.categories.map((category, categoryIndex) => (
-                  <motion.div
-                    key={categoryIndex}
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: categoryIndex * 0.2, duration: 0.6 }}
-                    className="space-y-12"
-                  >
-                    <h3 className="text-2xl font-bold text-accent text-center">
-                      {category.name}
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                      {category.skills.map((skill, skillIndex) => (
-                        <motion.div
-                          key={skillIndex}
-                          variants={cardHoverVariants}
-                          whileHover="hover"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{
-                            delay: categoryIndex * 0.1 + skillIndex * 0.05,
-                            duration: 0.5,
-                          }}
-                          className="group relative"
-                        >
-                          <div
-                            className={`absolute inset-0 bg-gradient-to-r ${skill.color} rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                          />
-                          <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-accent/30 transition-colors duration-300">
-                            <div className="flex flex-col items-center text-center space-y-4">
-                              <div className="text-4xl text-white group-hover:scale-110 transition-transform duration-300">
-                                {skill.icon}
+                          {/* Content */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-start justify-between gap-3 mb-2">
+                              <div>
+                                <h3 className="h4 mb-1">{item.title}</h3>
+                                {item.role && (
+                                  <p className="text-sm text-terminal-500 font-mono">
+                                    {item.role}
+                                  </p>
+                                )}
+                                {item.institution && (
+                                  <p className="text-sm text-muted-300">{item.institution}</p>
+                                )}
+                                {item.issuer && (
+                                  <p className="text-sm text-muted-300">
+                                    Issued by {item.issuer}
+                                  </p>
+                                )}
                               </div>
-                              <div className="space-y-2">
-                                <h4 className="font-semibold text-white">
-                                  {skill.name}
-                                </h4>
-                                <p
-                                  className={`text-sm font-medium ${
-                                    skill.level === "Advanced"
-                                      ? "text-green-400"
-                                      : skill.level === "Intermediate"
-                                      ? "text-yellow-400"
-                                      : "text-blue-400"
-                                  }`}
-                                >
-                                  {skill.level}
-                                </p>
+                              <div className="flex items-center gap-2">
+                                {getStatus()}
                               </div>
                             </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            )}
 
-            {/* Certifications Section */}
-            {activeSection === "certifications" && (
-              <div className="space-y-16">
-                <div className="text-center max-w-4xl mx-auto space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    {licenseCertData.title}
-                  </h2>
-                  <p className="text-white/80 leading-relaxed text-lg">
-                    {licenseCertData.description}
+                            <p className="text-sm text-muted-200 mb-3">{item.description}</p>
+
+                            {item.duration && (
+                              <p className="text-xs text-muted-300 font-mono mb-2">
+                                {item.duration}
+                              </p>
+                            )}
+
+                            {item.tags && (
+                              <div className="flex flex-wrap gap-2">
+                                {item.tags.map((tag, tagIndex) => (
+                                  <span
+                                    key={tagIndex}
+                                    className="px-2 py-1 text-xs font-mono bg-base-900 text-terminal-500 rounded border border-terminal-500/20"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Stack of Record */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="section-title">Stack of Record</h2>
+          <p className="text-muted-300 mb-8">
+            The tools I actually use for homelab work, security projects, and system administration.
+            Not a skill showcase—just what's in production.
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Operating Systems */}
+            <div className="card">
+              <div className="flex items-center gap-3 mb-4">
+                <Terminal className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Operating Systems</h3>
+              </div>
+              <ul className="space-y-2">
+                {stack.os.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-sm text-muted-200 font-mono"
+                  >
+                    <span className="text-terminal-500">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Languages */}
+            <div className="card">
+              <div className="flex items-center gap-3 mb-4">
+                <Code className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Languages</h3>
+              </div>
+              <ul className="space-y-2">
+                {stack.languages.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-sm text-muted-200 font-mono"
+                  >
+                    <span className="text-terminal-500">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Infrastructure */}
+            <div className="card">
+              <div className="flex items-center gap-3 mb-4">
+                <Server className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Infrastructure</h3>
+              </div>
+              <ul className="space-y-2">
+                {stack.infrastructure.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-sm text-muted-200 font-mono"
+                  >
+                    <span className="text-terminal-500">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Monitoring */}
+            <div className="card">
+              <div className="flex items-center gap-3 mb-4">
+                <Activity className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Monitoring</h3>
+              </div>
+              <ul className="space-y-2">
+                {stack.monitoring.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-sm text-muted-200 font-mono"
+                  >
+                    <span className="text-terminal-500">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Security */}
+            <div className="card">
+              <div className="flex items-center gap-3 mb-4">
+                <Shield className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Security</h3>
+              </div>
+              <ul className="space-y-2">
+                {stack.security.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-sm text-muted-200 font-mono"
+                  >
+                    <span className="text-terminal-500">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Development */}
+            <div className="card">
+              <div className="flex items-center gap-3 mb-4">
+                <GitBranch className="w-5 h-5 text-terminal-500" />
+                <h3 className="h5">Development</h3>
+              </div>
+              <ul className="space-y-2">
+                {stack.development.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-sm text-muted-200 font-mono"
+                  >
+                    <span className="text-terminal-500">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Learning Philosophy */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="terminal-window">
+            <div className="terminal-header">
+              <div className="flex items-center gap-2">
+                <div className="terminal-dot bg-danger-500" />
+                <div className="terminal-dot bg-amber-500" />
+                <div className="terminal-dot bg-terminal-500" />
+              </div>
+              <span className="font-mono text-xs text-muted-300">learning-approach.sh</span>
+            </div>
+            <div className="terminal-content space-y-4">
+              <div>
+                <p className="font-mono text-terminal-500 mb-2">
+                  $ cat learning-philosophy.txt
+                </p>
+                <div className="text-muted-200 text-sm space-y-2 pl-4">
+                  <p>
+                    <span className="text-terminal-500">[1]</span> Break things intentionally. Then
+                    document how you fixed them.
+                  </p>
+                  <p>
+                    <span className="text-terminal-500">[2]</span> If you can't explain it simply,
+                    you don't understand it yet.
+                  </p>
+                  <p>
+                    <span className="text-terminal-500">[3]</span> Homelabs are for learning, not
+                    perfection. Production is a different story.
+                  </p>
+                  <p>
+                    <span className="text-terminal-500">[4]</span> Read the logs. Always read the
+                    logs.
                   </p>
                 </div>
-                <div className="grid lg:grid-cols-2 gap-8">
-                  {licenseCertData.items.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      variants={cardHoverVariants}
-                      whileHover="hover"
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      onClick={() => handleCertificateClick(item.link)}
-                      className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-accent/30 transition-colors duration-300 cursor-pointer group"
-                    >
-                      <div className="space-y-6">
-                        <div className="flex justify-between items-start">
-                          <div className="flex flex-wrap gap-3">
-                            {item.verified && (
-                              <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400">
-                                Verified
-                              </span>
-                            )}
-                            <span
-                              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                                item.category === "AI/ML"
-                                  ? "bg-purple-500/20 text-purple-400"
-                                  : item.category === "Cybersecurity"
-                                  ? "bg-red-500/20 text-red-400"
-                                  : item.category === "Web Development"
-                                  ? "bg-blue-500/20 text-blue-400"
-                                  : "bg-orange-500/20 text-orange-400"
-                              }`}
-                            >
-                              {item.category}
-                            </span>
-                          </div>
-                          <FaExternalLinkAlt className="text-white/60 group-hover:text-accent transition-colors" />
-                        </div>
-                        <div className="space-y-3">
-                          <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">
-                            {item.course}
-                          </h3>
-                          <p className="text-accent font-medium">
-                            {item.institution}
-                          </p>
-                          <div className="flex justify-between items-center text-sm">
-                            <p className="text-white/60">{item.courseType}</p>
-                            <p className="text-white/60 flex items-center gap-2">
-                              <BsCalendar />
-                              {item.duration}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
               </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* CTA */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="card text-center">
+            <h2 className="h2 mb-4">
+              <span className="text-gradient">Want to Know More?</span>
+            </h2>
+            <p className="text-muted-300 text-lg mb-8 max-w-2xl mx-auto">
+              Check out my projects for detailed write-ups, or reach out if you want to discuss
+              infrastructure, security tooling, or homelab setups.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/projects" className="btn-primary">
+                View Projects
+              </Link>
+              <Link href="/contact" className="btn-secondary">
+                Get In Touch
+              </Link>
+            </div>
+          </div>
+        </motion.section>
       </div>
-    </motion.section>
+    </div>
   );
 };
 
-export default Resume;
+export default ResumePage;

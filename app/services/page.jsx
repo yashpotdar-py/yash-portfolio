@@ -1,373 +1,455 @@
 "use client";
 
-import {
-  BsArrowDownRight,
-  BsStars,
-  BsShield,
-  BsCode,
-  BsGraphUp,
-  BsCheckCircle,
-} from "react-icons/bs";
-import {
-  FaRobot,
-  FaLock,
-  FaReact,
-  FaChartLine,
-  FaArrowRight,
-  FaExternalLinkAlt,
-} from "react-icons/fa";
-import {
-  SiTensorflow,
-  SiKalilinux,
-  SiNextdotjs,
-  SiPython,
-} from "react-icons/si";
-import { HiLightningBolt } from "react-icons/hi";
-import { RiRobot2Line } from "react-icons/ri";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 import {
-  cardHoverVariants,
-  containerVariants,
-  itemVariants,
-} from "@/lib/animations";
+  Shield,
+  Terminal,
+  GitBranch,
+  FileText,
+  CheckCircle,
+  X,
+  Github,
+  Mail,
+  ExternalLink,
+  AlertTriangle,
+  Code,
+  Search,
+} from "lucide-react";
 
-const services = [
+const collaborationAreas = [
   {
-    id: "01",
-    category: "Artificial Intelligence",
-    title: "AI/ML Solutions & Development",
+    id: "security-review",
+    title: "Security Tooling Review",
+    icon: Shield,
     description:
-      "Transform your business with cutting-edge AI and machine learning solutions. From custom neural networks to GenAI applications, I create intelligent systems that drive real results.",
-    features: [
-      "Custom Machine Learning Models",
-      "GenAI & LangChain Integration",
-      "Computer Vision Solutions",
-      "Natural Language Processing",
-      "Model Deployment & Optimization",
+      "I review open-source security tools for code quality, threat modeling, and documentation. If you've built SSH hardening, intrusion detection, or log analysis tools, I can audit them.",
+    whatILookFor: [
+      "Code clarity and maintainability",
+      "Threat model completeness",
+      "Documentation quality (setup, usage, failure modes)",
+      "Test coverage for edge cases",
+      "Security best practices (least privilege, fail-safe defaults)",
     ],
-    technologies: [
-      { icon: <SiTensorflow />, name: "TensorFlow" },
-      { icon: <SiPython />, name: "Python" },
-      { icon: <FaRobot />, name: "LangChain" },
-      { icon: <RiRobot2Line />, name: "OpenAI" },
+    whatIDont: [
+      "Enterprise SaaS products (I focus on open-source)",
+      "Black-box proprietary tools",
+      "Anything requiring NDAs for basic review",
     ],
-    icon: <FaRobot />,
-    color: "from-blue-500 to-purple-600",
-    bgColor: "bg-blue-500/10",
-    href: "/contact",
-    price: "Starting from ₹2,000",
-    deliverable: "2-4 weeks",
+    timeframe: "1-2 weeks (depends on project size)",
   },
   {
-    id: "02",
-    category: "Cybersecurity",
-    title: "Cybersecurity & Ethical Hacking",
+    id: "doc-review",
+    title: "Documentation Review",
+    icon: FileText,
     description:
-      "Protect your digital assets with comprehensive security solutions. Expert penetration testing and vulnerability assessments to keep your business safe.",
-    features: [
-      "Penetration Testing",
-      "Vulnerability Assessment",
-      "Security Auditing",
-      "Ethical Hacking Services",
-      "Security Consulting",
+      "I help improve technical documentation for homelab projects, security tools, and infrastructure guides. READMEs, setup guides, threat models, postmortems—I read them all.",
+    whatILookFor: [
+      "Clear setup instructions (reproducible steps)",
+      "Threat model and failure scenarios",
+      "Known issues and limitations (honesty matters)",
+      "Troubleshooting guides",
+      "Examples and real-world usage",
     ],
-    technologies: [
-      { icon: <SiKalilinux />, name: "Kali Linux" },
-      { icon: <FaLock />, name: "Security Tools" },
-      { icon: <BsShield />, name: "Burp Suite" },
-      { icon: <SiPython />, name: "Python Scripts" },
+    whatIDont: [
+      "Marketing copy or sales pitches",
+      "Docs for closed-source tools",
+      "Anything without technical depth",
     ],
-    icon: <FaLock />,
-    color: "from-red-500 to-pink-600",
-    bgColor: "bg-red-500/10",
-    href: "/contact",
-    price: "Starting from ₹1,500",
-    deliverable: "1-3 weeks",
+    timeframe: "3-7 days",
   },
   {
-    id: "03",
-    category: "Web Development",
-    title: "Full Stack Web Development",
+    id: "code-review",
+    title: "Code Review & Feedback",
+    icon: Code,
     description:
-      "Build modern, scalable web applications that captivate users and drive business growth. From concept to deployment, I create digital experiences that matter.",
-    features: [
-      "Responsive Web Design",
-      "React & Next.js Development",
-      "Backend API Development",
-      "Database Integration",
-      "Performance Optimization",
+      "I review Python, Bash, and infrastructure-as-code for security, clarity, and maintainability. Focus areas: SSH tooling, log parsers, monitoring scripts, and system automation.",
+    whatILookFor: [
+      "Secure coding patterns (input validation, error handling)",
+      "Clear variable naming and code structure",
+      "Proper error handling and logging",
+      "Idempotency (safe to re-run)",
+      "Comments explaining *why*, not *what*",
     ],
-    technologies: [
-      { icon: <FaReact />, name: "React" },
-      { icon: <SiNextdotjs />, name: "Next.js" },
-      { icon: <SiPython />, name: "Flask" },
-      { icon: <BsCode />, name: "JavaScript" },
+    whatIDont: [
+      "Full-stack web apps (not my focus)",
+      "ML/AI model code (shifting away from that)",
+      "Large enterprise codebases (>10k LOC)",
     ],
-    icon: <FaReact />,
-    color: "from-cyan-500 to-blue-600",
-    bgColor: "bg-cyan-500/10",
-    href: "/contact",
-    price: "Starting from ₹1,200",
-    deliverable: "2-6 weeks",
+    timeframe: "1-2 weeks",
   },
   {
-    id: "04",
-    category: "Data Science",
-    title: "Data Science & Analytics",
+    id: "threat-modeling",
+    title: "Threat Modeling Sessions",
+    icon: AlertTriangle,
     description:
-      "Turn your data into strategic advantages. Advanced analytics, predictive modeling, and beautiful visualizations that inform critical business decisions.",
-    features: [
-      "Data Analysis & Visualization",
-      "Predictive Modeling",
-      "Business Intelligence",
-      "Statistical Analysis",
-      "Custom Dashboards",
+      "I help map threat models for homelab setups, security tools, and small-scale infrastructure. We'll walk through attack vectors, failure modes, and mitigation strategies.",
+    whatILookFor: [
+      "Clear system boundaries and trust zones",
+      "Realistic threat actors (not nation-states for homelabs)",
+      "Attack surface analysis",
+      "Failure mode enumeration",
+      "Pragmatic mitigations (not just theoretical)",
     ],
-    technologies: [
-      { icon: <FaChartLine />, name: "Analytics" },
-      { icon: <SiPython />, name: "Python" },
-      { icon: <BsGraphUp />, name: "Visualization" },
-      { icon: <SiTensorflow />, name: "ML Models" },
+    whatIDont: [
+      "Enterprise threat modeling (different scale)",
+      "Compliance-driven checklists (I focus on real threats)",
+      "Anything requiring formal certifications",
     ],
-    icon: <FaChartLine />,
-    color: "from-green-500 to-emerald-600",
-    bgColor: "bg-green-500/10",
-    href: "/contact",
-    price: "Starting from ₹800",
-    deliverable: "3-5 weeks",
+    timeframe: "1-2 sessions (async or scheduled)",
+  },
+  {
+    id: "open-source",
+    title: "Open-Source Contributions",
+    icon: Github,
+    description:
+      "I contribute to security and infrastructure projects. Bug fixes, feature additions, documentation improvements, and test coverage. If your project aligns with my focus areas, I'm interested.",
+    whatILookFor: [
+      "Active maintainers who respond to issues/PRs",
+      "Clear contribution guidelines",
+      "Well-documented codebase",
+      "Projects solving real problems",
+      "Welcoming community",
+    ],
+    whatIDont: [
+      "Abandoned projects (no commits in 6+ months)",
+      "Projects with toxic maintainers",
+      "Anything without a clear license",
+    ],
+    timeframe: "Ongoing (as time permits)",
   },
 ];
 
-const Services = () => {
-  const [hoveredService, setHoveredService] = useState(null);
-
+const ServicesPage = () => {
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="min-h-screen py-20 relative overflow-hidden"
-    >
-      {/* Subtle Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/3 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-6 lg:px-12 xl:px-16 max-w-7xl">
-        {/* Header Section */}
-        <motion.div
-          variants={itemVariants}
-          className="text-center mb-24 space-y-8"
-        >
-          <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-white via-accent to-white bg-clip-text leading-tight"
-          >
-            Services
-          </motion.h1>
-
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-            className="text-lg md:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed"
-          >
-            Transforming innovative ideas into reality through cutting-edge
-            technology, expert craftsmanship, and strategic thinking.
-          </motion.p>
-
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
-            className="flex flex-wrap justify-center gap-8 text-white/60 text-base"
-          >
-            <div className="flex items-center gap-2">
-              <BsCheckCircle className="text-accent" />
-              <span>Expert Solutions</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <BsCheckCircle className="text-accent" />
-              <span>Fast Delivery</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <BsCheckCircle className="text-accent" />
-              <span>24/7 Support</span>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Services Grid */}
-        <motion.div
-          variants={containerVariants}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 mb-20"
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              variants={cardHoverVariants}
-              whileHover="hover"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.15,
-                duration: 0.6,
-                ease: "easeOut",
-              }}
-              onMouseEnter={() => setHoveredService(service.id)}
-              onMouseLeave={() => setHoveredService(null)}
-              className="group relative cursor-pointer"
-            >
-              {/* Hover Glow Effect */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-r ${service.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-              />
-
-              {/* Card */}
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 xl:p-10 hover:border-accent/30 transition-all duration-300 h-full">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-8">
-                  <div className="flex items-center gap-6">
-                    <div
-                      className={`p-4 ${service.bgColor} rounded-2xl text-3xl text-white group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      {service.icon}
-                    </div>
-                    <div>
-                      <span className="text-accent font-medium text-sm uppercase tracking-wider block mb-2">
-                        {service.category}
-                      </span>
-                      <div className="text-5xl font-black text-white/10 group-hover:text-accent/20 transition-colors duration-500">
-                        {service.id}
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link
-                    href={service.href}
-                    className="w-16 h-16 bg-accent/10 hover:bg-accent rounded-2xl flex items-center justify-center text-accent hover:text-primary transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
-                  >
-                    <FaArrowRight className="text-xl" />
-                  </Link>
-                </div>
-
-                {/* Title & Description */}
-                <div className="mb-8 space-y-4">
-                  <h2 className="text-2xl xl:text-3xl font-bold text-white group-hover:text-accent transition-colors duration-300 leading-tight">
-                    {service.title}
-                  </h2>
-                  <p className="text-white/80 leading-relaxed text-lg">
-                    {service.description}
-                  </p>
-                </div>
-
-                {/* Features */}
-                <div className="mb-8">
-                  <h4 className="text-white font-semibold mb-6 flex items-center gap-3">
-                    <HiLightningBolt className="text-accent text-lg" />
-                    What You Get
-                  </h4>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-center gap-3 text-white/90"
-                      >
-                        <div className="w-2 h-2 bg-accent rounded-full" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Technologies */}
-                <div className="mb-8">
-                  <h4 className="text-white font-semibold mb-6 flex items-center gap-3">
-                    <BsStars className="text-accent text-lg" />
-                    Tech Stack
-                  </h4>
-                  <div className="grid grid-cols-2 gap-3">
-                    {service.technologies.map((tech, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 text-white/90 hover:bg-accent/10 hover:text-accent transition-colors duration-300"
-                      >
-                        <span className="text-lg">{tech.icon}</span>
-                        <span className="font-medium text-sm">{tech.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                  <div className="space-y-1">
-                    <div className="text-accent font-bold text-xl">
-                      {service.price}
-                    </div>
-                    <div className="text-white/60 text-sm">
-                      Delivery: {service.deliverable}
-                    </div>
-                  </div>
-                  <Link
-                    href={service.href}
-                    className="group/btn flex items-center gap-2 bg-gradient-to-r from-accent to-accent-hover text-primary px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-accent/30 transition-all duration-300 transform hover:scale-105"
-                  >
-                    <span>Get Started</span>
-                    <FaExternalLinkAlt className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="container mx-auto space-y-12">
+        {/* Page Header */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
-          className="text-center"
+          transition={{ duration: 0.6 }}
         >
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-12 xl:p-16">
-            <div className="space-y-8">
+          <div className="flex items-center gap-3 mb-6">
+            <GitBranch className="w-8 h-8 text-terminal-500" />
+            <h1 className="h1">
+              <span className="text-gradient">Collaboration</span>
+            </h1>
+          </div>
+          <p className="text-xl text-muted-300 max-w-3xl mb-6">
+            I collaborate on open-source security tooling, infrastructure projects, and technical
+            documentation. No agency services, no client projects—just honest technical work.
+          </p>
+
+          <div className="card bg-base-900 border-terminal-500/30">
+            <div className="flex items-start gap-3">
+              <Terminal className="w-5 h-5 text-terminal-500 mt-0.5 flex-shrink-0" />
               <div>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                  Ready to Build Something{" "}
-                  <span className="text-transparent bg-gradient-to-r from-accent to-accent-hover bg-clip-text">
-                    Amazing?
-                  </span>
-                </h3>
-                <p className="text-white/70 text-lg max-w-3xl mx-auto leading-relaxed">
-                  Let's transform your vision into reality with cutting-edge
-                  solutions that drive real results. Your success is my mission.
+                <p className="text-sm text-muted-200 mb-2">
+                  <span className="font-semibold text-terminal-500">Note:</span> I'm not available
+                  for client work, freelance projects, or enterprise consulting. This page is about
+                  open-source collaboration and knowledge sharing.
                 </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center gap-3 bg-gradient-to-r from-accent to-accent-hover text-primary px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-xl hover:shadow-accent/30 transition-all duration-300 transform hover:scale-105"
-                >
-                  <span>Start Your Project</span>
-                  <BsArrowDownRight className="text-xl group-hover:rotate-45 transition-transform duration-300" />
-                </Link>
-
-                <div className="text-white/60 text-sm">
-                  Free consultation • No commitment
-                </div>
+                <p className="text-xs text-muted-300">
+                  If you're looking for someone to build your startup's MVP or handle enterprise
+                  security, I'm not your person. But if you're building cool homelab tools or
+                  security projects, let's talk.
+                </p>
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.section>
+
+        {/* Collaboration Areas */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <h2 className="section-title">What I Can Help With</h2>
+
+          <div className="space-y-8">
+            {collaborationAreas.map((area, index) => {
+              const Icon = area.icon;
+              return (
+                <motion.div
+                  key={area.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  className="card-interactive group"
+                >
+                  <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Left: Title & Description */}
+                    <div className="lg:col-span-2 space-y-4">
+                      <div className="flex items-center gap-3">
+                        <Icon className="w-6 h-6 text-terminal-500" />
+                        <h3 className="h3">{area.title}</h3>
+                      </div>
+
+                      <p className="text-muted-200 leading-relaxed">{area.description}</p>
+
+                      <div className="grid md:grid-cols-2 gap-6">
+                        {/* What I Look For */}
+                        <div>
+                          <h4 className="h5 text-terminal-500 mb-3 flex items-center gap-2">
+                            <CheckCircle className="w-4 h-4" />
+                            What I Look For:
+                          </h4>
+                          <ul className="space-y-2">
+                            {area.whatILookFor.map((item, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-start gap-2 text-sm text-muted-200"
+                              >
+                                <span className="text-terminal-500 mt-0.5">•</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* What I Don't */}
+                        <div>
+                          <h4 className="h5 text-amber-500 mb-3 flex items-center gap-2">
+                            <X className="w-4 h-4" />
+                            What I Don't:
+                          </h4>
+                          <ul className="space-y-2">
+                            {area.whatIDont.map((item, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-start gap-2 text-sm text-muted-200"
+                              >
+                                <span className="text-amber-500 mt-0.5">•</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right: Timeframe & Action */}
+                    <div className="space-y-4">
+                      <div className="terminal-window">
+                        <div className="terminal-header">
+                          <div className="flex items-center gap-2">
+                            <div className="terminal-dot bg-danger-500" />
+                            <div className="terminal-dot bg-amber-500" />
+                            <div className="terminal-dot bg-terminal-500" />
+                          </div>
+                          <span className="font-mono text-xs text-muted-300">timeframe</span>
+                        </div>
+                        <div className="terminal-content">
+                          <div className="flex items-start gap-3">
+                            <span className="text-terminal-500">➜</span>
+                            <span className="text-muted-200 text-sm">{area.timeframe}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="card bg-base-900">
+                        <p className="text-xs text-muted-300 mb-3">
+                          Interested in this type of collaboration?
+                        </p>
+                        <Link href="/contact" className="btn-secondary w-full justify-center">
+                          <Mail className="w-4 h-4" />
+                          Get In Touch
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.section>
+
+        {/* What I Respond To / Ignore */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="section-title">Response Guidelines</h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* I Respond Fast To */}
+            <div className="card">
+              <h3 className="h4 mb-4 text-terminal-500 flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                I Respond Fast To:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="text-terminal-500 mt-1">✓</span>
+                  <div>
+                    <p className="font-semibold text-white">Technical questions about my projects</p>
+                    <p className="text-sm text-muted-300">
+                      Bugs, feature requests, or "how does this work?"
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-terminal-500 mt-1">✓</span>
+                  <div>
+                    <p className="font-semibold text-white">Ideas for obscure sysadmin tooling</p>
+                    <p className="text-sm text-muted-300">
+                      "What if we did X to solve Y?" conversations
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-terminal-500 mt-1">✓</span>
+                  <div>
+                    <p className="font-semibold text-white">Postmortem war stories</p>
+                    <p className="text-sm text-muted-300">
+                      "Here's how I broke production at 3 AM"
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-terminal-500 mt-1">✓</span>
+                  <div>
+                    <p className="font-semibold text-white">
+                      "I tried your thing and it broke"
+                    </p>
+                    <p className="text-sm text-muted-300 italic">Feature, not bug</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Please Don't */}
+            <div className="card border-amber-500/30">
+              <h3 className="h4 mb-4 text-amber-500 flex items-center gap-2">
+                <X className="w-5 h-5" />
+                Please Don't:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="text-amber-500 mt-1">✗</span>
+                  <div>
+                    <p className="font-semibold text-white">Ask me to fix your printer</p>
+                    <p className="text-sm text-muted-300">
+                      Or any other non-security/infra issues
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-amber-500 mt-1">✗</span>
+                  <div>
+                    <p className="font-semibold text-white">Pitch crypto/NFT/blockchain anything</p>
+                    <p className="text-sm text-muted-300">Instant ignore</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-amber-500 mt-1">✗</span>
+                  <div>
+                    <p className="font-semibold text-white">
+                      Expect enterprise support on hobby projects
+                    </p>
+                    <p className="text-sm text-muted-300">
+                      These are learning experiments, not SaaS products
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-amber-500 mt-1">✗</span>
+                  <div>
+                    <p className="font-semibold text-white">Send unsolicited job spam</p>
+                    <p className="text-sm text-muted-300">
+                      Recruiters: I'm not looking right now
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Expected Response Time */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="terminal-window">
+            <div className="terminal-header">
+              <div className="flex items-center gap-2">
+                <div className="terminal-dot bg-danger-500" />
+                <div className="terminal-dot bg-amber-500" />
+                <div className="terminal-dot bg-terminal-500" />
+              </div>
+              <span className="font-mono text-xs text-muted-300">response-time.log</span>
+            </div>
+            <div className="terminal-content space-y-3">
+              <div className="grid md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <p className="font-mono text-terminal-500 mb-1">GitHub Issues/PRs</p>
+                  <p className="text-muted-200">24-48 hours</p>
+                </div>
+                <div>
+                  <p className="font-mono text-terminal-500 mb-1">Technical Questions</p>
+                  <p className="text-muted-200">1-3 days</p>
+                </div>
+                <div>
+                  <p className="font-mono text-terminal-500 mb-1">Collaboration Requests</p>
+                  <p className="text-muted-200">3-7 days</p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-base-500">
+                <p className="text-xs text-muted-300">
+                  <span className="text-terminal-500">Note:</span> I check messages during US
+                  Eastern evenings (after work). If you're in a different timezone, expect slight
+                  delays.
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* CTA */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="card text-center">
+            <h2 className="h2 mb-4">
+              <span className="text-gradient">Let's Build Something</span>
+            </h2>
+            <p className="text-muted-300 text-lg mb-8 max-w-2xl mx-auto">
+              If you're working on something that aligns with my focus areas (security tooling,
+              infrastructure, documentation), reach out. I'm always interested in learning from
+              other builders.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/contact" className="btn-primary">
+                <Mail className="w-5 h-5" />
+                Get In Touch
+              </Link>
+              <Link
+                href="https://github.com/yashpotdar-py"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                <Github className="w-5 h-5" />
+                View GitHub Profile
+                <ExternalLink className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </motion.section>
       </div>
-    </motion.section>
+    </div>
   );
 };
 
-export default Services;
+export default ServicesPage;

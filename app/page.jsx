@@ -1,462 +1,640 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { FiDownload, FiArrowRight, FiEye } from "react-icons/fi";
-import {
-  FaRocket,
-  FaArrowRight,
-  FaRobot,
-  FaLock,
-  FaChartLine,
-} from "react-icons/fa";
-import { HiSparkles, HiLightningBolt } from "react-icons/hi";
-import {
-  SiReact,
-  SiPython,
-  SiNextdotjs,
-  SiKalilinux,
-  SiUpwork,
-} from "react-icons/si";
 import Link from "next/link";
-import StatsComponent from "@/components/Stats";
-import PhotoComponent from "@/components/Photo";
-import SocialsComponent from "@/components/Socials";
 import {
-  cardHoverVariants,
-  containerVariants,
-  itemVariants,
-} from "@/lib/animations";
+  Terminal,
+  Activity,
+  Shield,
+  Box,
+  GitBranch,
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  ChevronRight,
+  ExternalLink,
+  Github,
+} from "lucide-react";
 
-const technologies = [
-  {
-    icon: <SiPython />,
-    name: "Python Developer",
-    color: "from-yellow-500 to-green-600",
-  },
-  {
-    icon: <SiReact />,
-    name: "React Developer",
-    color: "from-blue-500 to-cyan-600",
-  },
-  {
-    icon: <SiNextdotjs />,
-    name: "Next.js Developer",
-    color: "from-gray-600 to-black",
-  },
-  {
-    icon: <SiKalilinux />,
-    name: "Ethical Hacker",
-    color: "from-blue-700 to-indigo-700",
-  },
-  {
-    icon: <FaRobot />,
-    name: "AI/ML Engineer",
-    color: "from-purple-500 to-pink-600",
-  },
-];
-
-const services = [
-  {
-    icon: <FaRobot />,
-    title: "AI/ML Solutions",
-    description: "Custom machine learning models and GenAI applications",
-    color: "from-blue-500 to-purple-600",
-  },
-  {
-    icon: <FaLock />,
-    title: "Cybersecurity",
-    description: "Penetration testing and security auditing",
-    color: "from-red-500 to-pink-600",
-  },
-  {
-    icon: <SiReact />,
-    title: "Full Stack Dev",
-    description: "Modern web applications with React & Next.js",
-    color: "from-cyan-500 to-blue-600",
-  },
-  {
-    icon: <FaChartLine />,
-    title: "Data Science",
-    description: "Data analysis and predictive modeling",
-    color: "from-green-500 to-emerald-600",
-  },
-];
-
-const Home = () => {
-  const [currentTech, setCurrentTech] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTech((prev) => (prev + 1) % technologies.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
+const HomePage = () => {
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="min-h-screen relative overflow-hidden"
-    >
-      {/* Enhanced Background with Multiple Layers */}
-      <div className="absolute inset-0 -z-10">
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-accent/5 to-primary/5 rounded-full blur-3xl animate-spin"
-          style={{ animationDuration: "30s" }}
-        />
-
-        {/* Floating Particles */}
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-accent/30 rounded-full"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + i * 0.2,
-              repeat: Infinity,
-              delay: i * 0.3,
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="container mx-auto px-6 lg:px-12 xl:px-16 max-w-7xl">
-        {/* Hero Section */}
-        <div className="min-h-screen flex items-center justify-center py-16 md:py-24">
-          <div className="grid lg:grid-cols-2 gap-20 xl:gap-32 items-center w-full">
-            {/* Content */}
-            <motion.div
-              variants={itemVariants}
-              className="space-y-10 text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
-            >
-              {/* Badge */}
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-6 py-2 mb-2"
-              >
-                <HiSparkles className="text-accent" />
-                <span className="text-accent font-semibold">
-                  Available for Projects
-                </span>
-              </motion.div>
-
-              {/* Main Heading with Animated Text */}
-              <div className="space-y-3">
-                <motion.h1
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight"
-                >
-                  <span className="block text-white mb-1">Hello, I'm</span>
-                  <span className="block text-transparent bg-gradient-to-r from-accent via-accent-hover to-accent bg-clip-text">
-                    Yash Potdar
-                  </span>
-                </motion.h1>
-
-                {/* Animated Role */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 0.6 }}
-                  className="text-lg md:text-xl text-white/80 font-medium min-h-[2.5rem]"
-                >
-                  <motion.span
-                    key={currentTech}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="inline-flex items-center gap-3"
-                  >
-                    <span
-                      className={`p-2 bg-gradient-to-r ${technologies[currentTech].color} rounded-2xl text-white text-lg shadow-md`}
-                    >
-                      {technologies[currentTech].icon}
-                    </span>
-                    {technologies[currentTech].name}
-                  </motion.span>
-                </motion.div>
-              </div>
-
-              {/* Description */}
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto lg:mx-0"
-              >
-                A passionate B.Tech student specializing in{" "}
-                <span className="text-accent font-semibold">
-                  Artificial Intelligence
-                </span>
-                ,{" "}
-                <span className="text-accent font-semibold">Cybersecurity</span>
-                , and{" "}
-                <span className="text-accent font-semibold">
-                  Full-Stack Development
-                </span>
-                . I create innovative solutions that bridge cutting-edge
-                technology with real-world impact.
-              </motion.p>
-
-              {/* Action Buttons */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1, duration: 0.6 }}
-                className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start pt-4"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Link
-                    href="/contact"
-                    className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-accent-hover text-primary px-6 py-3 rounded-xl font-semibold text-base hover:shadow-lg hover:shadow-accent/25 transition-all duration-300"
-                  >
-                    <span>Let's Work Together</span>
-                    <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <button
-                    className="group inline-flex items-center justify-center gap-2 bg-white/5 border border-white/20 hover:bg-white/10 hover:border-accent/50 text-white px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 backdrop-blur-sm"
-                    onClick={() =>
-                      window.open(
-                        "/assets/resume/Yash_Potdar_Resume.pdf",
-                        "_blank"
-                      )
-                    }
-                  >
-                    <span>Download CV</span>
-                    <FiDownload className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                  </button>
-                </motion.div>
-              </motion.div>
-
-              {/* Social Links */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.6 }}
-                className="flex justify-center lg:justify-start pt-2"
-              >
-                <SocialsComponent
-                  containerStyles="flex gap-4"
-                  iconStyles="w-11 h-11 border border-white/20 rounded-full flex justify-center items-center text-white/70 text-xl hover:bg-accent hover:text-primary hover:border-accent hover:scale-110 transition-all duration-300"
-                />
-              </motion.div>
-            </motion.div>
-
-            {/* Enhanced Photo Section */}
-            <motion.div
-              variants={itemVariants}
-              className="relative flex justify-center lg:justify-end"
-            >
-              <div className="relative flex items-center justify-center min-h-[400px]">
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl scale-110" />
-
-                {/* Photo Container */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative z-10"
-                >
-                  <PhotoComponent />
-                </motion.div>
-
-                {/* Floating Tech Icons */}
-                {technologies.map((tech, index) => (
-                  <motion.div
-                    key={index}
-                    className={`absolute w-16 h-16 bg-gradient-to-r ${tech.color} rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg`}
-                    animate={{
-                      y: [0, -14, 0],
-                      rotate: [0, 8, 0],
-                    }}
-                    transition={{
-                      duration: 2 + index * 0.2,
-                      repeat: Infinity,
-                      delay: index * 0.3,
-                    }}
-                    style={{
-                      top: `${18 + index * 13}%`,
-                      right: index % 2 === 0 ? "-7%" : "auto",
-                      left: index % 2 === 1 ? "-7%" : "auto",
-                    }}
-                  >
-                    {tech.icon}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Services Preview Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="py-20"
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="container mx-auto space-y-20 xl:space-y-24">
+        {/* Hero Section with Terminal Status Banner */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="section"
         >
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-6 py-2 mb-6"
-            >
-              <HiLightningBolt className="text-accent" />
-              <span className="text-accent font-semibold">What I Do</span>
-            </motion.div>
-
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Services That{" "}
-              <span className="text-transparent bg-gradient-to-r from-accent to-accent-hover bg-clip-text">
-                Drive Results
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-            {services.map((service, index) => (
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Content */}
+            <div className="space-y-6">
+              {/* Status badge */}
               <motion.div
-                key={index}
-                variants={cardHoverVariants}
-                whileHover="hover"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="group relative"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-3 py-1 border border-terminal-500/30 rounded-terminal"
               >
-                {/* Glow Effect */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r ${service.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                />
+                <span className="w-2 h-2 rounded-full bg-terminal-500 animate-pulse" />
+                <span className="font-mono text-sm text-terminal-500">
+                  system.status: operational
+                </span>
+              </motion.div>
 
-                <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-accent/30 transition-all duration-300 h-full">
-                  <div
-                    className={`p-4 bg-gradient-to-r ${service.color} rounded-2xl text-white text-2xl w-fit mb-6 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    {service.icon}
+              {/* Name and Title */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <h1 className="h1 mb-4">
+                  <span className="text-muted-200">I'm</span>{" "}
+                  <span className="text-gradient">Yash Potdar</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-muted-300 font-display">
+                  Homelab Tinkerer • Infrastructure & Security
+                </p>
+              </motion.div>
+
+              {/* TL;DR Section */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="terminal-window"
+              >
+                <div className="terminal-header">
+                  <div className="flex items-center gap-2">
+                    <div className="terminal-dot bg-danger-500" />
+                    <div className="terminal-dot bg-amber-500" />
+                    <div className="terminal-dot bg-terminal-500" />
                   </div>
-
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-accent transition-colors">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-white/70 leading-relaxed">
-                    {service.description}
-                  </p>
+                  <span className="font-mono text-xs text-muted-300">tl;dr.sh</span>
+                </div>
+                <div className="terminal-content space-y-2">
+                  <div className="flex items-start gap-3">
+                    <span className="text-terminal-500">➜</span>
+                    <span className="text-muted-200">
+                      I build things that solve real problems
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-terminal-500">➜</span>
+                    <span className="text-muted-200">
+                      Break them intentionally to learn
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-terminal-500">➜</span>
+                    <span className="text-muted-200">
+                      Document everything along the way 📝
+                    </span>
+                  </div>
                 </div>
               </motion.div>
-            ))}
+
+              {/* Transition Note */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="flex items-center gap-3 px-4 py-3 bg-amber-500/10 border border-amber-500/30 rounded-terminal"
+              >
+                <GitBranch className="w-5 h-5 text-amber-500" />
+                <span className="text-sm text-muted-200">
+                  <span className="font-semibold text-amber-500">Current shift:</span>{" "}
+                  Moving from AI/ML → cybersecurity & infrastructure
+                </span>
+              </motion.div>
+
+              {/* CTAs */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="flex flex-wrap gap-4"
+              >
+                <Link
+                  href="https://github.com/yashpotdar-py/sentinel-ssh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                >
+                  <Shield className="w-5 h-5" />
+                  <span>View Sentinel-SSH</span>
+                  <ExternalLink className="w-4 h-4" />
+                </Link>
+                <Link href="/projects" className="btn-secondary">
+                  <Terminal className="w-5 h-5" />
+                  <span>Explore Lab</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right: Live Systems Panel */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="terminal-window"
+            >
+              <div className="terminal-header">
+                <div className="flex items-center gap-2">
+                  <div className="terminal-dot bg-danger-500" />
+                  <div className="terminal-dot bg-amber-500" />
+                  <div className="terminal-dot bg-terminal-500" />
+                </div>
+                <span className="font-mono text-xs text-muted-300">system-status.log</span>
+              </div>
+              <div className="terminal-content space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-base-500">
+                  <span className="font-mono text-sm text-muted-300">metric</span>
+                  <span className="font-mono text-sm text-muted-300">value</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-terminal-500" />
+                    <span className="text-sm text-muted-200">uptime</span>
+                  </div>
+                  <span className="font-mono text-sm text-terminal-500">99.2%</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-terminal-500" />
+                    <span className="text-sm text-muted-200">services monitored</span>
+                  </div>
+                  <span className="font-mono text-sm text-terminal-500">12</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 text-terminal-500" />
+                    <span className="text-sm text-muted-200">alerts triggered</span>
+                  </div>
+                  <span className="font-mono text-sm text-terminal-500">847</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-terminal-500" />
+                    <span className="text-sm text-muted-200">log entries parsed</span>
+                  </div>
+                  <span className="font-mono text-sm text-terminal-500">~45k</span>
+                </div>
+
+                <div className="pt-3 mt-3 border-t border-base-500">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-muted-300 font-mono">last build</span>
+                    <span className="text-terminal-500 font-mono">2026-02-14 18:42:03 UTC</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Lab Topology Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="section"
+        >
+          <h2 className="section-title">Lab Topology</h2>
+
+          <div className="terminal-window">
+            <div className="terminal-header">
+              <div className="flex items-center gap-2">
+                <div className="terminal-dot bg-danger-500" />
+                <div className="terminal-dot bg-amber-500" />
+                <div className="terminal-dot bg-terminal-500" />
+              </div>
+              <span className="font-mono text-xs text-muted-300">network-diagram.txt</span>
+            </div>
+            <div className="terminal-content">
+              <pre className="font-mono text-sm text-terminal-500 overflow-x-auto">
+{`
+  ┌─────────────┐
+  │   Router    │  ← ISP
+  └──────┬──────┘
+         │
+  ┌──────▼──────┐
+  │   Pi-hole   │  ← DNS filtering
+  └──────┬──────┘
+         │
+  ┌──────▼──────────────────┐
+  │    SSH Hosts (x3)        │  ← Raspberry Pi cluster
+  │  ├─ Sentinel-SSH         │     Intrusion detection
+  │  ├─ Log aggregation      │     journald → parser
+  │  └─ Service monitoring   │     Health checks
+  └──────┬──────────────────┘
+         │
+  ┌──────▼──────────────────┐
+  │    Prometheus            │  ← Metrics collection
+  └──────┬──────────────────┘
+         │
+  ┌──────▼──────────────────┐
+  │     Grafana              │  ← Visualization
+  └──────────────────────────┘
+
+  Stack: Debian 12 • Python 3.11 • systemd • UFW • journald
+`}
+              </pre>
+            </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <Link
-              href="/services"
-              className="group inline-flex items-center gap-3 bg-white/5 border border-white/20 hover:border-accent/50 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10"
-            >
-              <span>Explore All Services</span>
-              <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </motion.div>
+          <div className="mt-6 grid md:grid-cols-3 gap-4">
+            <div className="card">
+              <div className="flex items-center gap-3 mb-3">
+                <Box className="w-5 h-5 text-terminal-500" />
+                <h3 className="font-display font-semibold text-white">Hardware</h3>
+              </div>
+              <p className="text-sm text-muted-300">
+                3× Raspberry Pi 4B (4GB) • Budget: &lt;$100
+              </p>
+            </div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
+            <div className="card">
+              <div className="flex items-center gap-3 mb-3">
+                <Shield className="w-5 h-5 text-terminal-500" />
+                <h3 className="font-display font-semibold text-white">Security</h3>
+              </div>
+              <p className="text-sm text-muted-300">
+                SSH hardening • UFW firewall • Real-time monitoring
+              </p>
+            </div>
+
+            <div className="card">
+              <div className="flex items-center gap-3 mb-3">
+                <Activity className="w-5 h-5 text-terminal-500" />
+                <h3 className="font-display font-semibold text-white">Monitoring</h3>
+              </div>
+              <p className="text-sm text-muted-300">
+                Prometheus metrics • Grafana dashboards • Alerting
+              </p>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Tooling & Builds Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="py-20 text-center"
+          transition={{ duration: 0.6 }}
+          className="section"
         >
-          <div className="bg-gradient-to-r from-accent/10 to-primary/10 border border-accent/20 rounded-3xl p-12 lg:p-16">
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                  Ready to Build Something{" "}
-                  <span className="text-transparent bg-gradient-to-r from-accent to-accent-hover bg-clip-text">
-                    Extraordinary?
-                  </span>
-                </h2>
-                <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-                  Let's transform your vision into reality with cutting-edge
-                  solutions that drive real results. Your success is my mission.
-                </p>
+          <h2 className="section-title">Tooling & Builds</h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Sentinel-SSH Card */}
+            <div className="card-interactive group">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <Shield className="w-6 h-6 text-terminal-500" />
+                  <h3 className="h4">Sentinel-SSH</h3>
+                </div>
+                <span className="status-badge status-production">
+                  <span className="w-1.5 h-1.5 rounded-full bg-terminal-500" />
+                  production
+                </span>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href="/contact"
-                    className="group inline-flex items-center gap-3 bg-gradient-to-r from-accent to-accent-hover text-primary px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-xl hover:shadow-accent/30 transition-all duration-300"
-                  >
-                    <span>Start Your Project</span>
-                    <FaRocket className="group-hover:translate-y-1 transition-transform" />
-                  </Link>
-                </motion.div>
+              <p className="text-muted-300 mb-4">
+                SSH intrusion detection that actually makes sense. Watches journald logs, detects
+                brute-force patterns, auto-blocks attackers with temporary UFW rules.
+              </p>
 
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href="/projects"
-                    className="group inline-flex items-center gap-3 bg-white/5 border border-white/20 hover:border-accent/50 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10"
-                  >
-                    <FiEye className="group-hover:scale-110 transition-transform" />
-                    <span>View Portfolio</span>
-                  </Link>
-                </motion.div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="tag">Python 3.8+</span>
+                <span className="tag">systemd</span>
+                <span className="tag">UFW</span>
+                <span className="tag">Prometheus</span>
               </div>
 
-              <div className="text-white/60 text-sm">
-                Free consultation • No commitment • 24h response time
+              <div className="flex gap-3">
+                <Link
+                  href="https://github.com/yashpotdar-py/sentinel-ssh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost flex-1 justify-center"
+                >
+                  <Github className="w-4 h-4" />
+                  View Repo
+                </Link>
+                <Link
+                  href="https://github.com/yashpotdar-py/sentinel-ssh#readme"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost flex-1 justify-center"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Read Docs
+                </Link>
+              </div>
+            </div>
+
+            {/* Homelab Infrastructure Card */}
+            <div className="card-interactive group">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <Activity className="w-6 h-6 text-amber-500" />
+                  <h3 className="h4">Homelab Stack</h3>
+                </div>
+                <span className="status-badge status-tinkering">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  tinkering
+                </span>
+              </div>
+
+              <p className="text-muted-300 mb-4">
+                Production services on budget hardware. Pi-hole for DNS filtering, SSH hardening,
+                network monitoring, and Prometheus + Grafana observability.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="tag">Raspberry Pi</span>
+                <span className="tag">Debian</span>
+                <span className="tag">Docker</span>
+                <span className="tag">Grafana</span>
+              </div>
+
+              <div className="flex gap-3">
+                <Link href="/projects" className="btn-ghost flex-1 justify-center">
+                  <Terminal className="w-4 h-4" />
+                  View Lab
+                </Link>
+              </div>
+            </div>
+
+            {/* Log Parser Card */}
+            <div className="card-interactive group">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <Terminal className="w-6 h-6 text-terminal-500" />
+                  <h3 className="h4">Log Parser</h3>
+                </div>
+                <span className="status-badge status-tinkering">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  tinkering
+                </span>
+              </div>
+
+              <p className="text-muted-300 mb-4">
+                Real-time journald log parsing with pattern matching. Extracts failed SSH attempts,
+                suspicious activity, and system events for alerting.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="tag">Python</span>
+                <span className="tag">journald</span>
+                <span className="tag">regex</span>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="btn-ghost flex-1 justify-center opacity-50 cursor-not-allowed">
+                  <Github className="w-4 h-4" />
+                  Coming Soon
+                </span>
+              </div>
+            </div>
+
+            {/* SSH Hardening Scripts Card */}
+            <div className="card-interactive group">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <Shield className="w-6 h-6 text-terminal-500" />
+                  <h3 className="h4">SSH Hardening</h3>
+                </div>
+                <span className="status-badge status-tinkering">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  tinkering
+                </span>
+              </div>
+
+              <p className="text-muted-300 mb-4">
+                Reproducible SSH configuration scripts. Disable root login, enforce key auth, set
+                rate limits, and audit configs for compliance.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="tag">Bash</span>
+                <span className="tag">OpenSSH</span>
+                <span className="tag">security</span>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="btn-ghost flex-1 justify-center opacity-50 cursor-not-allowed">
+                  <Github className="w-4 h-4" />
+                  Coming Soon
+                </span>
               </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+        </motion.section>
 
-      {/* Stats Component */}
-      <StatsComponent />
-    </motion.section>
+        {/* Postmortems & Writeups Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="section"
+        >
+          <h2 className="section-title">Postmortems & Writeups</h2>
+
+          <div className="terminal-window">
+            <div className="terminal-header">
+              <div className="flex items-center gap-2">
+                <div className="terminal-dot bg-danger-500" />
+                <div className="terminal-dot bg-amber-500" />
+                <div className="terminal-dot bg-terminal-500" />
+              </div>
+              <span className="font-mono text-xs text-muted-300">incident-log.md</span>
+            </div>
+            <div className="terminal-content">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-base-500 text-muted-300">
+                      <th className="text-left py-2 font-mono">incident</th>
+                      <th className="text-left py-2 font-mono">root cause</th>
+                      <th className="text-left py-2 font-mono">fix</th>
+                      <th className="text-left py-2 font-mono">lesson</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-200">
+                    <tr className="border-b border-base-500/50">
+                      <td className="py-3">SSH lockout</td>
+                      <td className="py-3">Blocked own IP</td>
+                      <td className="py-3">Whitelist logic</td>
+                      <td className="py-3">Test exclusions first</td>
+                    </tr>
+                    <tr className="border-b border-base-500/50">
+                      <td className="py-3">Pi reboots</td>
+                      <td className="py-3">Power supply</td>
+                      <td className="py-3">Upgraded PSU</td>
+                      <td className="py-3">Don't cheap out</td>
+                    </tr>
+                    <tr className="border-b border-base-500/50">
+                      <td className="py-3">Log flooding</td>
+                      <td className="py-3">No rate limit</td>
+                      <td className="py-3">Sliding window</td>
+                      <td className="py-3">Always bound growth</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 card">
+            <h3 className="h5 mb-3">Log Snippet Example</h3>
+            <div className="bg-base-900 border border-base-500 rounded-terminal p-4 font-mono text-xs overflow-x-auto">
+              <pre className="text-terminal-500">
+{`2026-02-14 18:42:15 [ALERT] Failed SSH attempt detected
+Source: 192.168.1.247
+User: root
+Attempts: 5 in 60s window
+Action: Temporary block (15m) via UFW
+Block ID: blk_20260214184215_247`}
+              </pre>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Philosophy/Approach Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="section"
+        >
+          <h2 className="section-title">Philosophy</h2>
+
+          <div className="card">
+            <blockquote className="border-l-4 border-terminal-500 pl-6 mb-6">
+              <p className="text-lg md:text-xl text-muted-200 italic mb-2">
+                "You come at infrastructure with grep and a prayer, you best know what you're
+                looking for."
+              </p>
+            </blockquote>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <h3 className="h5 text-terminal-500">My Rules:</h3>
+                <ul className="space-y-2 text-muted-200">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-terminal-500 mt-1 flex-shrink-0" />
+                    <span>
+                      <strong>Break it first</strong> — If you don't know how it fails, you don't
+                      know how it works
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-terminal-500 mt-1 flex-shrink-0" />
+                    <span>
+                      <strong>Document everything</strong> — Future-me deserves context
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-terminal-500 mt-1 flex-shrink-0" />
+                    <span>
+                      <strong>No black boxes</strong> — If I can't read the code, I won't run it
+                      as root
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-terminal-500 mt-1 flex-shrink-0" />
+                    <span>
+                      <strong>Ship working, not perfect</strong> — Production teaches more than
+                      planning
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="h5 text-terminal-500">What I Believe:</h3>
+                <ul className="space-y-2 text-muted-200">
+                  <li className="flex items-start gap-2">
+                    <AlertTriangle className="w-4 h-4 text-amber-500 mt-1 flex-shrink-0" />
+                    <span>Security by obscurity = surprise incompetence with good PR</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-terminal-500 mt-1 flex-shrink-0" />
+                    <span>READMEs longer than code = documentation done right</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-terminal-500 mt-1 flex-shrink-0" />
+                    <span>3 AM debugging sessions = best learning moments</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-terminal-500 mt-1 flex-shrink-0" />
+                    <span>Failing fast &gt; planning forever</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* CTA Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="section"
+        >
+          <div className="card text-center">
+            <h2 className="h2 mb-4">
+              <span className="text-gradient">Start Here</span>
+            </h2>
+            <p className="text-muted-300 text-lg mb-8 max-w-2xl mx-auto">
+              Whether you're here for security tools, homelab inspiration, or just want to see how
+              things break—pick your path.
+            </p>
+
+            <div className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <Link
+                href="https://github.com/yashpotdar-py/sentinel-ssh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary justify-center"
+              >
+                <Shield className="w-5 h-5" />
+                Security Tools
+              </Link>
+              <Link href="/projects" className="btn-secondary justify-center">
+                <Terminal className="w-5 h-5" />
+                Explore Lab
+              </Link>
+              <Link href="/resume" className="btn-secondary justify-center">
+                <Activity className="w-5 h-5" />
+                View Timeline
+              </Link>
+              <Link href="/contact" className="btn-secondary justify-center">
+                <ExternalLink className="w-5 h-5" />
+                Get In Touch
+              </Link>
+            </div>
+
+            <p className="text-sm text-muted-300 mt-6">
+              ⭐ Like what you see? Star a repo — it's free dopamine for both of us!
+            </p>
+          </div>
+        </motion.section>
+      </div>
+    </div>
   );
 };
 
-export default Home;
+export default HomePage;

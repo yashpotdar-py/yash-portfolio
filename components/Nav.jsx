@@ -6,55 +6,41 @@ import { motion } from "framer-motion";
 
 const links = [
   { name: "home", path: "/" },
-  { name: "projects", path: "/projects" },
-  { name: "services", path: "/services" },
-  { name: "more", path: "/resume" },
+  { name: "lab", path: "/projects" },
+  { name: "tooling", path: "/services" },
+  { name: "resume", path: "/resume" },
+  { name: "contact", path: "/contact" },
 ];
 
 const Nav = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex gap-2">
+    <nav className="flex gap-1">
       {links.map((link, index) => {
         const isActive = link.path === pathname;
 
         return (
-          <motion.div
+          <Link
             key={index}
-            whileHover={{ y: -2 }}
-            whileTap={{ y: 0 }}
-            className="relative"
+            href={link.path}
+            className={`relative px-4 py-2 font-mono text-sm font-medium transition-all duration-200 capitalize group ${
+              isActive
+                ? "text-base-900 bg-terminal-500"
+                : "text-muted-200 hover:text-terminal-500"
+            }`}
           >
-            <Link
-              href={link.path}
-              className={`relative px-6 py-3 rounded-xl font-semibold transition-all duration-300 capitalize tracking-wide ${
-                isActive
-                  ? "text-primary bg-gradient-to-r from-accent to-accent-hover shadow-lg shadow-accent/30"
-                  : "text-white/80 hover:text-white hover:bg-white/5 backdrop-blur-sm"
-              }`}
-            >
+            <span className="relative z-10">
+              {isActive && "["}
               {link.name}
+              {isActive && "]"}
+            </span>
 
-              {/* Animated background for non-active items */}
-              {!isActive && (
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/10 to-accent/0 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300"
-                  whileHover={{ opacity: 1 }}
-                />
-              )}
-
-              {/* Active indicator */}
-              {isActive && (
-                <motion.div
-                  layoutId="activeNav"
-                  className="absolute inset-0 bg-gradient-to-r from-accent to-accent-hover rounded-xl"
-                  style={{ zIndex: -1 }}
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </Link>
-          </motion.div>
+            {/* Underline effect for non-active items */}
+            {!isActive && (
+              <span className="absolute bottom-1 left-4 right-4 h-px bg-terminal-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
+            )}
+          </Link>
         );
       })}
     </nav>

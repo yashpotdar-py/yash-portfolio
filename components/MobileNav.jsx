@@ -3,16 +3,16 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { CiMenuFries } from "react-icons/ci";
-import { Button } from "./ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { name: "home", path: "/" },
-  { name: "projects", path: "/projects" },
-  { name: "services", path: "/services" },
-  { name: "more", path: "/resume" },
+  { name: "lab", path: "/projects" },
+  { name: "tooling", path: "/services" },
+  { name: "resume", path: "/resume" },
+  { name: "contact", path: "/contact" },
 ];
 
 const MobileNav = () => {
@@ -23,88 +23,99 @@ const MobileNav = () => {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="flex justify-center items-center w-12 h-12 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-accent/20 hover:border-accent/30 transition-all duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex justify-center items-center w-11 h-11 rounded-terminal bg-base-800 border border-base-500 hover:border-terminal-500 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-500"
           onClick={() => setIsOpen(true)}
+          aria-label="Open menu"
         >
-          <CiMenuFries className="text-2xl text-accent" />
+          <Menu className="w-5 h-5 text-terminal-500" />
         </motion.button>
       </SheetTrigger>
 
-      <SheetContent className="flex flex-col bg-primary/95 backdrop-blur-xl border-l border-white/10">
-        {/* Background effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/10" />
-        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
+      <SheetContent className="flex flex-col bg-base-900/95 backdrop-blur-xl border-l border-base-500 p-0">
+        {/* Terminal header */}
+        <div className="terminal-header justify-between">
+          <div className="flex items-center gap-2">
+            <div className="terminal-dot bg-danger-500" />
+            <div className="terminal-dot bg-amber-500" />
+            <div className="terminal-dot bg-terminal-500" />
+          </div>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="text-muted-300 hover:text-terminal-500 transition-colors"
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col h-full">
+        <div className="flex flex-col h-full p-6">
           {/* Logo */}
           <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="mt-16 mb-12 text-center"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="mb-8"
           >
-            <Link href="/" onClick={() => setIsOpen(false)}>
-              <h1 className="text-4xl font-black">
-                <span className="text-white">Yash</span>
-                <span className="text-transparent bg-gradient-to-r from-accent to-accent-hover bg-clip-text">
-                  .
+            <Link href="/" onClick={() => setIsOpen(false)} className="block">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-terminal-500 text-lg font-bold">$</span>
+                <span className="font-display text-xl font-bold text-white">
+                  yash<span className="text-terminal-500">@</span>portfolio
                 </span>
-              </h1>
+              </div>
             </Link>
           </motion.div>
 
           {/* Navigation Links */}
-          <nav className="flex flex-col gap-4 px-6 flex-1">
+          <nav className="flex flex-col gap-2 flex-1">
             {links.map((link, index) => {
               const isActive = link.path === pathname;
 
               return (
                 <motion.div
                   key={index}
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 + index * 0.05 }}
                 >
                   <Link
                     href={link.path}
-                    className={`relative block px-6 py-4 rounded-2xl font-semibold capitalize transition-all duration-300 ${
+                    className={`block px-4 py-3 font-mono text-sm font-medium capitalize transition-all duration-200 ${
                       isActive
-                        ? "text-primary bg-gradient-to-r from-accent to-accent-hover shadow-lg"
-                        : "text-white/80 hover:text-white hover:bg-white/5 backdrop-blur-sm border border-white/10 hover:border-accent/30"
+                        ? "text-base-900 bg-terminal-500"
+                        : "text-muted-200 hover:text-terminal-500 hover:bg-base-800 border border-base-500 hover:border-terminal-500/50"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
+                    {isActive && "[ "}
                     {link.name}
-
-                    {isActive && (
-                      <motion.div
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-primary rounded-full"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      />
-                    )}
+                    {isActive && " ]"}
                   </Link>
                 </motion.div>
               );
             })}
           </nav>
 
-          {/* Hire Me Button */}
+          {/* Footer info */}
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="px-6 pb-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-auto pt-6 border-t border-base-500"
           >
-            <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <Button className="w-full bg-gradient-to-r from-accent to-accent-hover hover:from-accent-hover hover:to-accent text-primary font-bold py-4 rounded-2xl shadow-xl hover:shadow-accent/30 transition-all duration-300 border-0">
-                Contact Me
-              </Button>
-            </Link>
+            <div className="font-mono text-xs text-muted-300 space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-terminal-500">➜</span>
+                <span>infrastructure & security</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-terminal-500">➜</span>
+                <span>homelab tinkerer</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </SheetContent>
@@ -113,3 +124,4 @@ const MobileNav = () => {
 };
 
 export default MobileNav;
+
