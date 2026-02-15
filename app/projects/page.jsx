@@ -25,21 +25,21 @@ const projects = [
     category: "Security Tooling",
     status: "production",
     description:
-      "SSH intrusion detection that actually makes sense. Real-time journald log parsing, brute-force detection with sliding windows, and automatic UFW blocking. No black boxes, no trust-me-bro configs.",
+      "SSH intrusion detection system I built to learn security development. Real-time journald log parsing, brute-force detection, and automatic UFW blocking. My first production security tool.",
     tldr: "Watches SSH logs, detects attacks, blocks bad actors automatically.",
     stack: ["Python 3.8+", "systemd", "journald", "UFW", "Prometheus"],
     metrics: {
       linesOfCode: "~800",
-      alerts: "847",
+      version: "v1.1.0",
       uptime: "99.2%",
-      blocked: "143 IPs",
+      status: "In production",
     },
     features: [
       "Real-time journald log parsing",
       "Smart brute-force detection (sliding windows)",
-      "Temporary UFW blocks (won't lock you out)",
-      "Prometheus metrics built-in",
-      "Over-documented (150+ line README)",
+      "Temporary UFW blocks (auto-expire to prevent lockout)",
+      "Prometheus metrics integration",
+      "Documented extensively (learning by writing)",
     ],
     threatModel: "Protects against SSH brute-force, credential stuffing, and automated scanners",
     github: "https://github.com/yashpotdar-py/sentinel-ssh",
@@ -47,133 +47,135 @@ const projects = [
     icon: Shield,
   },
   {
-    id: "homelab-infra",
-    title: "Homelab Infrastructure",
-    category: "Infrastructure",
-    status: "tinkering",
+    id: "rl-ids",
+    title: "RL-IDS: Reinforcement Learning Intrusion Detection",
+    category: "AI/ML Security",
+    status: "production",
     description:
-      "Production services on budget hardware. 3× Raspberry Pi 4B cluster running DNS filtering (Pi-hole), SSH hardening, network monitoring, and full observability stack (Prometheus + Grafana).",
-    tldr: "Budget homelab running real production services.",
-    stack: ["Raspberry Pi 4B", "Debian 12", "Docker", "Pi-hole", "Grafana", "Prometheus"],
+      "Adaptive intrusion detection system using Deep Q-Network that achieved 93% detection confidence with sub-100ms latency. Built a modular Python framework with FastAPI, PyTorch, and Scapy for live packet capture and real-time inference.",
+    tldr: "AI-powered IDS with reinforcement learning for adaptive threat detection.",
+    stack: ["Python", "PyTorch", "FastAPI", "Scapy", "Deep Q-Network"],
     metrics: {
-      hardware: "3× Pi 4B (4GB)",
-      cost: "<$100",
-      services: "12 active",
-      uptime: "99.1%",
+      accuracy: "93%",
+      latency: "<100ms",
+      improvement: "+25% vs rule-based",
     },
     features: [
-      "Pi-hole for DNS filtering (blocks ads/trackers)",
-      "SSH hardening on all hosts",
-      "Network topology with RFC compliance",
-      "Prometheus metrics collection",
-      "Grafana visualization dashboards",
+      "Deep Q-Network for adaptive learning",
+      "Live packet capture and analysis",
+      "Real-time inference engine",
+      "Outperforms traditional rule-based systems",
+      "Modular architecture with FastAPI",
     ],
-    threatModel: "Defense-in-depth: DNS filtering, hardened SSH, network segmentation",
+    threatModel: "Machine learning approach to detect novel attack patterns and zero-day exploits",
+    github: "https://github.com/yashpotdar-py/rl-ids",
+    docs: "https://yashpotdar-py.github.io/rl-ids/",
+    icon: Shield,
+  },
+  {
+    id: "redactify",
+    title: "Redactify - PII Detection & Redaction",
+    category: "AI/ML Security",
+    status: "production",
+    description:
+      "CNN-based deep learning model to detect and redact PII (Personally Identifiable Information) from government documents with 96% accuracy. Uses YOLOv7 for detection and Hugging Face transformers for redaction.",
+    tldr: "Automated PII detection and redaction using computer vision and NLP.",
+    stack: ["Python", "YOLOv7", "Hugging Face", "Gradio", "OCR", "Transformers"],
+    metrics: {
+      accuracy: "96%",
+      model: "YOLOv7",
+      interface: "Gradio UI",
+    },
+    features: [
+      "YOLOv7 for image-based PII detection",
+      "OCR for text extraction",
+      "Hugging Face transformers for NLP redaction",
+      "User-friendly Gradio interface",
+      "Government document compliance",
+    ],
+    threatModel: "Protects sensitive personally identifiable information from unauthorized disclosure",
+    github: "https://github.com/yashpotdar-py/redactify",
+    docs: "https://github.com/yashpotdar-py/redactify",
+    icon: Shield,
+  },
+  {
+    id: "homelab-infra",
+    title: "Homelab Infrastructure",
+    category: "Learning Lab",
+    status: "tinkering",
+    description:
+      "Personal lab for learning infrastructure and security. Running on Raspberry Pi hardware with Pi-hole DNS filtering, SSH monitoring, and basic observability. Still learning and breaking things regularly.",
+    tldr: "Budget homelab for hands-on security learning.",
+    stack: ["Raspberry Pi", "Debian", "Pi-hole", "Prometheus", "Grafana", "Docker"],
+    metrics: {
+      hardware: "Raspberry Pi 4B",
+      cost: "<$100",
+      purpose: "Learning",
+      status: "Active experiments",
+    },
+    features: [
+      "Pi-hole for DNS-level ad/tracker blocking",
+      "SSH hardening and monitoring practice",
+      "Prometheus + Grafana for observability learning",
+      "Network topology experiments (sometimes RFC-violating)",
+      "Safe environment to break things",
+    ],
+    threatModel: "Learning lab - experiments with security configurations and monitoring",
     github: null,
     docs: null,
     icon: Server,
   },
   {
-    id: "log-parser",
-    title: "Log Parser",
-    category: "Security Tooling",
-    status: "tinkering",
+    id: "water-potability",
+    title: "Water Potability Detection",
+    category: "MLOps",
+    status: "production",
     description:
-      "Real-time journald log parsing with pattern matching engine. Extracts failed SSH attempts, suspicious activity patterns, and system events for alerting and analysis.",
-    tldr: "Parses system logs in real-time, extracts security events.",
-    stack: ["Python", "journald", "regex", "systemd"],
+      "End-to-end MLOps pipeline for predicting water potability based on quality parameters. Features CI/CD automation, Docker containerization, FastAPI deployment, and monitoring infrastructure.",
+    tldr: "Machine learning with production MLOps pipeline.",
+    stack: ["Python", "Docker", "FastAPI", "CI/CD", "MLOps", "Monitoring"],
     metrics: {
-      parsed: "~45k entries",
-      patterns: "28 rules",
-      alerts: "214",
+      accuracy: "94%",
+      deployment: "Dockerized",
+      pipeline: "Full CI/CD",
     },
     features: [
-      "Real-time journald integration",
-      "Custom regex pattern engine",
-      "Event classification (info/warn/critical)",
-      "JSON output for downstream tools",
-      "Low memory footprint (<50MB)",
+      "Complete MLOps pipeline (train → deploy → monitor)",
+      "FastAPI web interface",
+      "Docker containerization",
+      "CI/CD automation",
+      "Model monitoring and versioning",
     ],
-    threatModel: "Early detection of suspicious activity patterns and anomalies",
-    github: null,
-    docs: null,
-    icon: Terminal,
+    threatModel: "Data validation and model integrity checks to prevent poisoning attacks",
+    github: "https://github.com/yashpotdar-py/water-potability-detection",
+    docs: "https://yashpotdar-py.github.io/water-potability-detection/",
+    icon: Activity,
   },
   {
-    id: "ssh-hardening",
-    title: "SSH Hardening Scripts",
-    category: "Security Tooling",
-    status: "tinkering",
+    id: "fraud-detection",
+    title: "Credit Card Fraud Detection",
+    category: "Machine Learning",
+    status: "production",
     description:
-      "Reproducible SSH configuration automation. Disables root login, enforces key-based auth, sets rate limits, and audits configs for compliance with security baselines.",
-    tldr: "Automates SSH security best practices.",
-    stack: ["Bash", "OpenSSH", "systemd"],
+      "Machine learning system for detecting fraudulent credit card transactions using ensemble methods. Built Flask RESTful API for real-time fraud detection with high accuracy.",
+    tldr: "ML-based fraud detection with ensemble methods.",
+    stack: ["Python", "Flask", "Ensemble Methods", "Data Science", "REST API"],
     metrics: {
-      checks: "24 rules",
-      compliance: "CIS Benchmark",
+      accuracy: "97%",
+      method: "Ensemble learning",
+      api: "Flask REST",
     },
     features: [
-      "Disable password auth (keys only)",
-      "Block root login attempts",
-      "Rate limiting with fail2ban integration",
-      "Automated config auditing",
-      "Idempotent (safe to re-run)",
+      "Supervised learning with ensemble methods",
+      "Flask RESTful API for predictions",
+      "Real-time fraud detection",
+      "Data visualization dashboard",
+      "High accuracy on imbalanced datasets",
     ],
-    threatModel: "Reduces SSH attack surface and enforces security baselines",
-    github: null,
-    docs: null,
-    icon: Shield,
-  },
-  {
-    id: "network-monitor",
-    title: "Network Monitoring",
-    category: "Infrastructure",
-    status: "tinkering",
-    description:
-      "Network traffic analysis and visualization. Tracks bandwidth usage, identifies suspicious patterns, and generates topology maps. Integrates with Prometheus for long-term metrics.",
-    tldr: "Monitors network traffic and detects anomalies.",
-    stack: ["Python", "tcpdump", "iptables", "Prometheus"],
-    metrics: {
-      monitored: "3 interfaces",
-      bandwidth: "~12GB/day",
-    },
-    features: [
-      "Real-time bandwidth tracking",
-      "Protocol analysis (HTTP, SSH, DNS)",
-      "Anomaly detection (unusual traffic)",
-      "Visual topology mapping",
-      "Integration with Grafana",
-    ],
-    threatModel: "Detects data exfiltration, lateral movement, and C2 traffic",
-    github: null,
-    docs: null,
-    icon: Network,
-  },
-  {
-    id: "raspberry-pi-cluster",
-    title: "Raspberry Pi Cluster",
-    category: "Infrastructure",
-    status: "archived",
-    description:
-      "Experimental cluster setup exploring distributed computing on ARM architecture. Tested Kubernetes, Docker Swarm, and custom orchestration. Archived due to power/heat constraints.",
-    tldr: "Learned distributed systems on budget hardware.",
-    stack: ["Raspberry Pi 3B+", "Kubernetes", "Docker Swarm", "Ansible"],
-    metrics: {
-      nodes: "5 nodes",
-      runtime: "8 months",
-      lessons: "many",
-    },
-    features: [
-      "Multi-node Kubernetes cluster",
-      "Automated deployment with Ansible",
-      "Shared storage (NFS)",
-      "Load balancing experiments",
-      "Monitoring with Prometheus",
-    ],
-    threatModel: "Learning project, not production-facing",
-    github: null,
-    docs: null,
-    icon: Cpu,
+    threatModel: "Detects fraudulent transaction patterns and anomalies in real-time",
+    github: "https://github.com/syntech-97/Fraud-Detection-Project",
+    docs: "https://github.com/syntech-97/Fraud-Detection-Project",
+    icon: AlertTriangle,
   },
 ];
 
@@ -194,8 +196,7 @@ const ProjectsPage = () => {
             </h1>
           </div>
           <p className="text-xl text-muted-300 max-w-3xl">
-            Small, focused tools and infrastructure experiments. Everything here is documented,
-            auditable, and built to solve real problems—not to scale to billions.
+            AI/ML and security projects I've built while learning cybersecurity. From traditional security tools to machine learning-based threat detection—all real, working implementations with code and documentation.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -410,7 +411,7 @@ const ProjectsPage = () => {
                 <div>
                   <p className="text-sm text-muted-200">
                     <span className="font-semibold">Sentinel-SSH:</span> May block your own IP if
-                    you fat-finger your password too many times. Whitelist logic exists, use it.
+                    you mistype your password multiple times. Whitelist logic exists, use it.
                   </p>
                 </div>
               </div>
@@ -419,8 +420,7 @@ const ProjectsPage = () => {
                 <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm text-muted-200">
-                    <span className="font-semibold">Homelab:</span> Runs hot during summer. Power
-                    consumption is ~45W total, not exactly datacenter-grade efficiency.
+                    <span className="font-semibold">RL-IDS:</span> Reinforcement learning model needs continuous retraining on new attack patterns. 93% accuracy is good but not perfect.
                   </p>
                 </div>
               </div>
@@ -429,8 +429,7 @@ const ProjectsPage = () => {
                 <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm text-muted-200">
-                    <span className="font-semibold">Log Parser:</span> Needs better error handling
-                    for malformed log entries. Currently just skips them (not ideal).
+                    <span className="font-semibold">Homelab:</span> Still learning and experimenting. Things break regularly, which is exactly the point of having a lab.
                   </p>
                 </div>
               </div>
@@ -439,8 +438,7 @@ const ProjectsPage = () => {
                 <CheckCircle className="w-4 h-4 text-terminal-500 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm text-muted-200">
-                    <span className="font-semibold">General:</span> All projects are learning
-                    experiments. They work, but they're not enterprise-grade. Use at your own risk.
+                    <span className="font-semibold">Reality check:</span> These are learning projects built by a student. They work for my use cases and have been tested, but they're not battle-tested enterprise solutions. Use at your own risk and don't blame me if things go sideways.
                   </p>
                 </div>
               </div>
@@ -456,10 +454,9 @@ const ProjectsPage = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="card text-center">
-            <h2 className="h3 mb-4">Want to Contribute or Collaborate?</h2>
+            <h2 className="h3 mb-4">Want to Learn Together?</h2>
             <p className="text-muted-300 mb-6 max-w-2xl mx-auto">
-              Found a bug? Have an idea? Want to audit the security? Open an issue or PR. I respond
-              to technical questions fast.
+              Found a bug? Have feedback? Want to collaborate on security projects? I'm always looking to learn from other people building security tools. Open an issue or reach out.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link

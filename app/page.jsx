@@ -54,7 +54,7 @@ const HomePage = () => {
                   <span className="text-gradient">Yash Potdar</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-muted-300 font-display">
-                  Homelab Tinkerer • Infrastructure & Security
+                  AI/ML Student • Aspiring Cybersecurity Specialist
                 </p>
               </motion.div>
 
@@ -77,19 +77,19 @@ const HomePage = () => {
                   <div className="flex items-start gap-3">
                     <span className="text-terminal-500">➜</span>
                     <span className="text-muted-200">
-                      I build things that solve real problems
+                      I build security tools to understand how systems work
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-terminal-500">➜</span>
                     <span className="text-muted-200">
-                      Break them intentionally to learn
+                      I break things in my homelab to learn from failures
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-terminal-500">➜</span>
                     <span className="text-muted-200">
-                      Document everything along the way 📝
+                      I code in Python & Bash, learning by doing
                     </span>
                   </div>
                 </div>
@@ -104,8 +104,8 @@ const HomePage = () => {
               >
                 <GitBranch className="w-5 h-5 text-amber-500" />
                 <span className="text-sm text-muted-200">
-                  <span className="font-semibold text-amber-500">Current shift:</span>{" "}
-                  Moving from AI/ML → cybersecurity & infrastructure
+                  <span className="font-semibold text-amber-500">Student transitioning:</span>{" "}
+                  AI/ML degree → cybersecurity career path
                 </span>
               </motion.div>
 

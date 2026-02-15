@@ -29,11 +29,11 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Yash Potdar | Infrastructure & Security Engineer",
+  title: "Yash Potdar | AI/ML Student & Aspiring Cybersecurity Specialist",
   description:
-    "Homelab tinkerer building security tooling and infrastructure. SSH intrusion detection, log parsing, and reproducible documentation. Breaking things intentionally to learn.",
+    "AI/ML student learning cybersecurity through hands-on projects. Building security tools, experimenting with homelabs, and breaking things to understand how they work.",
   keywords:
-    "cybersecurity, infrastructure, homelab, SSH security, intrusion detection, Raspberry Pi, system administration, security monitoring, Linux, Python, network security, threat detection",
+    "cybersecurity student, ethical hacking, AI ML student, homelab projects, security tools, Python security, penetration testing, CTF, network security, learning cybersecurity, Raspberry Pi, SSH security, intrusion detection",
   authors: [{ name: "Yash Potdar" }],
   creator: "Yash Potdar",
   publisher: "Yash Potdar",
@@ -41,9 +41,9 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "https://yashpotdar.vercel.app",
-    title: "Yash Potdar | Infrastructure & Security Engineer",
+    title: "Yash Potdar | AI/ML Student & Aspiring Cybersecurity Specialist",
     description:
-      "Homelab tinkerer building security tooling and infrastructure. SSH intrusion detection, log parsing, and reproducible documentation.",
+      "AI/ML student learning cybersecurity through hands-on projects. Building security tools, experimenting with homelabs, and breaking things to learn.",
     siteName: "Yash Potdar Portfolio",
     images: [
       {

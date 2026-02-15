@@ -144,8 +144,7 @@ const ResumePage = () => {
             </h1>
           </div>
           <p className="text-xl text-muted-300 max-w-3xl mb-6">
-            My journey from AI/ML student to infrastructure and security tinkerer. Projects,
-            certifications, and hands-on learning experiences.
+            AI/ML student transitioning into cybersecurity. Tracking my journey through projects, certifications, and hands-on learning in homelabs and security tools.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -175,13 +174,13 @@ const ResumePage = () => {
             <div className="card">
               <div className="flex items-center gap-3 mb-3">
                 <Server className="w-5 h-5 text-terminal-500" />
-                <h3 className="h5">Current Focus</h3>
+                <h3 className="h5">Learning Focus</h3>
               </div>
               <p className="text-muted-200 text-sm">
-                Infrastructure & Security
+                Cybersecurity & Ethical Hacking
                 <br />
                 <span className="text-muted-300">
-                  SSH hardening, intrusion detection, log analysis
+                  Building security tools, CTFs, homelab experiments
                 </span>
               </p>
             </div>
@@ -189,12 +188,12 @@ const ResumePage = () => {
             <div className="card">
               <div className="flex items-center gap-3 mb-3">
                 <Activity className="w-5 h-5 text-terminal-500" />
-                <h3 className="h5">Experience</h3>
+                <h3 className="h5">Status</h3>
               </div>
               <p className="text-muted-200 text-sm">
-                ~2 years (technical projects)
+                Student & Intern
                 <br />
-                <span className="text-muted-300">Internships + homelab + open-source</span>
+                <span className="text-muted-300">Learning through hands-on projects</span>
               </p>
             </div>
 

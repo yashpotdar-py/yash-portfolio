@@ -19,64 +19,64 @@ import {
 
 const collaborationAreas = [
   {
-    id: "security-review",
-    title: "Security Tooling Review",
-    icon: Shield,
+    id: "open-source",
+    title: "Open-Source Contributions",
+    icon: Github,
     description:
-      "I review open-source security tools for code quality, threat modeling, and documentation. If you've built SSH hardening, intrusion detection, or log analysis tools, I can audit them.",
+      "I contribute to security and infrastructure projects to learn and improve my skills. If you have beginner-friendly issues or want someone to test your security tools, I'm interested.",
     whatILookFor: [
-      "Code clarity and maintainability",
-      "Threat model completeness",
-      "Documentation quality (setup, usage, failure modes)",
-      "Test coverage for edge cases",
-      "Security best practices (least privilege, fail-safe defaults)",
+      "Projects with clear contribution guidelines",
+      "Beginner-friendly or 'good first issue' tasks",
+      "Active maintainers who provide feedback",
+      "Security, infrastructure, or Python-based projects",
+      "Learning opportunities in real codebases",
     ],
     whatIDont: [
-      "Enterprise SaaS products (I focus on open-source)",
-      "Black-box proprietary tools",
-      "Anything requiring NDAs for basic review",
+      "Projects without documentation",
+      "Abandoned repos (no commits in 6+ months)",
+      "Enterprise-only tools requiring paid licenses",
     ],
-    timeframe: "1-2 weeks (depends on project size)",
-  },
-  {
-    id: "doc-review",
-    title: "Documentation Review",
-    icon: FileText,
-    description:
-      "I help improve technical documentation for homelab projects, security tools, and infrastructure guides. READMEs, setup guides, threat models, postmortems—I read them all.",
-    whatILookFor: [
-      "Clear setup instructions (reproducible steps)",
-      "Threat model and failure scenarios",
-      "Known issues and limitations (honesty matters)",
-      "Troubleshooting guides",
-      "Examples and real-world usage",
-    ],
-    whatIDont: [
-      "Marketing copy or sales pitches",
-      "Docs for closed-source tools",
-      "Anything without technical depth",
-    ],
-    timeframe: "3-7 days",
+    timeframe: "Ongoing (as I learn)",
   },
   {
     id: "code-review",
-    title: "Code Review & Feedback",
+    title: "Code Review Exchange",
     icon: Code,
     description:
-      "I review Python, Bash, and infrastructure-as-code for security, clarity, and maintainability. Focus areas: SSH tooling, log parsers, monitoring scripts, and system automation.",
+      "I'm looking for peers to exchange code reviews on security projects. You review my Python/Bash scripts, I'll review yours. We both learn from each other's approaches.",
     whatILookFor: [
-      "Secure coding patterns (input validation, error handling)",
-      "Clear variable naming and code structure",
-      "Proper error handling and logging",
-      "Idempotency (safe to re-run)",
-      "Comments explaining *why*, not *what*",
+      "Fellow students or early-career devs",
+      "Security tooling or homelab automation projects",
+      "Constructive feedback on code quality",
+      "Python, Bash, or infrastructure-as-code",
+      "Learning through mutual review",
     ],
     whatIDont: [
-      "Full-stack web apps (not my focus)",
-      "ML/AI model code (shifting away from that)",
-      "Large enterprise codebases (>10k LOC)",
+      "Professional enterprise code reviews",
+      "Full-stack web applications",
+      "AI/ML model implementations",
     ],
-    timeframe: "1-2 weeks",
+    timeframe: "1-2 weeks per review",
+  },
+  {
+    id: "learning-together",
+    title: "Learning & Experimenting",
+    icon: Terminal,
+    description:
+      "Want to learn ethical hacking, build security tools, or set up a homelab together? I'm always looking for people to learn alongside and share knowledge with.",
+    whatILookFor: [
+      "Other students interested in cybersecurity",
+      "People building homelabs or CTF teams",
+      "Shared learning goals (pentesting, forensics, etc.)",
+      "Collaborative experimentation mindset",
+      "Willingness to share both wins and failures",
+    ],
+    whatIDont: [
+      "Looking for mentorship (I'm learning too)",
+      "Enterprise consulting expectations",
+      "Requests to 'teach' without collaboration",
+    ],
+    timeframe: "Ongoing collaboration",
   },
   {
     id: "threat-modeling",
@@ -137,8 +137,7 @@ const ServicesPage = () => {
             </h1>
           </div>
           <p className="text-xl text-muted-300 max-w-3xl mb-6">
-            I collaborate on open-source security tooling, infrastructure projects, and technical
-            documentation. No agency services, no client projects—just honest technical work.
+            I'm an AI/ML student learning cybersecurity through hands-on projects. Looking to collaborate with other learners, contribute to open-source, and build cool security tools together.
           </p>
 
           <div className="card bg-base-900 border-terminal-500/30">
@@ -146,14 +145,10 @@ const ServicesPage = () => {
               <Terminal className="w-5 h-5 text-terminal-500 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-sm text-muted-200 mb-2">
-                  <span className="font-semibold text-terminal-500">Note:</span> I'm not available
-                  for client work, freelance projects, or enterprise consulting. This page is about
-                  open-source collaboration and knowledge sharing.
+                  <span className="font-semibold text-terminal-500">Reality check:</span> I'm a student still learning. I'm not offering professional services or consulting—I'm looking for peers to learn and build with.
                 </p>
                 <p className="text-xs text-muted-300">
-                  If you're looking for someone to build your startup's MVP or handle enterprise
-                  security, I'm not your person. But if you're building cool homelab tools or
-                  security projects, let's talk.
+                  If you need an experienced security engineer, that's not me yet. But if you're also learning cybersecurity and want to collaborate on projects, I'm all in.
                 </p>
               </div>
             </div>
@@ -166,7 +161,7 @@ const ServicesPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <h2 className="section-title">What I Can Help With</h2>
+          <h2 className="section-title">What I'm Looking For</h2>
 
           <div className="space-y-8">
             {collaborationAreas.map((area, index) => {
@@ -422,12 +417,11 @@ const ServicesPage = () => {
         >
           <div className="card text-center">
             <h2 className="h2 mb-4">
-              <span className="text-gradient">Let's Build Something</span>
+              <span className="text-gradient">Let's Learn Together</span>
             </h2>
             <p className="text-muted-300 text-lg mb-8 max-w-2xl mx-auto">
-              If you're working on something that aligns with my focus areas (security tooling,
-              infrastructure, documentation), reach out. I'm always interested in learning from
-              other builders.
+              If you're also learning cybersecurity, building security tools, or experimenting with
+              homelabs, let's collaborate. I'm always looking for peers to learn alongside.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn-primary">

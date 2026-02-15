@@ -47,55 +47,55 @@ const contactChannels = [
 
 const reachOutFor = [
   {
-    title: "Technical Questions",
-    description: "Questions about my projects, security tooling, or homelab setup.",
+    title: "Project Collaboration",
+    description: "Want to build security tools, work on CTFs, or experiment with homelabs together?",
+  },
+  {
+    title: "Learning Resources",
+    description: "Found a great cybersecurity course, tool, or resource? I'd love to hear about it.",
   },
   {
     title: "Bug Reports",
-    description: "Found a bug in Sentinel-SSH or another project? I want to hear about it.",
+    description: "Found a bug in my projects? Please let me know so I can learn and fix it.",
   },
   {
-    title: "Collaboration Ideas",
-    description: "Open-source contributions, security reviews, or documentation feedback.",
+    title: "Technical Discussion",
+    description: "Want to discuss security concepts, tools, or interesting attack vectors?",
   },
   {
-    title: "Postmortem Stories",
-    description: '"Here\'s how I broke my homelab at 3 AM" conversations are always welcome.',
+    title: "Homelab Ideas",
+    description: "Building a homelab or have ideas for security experiments? Let's talk.",
   },
   {
-    title: "Obscure Tooling Suggestions",
-    description: "Found a niche sysadmin tool I should know about? Tell me.",
-  },
-  {
-    title: "Documentation Feedback",
-    description: "Something unclear in my docs? Point it out so I can fix it.",
+    title: "Code Review Exchange",
+    description: "Want to review each other's code? I'm always looking for feedback.",
   },
 ];
 
 const dontReachOutFor = [
   {
-    title: "Printer Issues",
-    description: "I can't help with hardware that refuses to cooperate.",
+    title: "Professional Consulting",
+    description: "I'm a student, not a consultant. Can't offer professional security services.",
   },
   {
     title: "Crypto/NFT/Blockchain Pitches",
-    description: "Instant ignore. Don't waste our time.",
+    description: "Not interested. Please don't.",
   },
   {
-    title: "Unsolicited Job Spam",
-    description: "Recruiters: I'm not looking. If I am, I'll update LinkedIn.",
+    title: "Job Recruitment",
+    description: "Focused on learning right now. Will update when I'm actively job hunting.",
   },
   {
-    title: "Enterprise Support on Hobby Projects",
-    description: "These are learning experiments, not SaaS products with SLAs.",
+    title: "Do My Homework",
+    description: "I won't do your assignments. Happy to discuss concepts, but you need to learn yourself.",
   },
   {
-    title: "Requests to 'Pick My Brain' Without Context",
-    description: 'Generic "Can I pick your brain?" without specific questions gets no response.',
+    title: "Enterprise Security Audits",
+    description: "I'm not qualified for professional pentesting or security audits yet.",
   },
   {
-    title: "Homework Help",
-    description: "I'm not doing your coursework. Learn by struggling through it yourself.",
+    title: "Hacking for Illegal Purposes",
+    description: "Only ethical hacking on systems I own or have permission to test. Hard pass on anything shady.",
   },
 ];
 
@@ -116,8 +116,7 @@ const ContactPage = () => {
             </h1>
           </div>
           <p className="text-xl text-muted-300 max-w-3xl mb-6">
-            I respond to technical questions, collaboration requests, and postmortem war stories.
-            Please read the sections below before reaching out.
+            I'm a student learning cybersecurity through hands-on projects. Feel free to reach out for collaboration, project discussions, or to share learning resources.
           </p>
 
           <div className="card bg-base-900 border-terminal-500/30">
@@ -125,13 +124,11 @@ const ContactPage = () => {
               <Terminal className="w-5 h-5 text-terminal-500 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-sm text-muted-200 mb-2">
-                  <span className="font-semibold text-terminal-500">Availability:</span> I check
-                  messages during US Eastern evenings (after work). If you're in a different
-                  timezone, expect slight delays.
+                  <span className="font-semibold text-terminal-500">Student status:</span> I check
+                  messages during evenings and weekends. Response times may vary during exam periods.
                 </p>
                 <p className="text-xs text-muted-300">
-                  I don't guarantee instant responses. If something is on fire in your homelab,
-                  I'm not your emergency contact—check the logs first.
+                  I'm not offering professional services—just looking to connect with other learners and collaborate on projects.
                 </p>
               </div>
             </div>
